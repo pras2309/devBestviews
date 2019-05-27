@@ -50,6 +50,7 @@ get_template_part('template-parts/bottom-header');
 			//get image of first product 
 			$firstProdImage = $cate_products[0]->s3_image_url;
 			
+			
 		?>
 	
 	<div class="col-xs-12 col-sm-12 col-md-4">
@@ -57,12 +58,14 @@ get_template_part('template-parts/bottom-header');
 		<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail">
 						<?php if($firstProdImage) : ?>
-							<img src="<?php bloginfo('template_url'); ?>/images/middle-category-1.jpg"/>
+							<img src="<?php echo $firstProdImage; ?>"/>
 						<?php else:  ?>
 						<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" width="360px" height="167px"/>	
 						<?php endif; ?>
 					
-						<div class="item_panel_thumbnail_caption"> <?php echo $childCategory->name; ?></div>
+						<div class="item_panel_thumbnail_caption"> 
+							<a href="<?php echo get_category_link($childCategory->term_id); ?>"><?php echo $childCategory->name; ?></a>
+						</div>
 				</div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<ul class="main_item_panel_detail">
@@ -86,6 +89,14 @@ get_template_part('template-parts/bottom-header');
 					</li>
 					<?php endforeach; ?>
 				</ul>
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="display_all_product">
+					<a href="<?php echo get_category_link($child_id); ?>">Display all Products</a>
+					</div>
+					</div>
+				</div>
+			
 			</div>
 		</div>
 		</div>
@@ -95,6 +106,7 @@ get_template_part('template-parts/bottom-header');
 		</div><div class="row">
 	<?php } endif; endforeach; endforeach; ?>
 	 <!-- end of row -->
+	 
 	</div> <!-- end of container -->
 	</section> <!-- end of section -->
 	

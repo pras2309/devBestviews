@@ -23,19 +23,13 @@
 								<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 								<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 								<![endif]-->
+								
+								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/jquery.desoslide.min.css" rel="stylesheet">
+								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/animate.min.css" rel="stylesheet">
+								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/magic.min.css" rel="stylesheet">
+								<script src="<?php bloginfo('template_url'); ?>/js/jquery.desoslide.min.js"></script>
+								<script src="<?php bloginfo('template_url'); ?>/js/demo.js"></script>
 								<?php wp_head(); ?>
-								<link href="
-									<?php bloginfo('template_url'); ?>/css/thumbnail/jquery.desoslide.min.css" rel="stylesheet">
-									<link href="
-										<?php bloginfo('template_url'); ?>/css/thumbnail/animate.min.css" rel="stylesheet">
-										<link href="
-											<?php bloginfo('template_url'); ?>/css/thumbnail/magic.min.css" rel="stylesheet">
-											<script src="
-												<?php bloginfo('template_url'); ?>/js/jquery.desoslide.min.js">
-											</script>
-											<script src="
-												<?php bloginfo('template_url'); ?>/js/demo.js">
-											</script>
 										</head>
 										<body 
 											<?php body_class(); ?>>

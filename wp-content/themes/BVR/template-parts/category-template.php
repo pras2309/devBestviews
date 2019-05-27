@@ -19,12 +19,21 @@ $category_name = $category_details->name;
 $product_category = trim($category_name);
 $get_product_items  = $wpdb->get_results("SELECT * FROM bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
+//get image of the first product in the list.
+if(isset($get_product_items[0])){
+	$image_url  = $get_product_items[0]->s3_image_url;
+}
 //get total no_of reviews 
 
+//get total no_of reviews  from new table product_category
+$category_details_info =  $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name= '".esc_sql($product_category)."'");
+if(isset($category_details_info[0])){
+$category_details_info = $category_details_info[0];
+}
 
 ?>
 
-	<section class="header-new" style="background-image: url(http://bestviewsreviews.com/wp-content/themes/BVR/images/list-banner.jpg);background-position: center;background-size: cover;background-repeat: no-repeat;width: 100%;">
+	<section class="header-new" style="background-image: url(<?php echo $image_url; ?>);background-position: center;background-size: cover;background-repeat: no-repeat;width: 100%;">
     <div class="container">
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 breadcrumb">
@@ -51,13 +60,22 @@ $no_of_rows =  $wpdb->num_rows;
 	<div class="col-xs-12 col-sm-12 col-md-3">
 	<div class="review_scanned_div">
 	<p class="review_scanned_div_title">Reviews Scanned</p>
-	<p class="review_scanned_count">13,142</p>
+	<p class="review_scanned_count"><?php 
+			if(isset($category_details_info->total_no_of_reviews)){
+				echo  $category_details_info->total_no_of_reviews;
+			}
+			?></p>
 	</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-3">
 	<div class="updated_div">
 	<p class="updated_div_title">Updated on</p>
-	<p class="updated_div_date">April 2019</p>
+	<p class="updated_div_date"><?php 
+					if(isset($category_details_info->updated_on)){
+						echo date("F, Y", strtotime($category_details_info->updated_on));
+				}
+				?>
+			</p>
 	</div>
 	</div>
 	</div>
@@ -94,15 +112,9 @@ $no_of_rows =  $wpdb->num_rows;
 	<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="product_score">
 				<!-- category description -->
-					<p>A cruiser bicycle, also known as a beach cruiser or (formerly) motobike, 
-						is a bicycle that usually combines balloon tires, an upright seating posture, 
-						a single-speed drivetrain, and straightforward steel construction with 
-						expressive styling. Cruisers are popular among casual bicyclists 
-						and vacationers because they are very stable and easy to ride, 
-						but their heavy weight and balloon tires tend to make them rather slow. 
-						They are designed for use primarily on paved roads, moderate speeds/distances, 
-						and are included in the non-racing/non-touring class and heavyweight or 
-						middleweight styles of the road bicycle type.</p>
+				<?php if ($category_details_info->category_description):  ?>
+					<p><?php echo $category_details_info->category_description;?></p>
+					<?php endif; ?>
 			
 			<div class="row" style="margin:0px;">
 				<!-- product list start -->
