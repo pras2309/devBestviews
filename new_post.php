@@ -209,11 +209,11 @@ $content =<<<CONTENT
             <div class="col-xs-12 col-sm-12 col-md-9">
             <div class="left-section">
             <div class="row first-row">
-            <div class="col-md-8">
-            <div class="row">
-            <img title="$product_title" src="$product_image_url" alt="$product_title" width="602px" height="604px">
-            </div>
-            </div> <!-- end of col-md-8 -->
+                <div class="col-md-8">
+                    <div class="row">
+                     <img title="$product_title" src="$product_image_url" alt="$product_title" width="602px" height="604px">
+                    </div>
+                </div> <!-- end of col-md-8 -->
 
             <div class="col-md-4">
             <div class="row">
@@ -230,40 +230,45 @@ CONTENT;
             </div> <!-- end of first row in col-4 -->
             <div class="row">
             <div class="col-md-12">
-            <h5 class="slider-title-2">Sentiment Analysis</h5>
-            <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
+                <h5 class="slider-title-2">Sentiment Analysis</h5>
+                <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
             </div> <!-- end of col-4 -->
-            <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
-            <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"></div>
-            <div class="count">
-            $reviews_positive_sentiment_last_6_months
-            </div>
-            <div class="remark"><p>Positive</p></div>
-            </div> <!-- end of col-4 -->
-            <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
-            <div class="up" style="padding-bottom: 7px;"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"></div>
-            <div class="count">
-            $percent_neutral_sentiment_reviews_last6_months
-            </div>
-            <div class="remark"><p>Neutral</p></div>
-            </div> <!-- end of col-4 -->
-            <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
-            <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"></div>
-            <div class="count">$reviews_negative_sentiment_last_6_months</div>
-            <div class="remark">
-            <p>Negative</p>
-            </div>
-            </div> <!-- end of col-4 -->
+
+                <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                    <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"></div>
+                    <div class="count">
+                    $reviews_positive_sentiment_last_6_months
+                    </div>
+                    <div class="remark"><p>Positive</p></div>
+                </div> <!-- end of col-4 -->
+
+                <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
+                        <div class="up" style="padding-bottom: 7px;"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"></div>
+                        <div class="count">
+                        $percent_neutral_sentiment_reviews_last6_months
+                        </div>
+                    <div class="remark"><p>Neutral</p></div>
+                </div> <!-- end of col-4 -->
+
+                <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                    <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"></div>
+                    <div class="count">$reviews_negative_sentiment_last_6_months</div>
+                    <div class="remark">
+                    <p>Negative</p>
+                    </div>
+                </div> <!-- end of col-4 -->
             </div> <!-- end of col-12 -->
+
             </div> <!-- end of row  --> <!-- end of second row in col-4 -->
             </div> <!-- end of first row -->
-            <div class="row second-row">
-            <div class="col-md-5" style="text-align: center;"><img style="width: 40%;" src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png"></div>
-            <div class="col-md-3" style="text-align: center;">
-            <p class="cost">$ $product_msrp</p>
-            </div>
-            <div class="col-md-4" style="text-align: center;"><a class="btn partner_button" href="$buy_link">Shop now</a></div>
-            </div>
+
+                <div class="row second-row">
+                    <div class="col-md-5" style="text-align: center;"><img style="width: 40%;" src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png"></div>
+                    <div class="col-md-3" style="text-align: center;">
+                    <p class="cost">$ $product_msrp</p>
+                    </div>
+                    <div class="col-md-4" style="text-align: center;"><a class="btn partner_button" href="$buy_link">Shop now</a></div>
+                </div> <!-- end of second row -->
 
             <!-- third row has been removed -->
             <div class="row fourth-row">
@@ -363,16 +368,7 @@ CONTENT;
 CONTENT;
             }
         }
-        $content .=<<<CONTENT
-                    </div>
-                </div>                
-            </div> <!-- end of second fourth row -->
-            <!-- ends  of positive reviews -->
-            <!-- start of negative reviews -->
-            <div class="row fourth-row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="detail-text-title">
-CONTENT;
+
     if($decode_json->top_negative_reviews){
         $min1=0;
         foreach($decode_json->top_negative_reviews as $bottom_review){
@@ -394,15 +390,12 @@ CONTENT;
                     <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/right-quotes.jpg"></p>
 CONTENT;
         }
-    }
-        $content .=<<<CONTENT
-                </div>
-                <div class="detail-text-title">
+    }          
+            $content .=<<<CONTENT
                 <img class="img img-responsive" title="$product_title" src="$wordCloudImage" alt="$product_title">
                 </div>
-            </div>
-            <!-- ends of negative reviews --> <!-- end of third fourth row -->
-            <!--  end of fourth fourth row -->
+            </div>                
+        </div> <!-- end of second fourth row -->
 CONTENT;
 
 // echo $content; exit;
