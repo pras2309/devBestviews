@@ -1,0 +1,466 @@
+*{margin:0px;padding:0px;}
+body{background:#f8f8f8;font-family: 'Rubik'; font-weight: normal; font-style: normal;}
+.header{box-shadow: 0 8px 8px 0 rgba(28, 81, 142, 0.2);background-image: linear-gradient(87deg, #342e54, #054a91);}
+.navbar{margin-bottom:10px!important;}
+.navbar-default{background-color: transparent!important;border-color: transparent!important;}
+.navbar-default .navbar-nav>li>a{font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: 0;color: #ffffff!important;font-family: RubikMedium;}
+.navbar-default .navbar-nav>li>a:hover .navbar-default .navbar-nav>li>a:focus{font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: 0;color: #ffffff!important;font-family: RubikMedium;}
+.navbar-brand{padding: 8px 16px!important;}
+.navbar-brand img{width:54%!important;}
+.navbar-nav>li>a {
+    padding-top: 19px!important;
+    padding-bottom: 10px!important;
+}
+.header-new{box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding-bottom:12px;}
+.breadcrumb{padding: 15px!important;
+     margin-bottom: 0px!important;
+    list-style: none!important;
+    background-color: #fff!important;
+    border-radius: 4px!important;border-bottom:1px solid #f5f5f5;}
+.breadcrumb span a{font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;font-family: RubikLight;}
+.breadcrumb current-item{font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;font-family: RubikLight;}
+.breadcrumb li a{font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;font-family: RubikLight;}
+.breadcrumb>.active{font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;font-family: RubikLight;}
+.breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #57a3f9;
+    content: "/\00a0";
+}
+.title h1{font-size: 40px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.1;letter-spacing: -1px;color: #292c32;font-family: RubikMedium;}
+.inner-thumnbail{color: #292c32;padding:0px 15px;font-size: 14px;font-weight: 500;font-family: RubikRegular;}
+.inner-thumnbail img{align-self: center; max-height: 34px;border-radius: 100%;padding: 0px 12px;display:inline-block;}
+.date{opacity: 0.4;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c32;padding:0px;font-family: RubikRegular;}
+.winner_image{text-align:center;}
+.soundbars{margin: 25px 0px;}
+.winner_image img{width: 45%!important;position: relative;top: 11px;left: 20px;}
+.big_thumbnail img{width:100%;}
+.slider-title{padding: 0px 30px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 15px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: 0.5;letter-spacing: -0.1px;color: #292c32;}
+.slider-right-section{padding:0px 30px;opacity: 0.4;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c32;}
+.slider-title-2{padding-top:20px;padding-bottom:0px;padding-right:30px;padding-left:30px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 15px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: 0.5;letter-spacing: -0.1px;color: #292c32;}
+.slider-right-section-2{padding:0px 30px;opacity: 0.4;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c32;}
+.stats-image{width: 80%;margin-right: auto;margin-left: auto;display: block;}
+.up img{width:35%;padding-bottom:5px;}
+.count p{font-family: RubikRegular;font-size: 24px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;text-align: center;color: #292c32;}
+.remark p{opacity: 0.4;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.33;letter-spacing: normal;text-align: center;color: #292c32;}
+.stats-review{text-align:center;}
+.stats-review-middle{text-align:center;border-left:1px solid #f5f5f5;border-right:1px solid #f5f5f5;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.33;letter-spacing: normal;text-align: center;color: #292c32;}
+
+.score_image{text-align:center;margin-top:20px;}
+.score_image img{width:90%;}
+.main{margin:35px 0px;}
+.left-section{background:#fff;}
+.right-section{background:#fff;background-image: url(images/star-image.png);background-repeat: no-repeat;background-size: 95px;background-position: right 0px top 0px;}
+.related_post li{list-style:none;padding:10px 30px;border-bottom:1px solid #f5f5f5;}
+.related_post li:last-child{list-style:none;padding:10px 30px;border-bottom:0px solid #f5f5f5;}
+.related_post_title{text-align:center;margin:0px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 15px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: -0.1px;color: #292c32;padding-top: 40px;padding-bottom: 30px;}
+.related_post_link_title{opacity: 0.8;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;}
+.cost{opacity: 0.8;font-family: RubikRegular;font-size: 18px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #292c32;}
+.third-row{padding:30px 0px;border-bottom:1px solid #f5f5f5}
+.fourth-row{padding:30px 0px;border-bottom:1px solid #f5f5f5}
+.detail-text{padding:0px 20px;}
+.detail-text img{width:100%;}
+.detail-text-title{padding:0px 20px;}
+.detail-text-title p{font-family: RubikMedium;font-size: 24px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: 1.33;letter-spacing: -0.6px;color: #292c32;}
+.detail-text p{font-family: RubikRegular;font-size: 16px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.63;letter-spacing: normal;color: #5e5e5e;}
+.positive-title{padding: 10px 30px;font-size: 16px;font-weight: bold;}
+.positive_points li{list-style:none;float:left;background:#ecf8e4;color:#62a929;padding:7px 10px;margin:2px;font-size:15px;}
+.positive_points{padding: 20px 31px;}
+.positive_review{margin: 19px 34px;background: #f8f8f8;padding: 20px;border-left:2px solid #8bd951;color:#535459;}
+.positive-review-date{margin: 0px 34px;color: #a8a9ad;font-size:13px;}
+
+.negative-title{padding: 10px 30px;font-size: 16px;font-weight: bold;}
+.negative_points li{list-style:none;float:left;background:#fff3f3;color:#ff6769;padding:7px 10px;margin:2px;font-size:15px;}
+.negative_points{padding: 20px 31px;}
+.negative_review{margin: 19px 34px;background: #f8f8f8;padding: 20px;border-left:2px solid #ff6769;color:#535459;}
+.negative-review-date{margin: 0px 34px;color: #a8a9ad;font-size:13px;}
+.first-row{padding:20px 0px;border-bottom:1px solid #f5f5f5}
+.second-row{padding:30px 0px}
+.footer{text-align:center;padding:30px 0px;color:#7e7e7e;font-size:13px;}
+.footer_link{margin:50px 0px;}
+.footer_link ul li{list-style:none;}
+.footer_link ul li a{padding:5px 0px;display:block;text-align:left;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #5e5e5e;text-decoration:none;}
+.footer_link ul li a:hover{text-decoration:none;}
+.footer_bottom_links ul li{list-style:none;}
+.footer_bottom_links ul li a{float:left;padding:10px;display:inline-block;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c32;text-decoration:none;}
+.footer_bottom_links ul li a:hover{text-decoration:none;}
+.right-footer-text p{text-align:left;font-family: RubikRegular;font-size: 15px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.33;letter-spacing: normal;color: #5e5e5e;}
+.footer-text{margin: 20px 0px;}
+.footer-lower-text{margin:10px 0px;}
+.footer-lower-text p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.83;letter-spacing: normal;text-align: left;color: #a1a1a1;}
+.footer-lower-text-new{margin-top:80px;}
+.footer-lower-text-new p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.83;letter-spacing: normal;text-align: left;color: #a1a1a1;}
+.footer-text p{line-height: 25px;opacity: 0.7;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;letter-spacing: normal;color: #5e5e5e;}
+.footer_social_icon ul li{list-style:none;float:left;}
+.footer_social_icon ul li a{text-decoration:none;color: #57a3f9;padding:10px;font-size:20px;}
+.footer_social_icon ul li a:hover{text-decoration:none;color: #57a3f9;}
+.social_icons{text-align:center;margin: 10px 0px;}
+.subscription_div p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;padding:10px 0px;}
+
+.small-slide img{width:100%;padding-left:20px;padding-bottom:10px;}
+.previous-section img{padding: 20px;}
+.next-section img{padding: 20px;}
+/*.winner{border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;}*/
+.winner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:40px;}
+/*.winner-content p{padding-top: 20px;padding-bottom: 15px;margin: 0px;margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2.2;letter-spacing: normal;font-family: RubikLight;}*/
+.winner-content p{margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2;letter-spacing: normal;font-family: RubikLight;padding-top: 7px;}
+.winner-footer p{margin:0px;background:#f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform:uppercase;}
+.previous-section-content{padding:0px;}
+.previous-link-1{text-decoration:none;cursor:pointer;}
+.previous-link-1:hover{text-decoration:none;cursor:pointer;}
+.previous-link-1 h5{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: -0.1px;color: #292c32;text-decoration: none;padding-top: 13px}
+.previous-link-2{font-family: RubikMedium;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;text-decoration: none;}
+.previous-link-2:hover{font-family: RubikMedium;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;text-decoration: none;}
+
+.next-section-content{padding:0px;}
+.next-link-1{text-decoration:none;cursor:pointer;}
+.next-link-1:hover{text-decoration:none;cursor:pointer;}
+.next-link-1 h5{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: -0.1px;color: #292c32;text-decoration: none;padding-top: 13px;text-align:right;}
+.next-link-2{font-family: RubikMedium;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;text-decoration: none;text-align:right;float:right;}
+.next-link-2:hover{font-family: RubikMedium;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #57a3f9;text-decoration: none;text-align:right;float:right;}
+.partner_button{margin: 0px 12px;padding: 11px 25px;font-family: RubikMedium;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #ffffff;background-color: #57a3f9;}
+
+.review_div_section{padding:0px 10px;margin-top:40px;margin-bottom:10px;}
+.review_scanned_div_title{margin: 0 0 5px;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #a9aaaf;}
+.review_scanned_count{font-family: RubikRegular;font-size: 16px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c33;}
+.updated_div_title{margin: 0 0 5px;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #a9aaaf;}
+.updated_div_date{font-family: RubikRegular;font-size: 16px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c33;}
+.main-container{margin-top:30px;margin-bottom:10px;}
+.main-text{opacity: 0.6;font-family: RubikRegular;font-size: 13px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.58;letter-spacing: normal;text-align: center;color: #a9aaaf;}
+.main-text p{padding: 0px 100px;text-align:left;}
+.related_category{background-color: #57a3f9;height: 120px;}
+.related_category h4{text-align:center;font-family: RubikBold;font-size: 17px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;color: #fff;}
+.related_category_item{border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding: 20px;margin-top:30px;}
+.related_category_item a{text-decoration:none;}
+.related_category_item a:hover{text-decoration:none;}
+.related_category_image{padding:20px;}
+.related_category_image img{width:100%;padding:20px;}
+.related_category_title p{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 17px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;text-align: center;color: #57a3f9;}
+.product_score{background: #fff;margin: 20px 50px;border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);}
+.product_score p{font-family: RubikRegular;font-size: 18px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding: 0px 100px;padding-top: 50px;padding-bottom: 20px;}
+.product_list_row{padding:20px;display:inline-block;}
+
+.product_image img{width:100%;}
+.product_detail h4 a{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 16px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: 1.38;letter-spacing: normal;color: #292c32;text-decoration:none;}
+.product_detail h4 a:hover{text-decoration:none;color:#57a3f9;}
+.product_detail p{opacity: 0.5;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;padding:0px;}
+.product_detail_score img{width:100%;}
+.related_tag_sidebar h4{text-align: center;margin: 0px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 15px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: -0.1px;color: #292c32;padding-top: 40px;padding-bottom: 0px;}
+
+.other_products{margin-top: 30px;background:#fff;}
+.other_products h4{text-align:center;font-family: RubikBold;font-size: 17px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;color: #292c31;padding:40px 0px;}
+.other_products img{width:100%;}
+.other_products_detail{margin-bottom:20px;}
+.other_products_detail a{padding:10px;display:inline-block;}
+.other_products_detail a:hover{box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.05);background-color: #ffffff;display:inline-block;padding:10px;}
+.other_products_detail_title{font-family: RubikRegular;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;}
+.other_products_detail a:hover .other_products_detail_title{color:#57a3f9;}
+.stay_block{border-radius: 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(63deg, #342e54, #054a91);padding: 20px 40px;
+ position: relative;top:100px;}
+.stay_block h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
+.stay_block p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
+.stay_block_new{border-radius: 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);padding: 20px 40px;
+ position: relative;top:100px;}
+.stay_block_new h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
+.stay_block_new p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
+.custome-email{  opacity: 0.5;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
+.custome-div{padding-left:0px;}
+.sub_button{border-radius: 2px;background-color: #57a3f9; font-family: RubikMedium;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;text-align: center;color: #ffffff;}
+.sub_button:hover{color: #ffffff;}
+.custome-form-group{padding-bottom:40px;}
+
+.review_block_new{border-radius:0px 0px 12px 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);padding: 20px 40px;
+ }
+.review_block_new h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
+.review_block_new p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
+.custome-email{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
+.custome-div{padding-left:0px;}
+.sub_button{border-radius: 2px;background-color: #57a3f9; font-family: RubikMedium;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;text-align: center;color: #ffffff;}
+.sub_button:hover{color: #ffffff;}
+.custome-form-group{padding-bottom:20px;}
+.custome-input{opacity:0.5}
+
+
+.related_category_new{background-color: #57a3f9;}
+.related_category_new_title p{opacity: 0.6;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.58;letter-spacing: normal;text-align: center;color: #ffffff;margin-top: 100px;padding: 50px 0px;}
+
+.remark_image_winner img{text-align:center;width: 100%!important;position: relative;top: 11px;left: -61px;}
+.remarkwinner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
+.remarkwinner-content{}
+.remarkwinner-content p{font-family: RubikRegular;
+font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+.remarkwinner-footer{}
+.remarkwinner-footer p{margin: 0px;background: #f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;}
+
+.remark_image_first img{}
+.remarkfirst{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
+.remarkfirst-content{}
+.remarkfirst-content p{font-family: RubikRegular;
+font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+.remarkfirst-footer{}
+.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+.remark_image_second img{}
+.remarksecond{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
+.remarksecond-content{}
+.remarksecond-content p{font-family: RubikRegular;
+font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+.remarksecond-footer{}
+.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+.custome-fluid-container{background-image: url(images/big_star_logo.png);background-repeat: no-repeat;background-size: 305px;background-position: left 0px top 0px;height:300px;}
+.category_button{margin:0px 12px;font-size: 12px;font-weight: 500;color: #ffffff;font-family: RubikMedium;background-color: #57a3f9;cursor:pointer!important;}
+
+
+/* smart phones css */
+@media screen and (min-width:320px) and (max-width:600px){
+	.winner{width:100%;height:100%;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:0px;}
+	.winner-content p{padding-top: 20px;padding-bottom: 15px;margin: 0px;margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2.2;letter-spacing: normal;font-family: RubikLight;}
+	.mobile-view-image{margin-left: auto;margin-right: auto;}
+	.previous-section-content{padding:0px 20px;}
+	.previous-link-1{text-decoration:none;cursor:pointer;}
+	.previous-link-1:hover{text-decoration:none;cursor:pointer;}
+	.previous-link-1 h5{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: -0.1px;color: #292c32;text-decoration: none;padding-top: 13px}
+	.previous-link-2{color:#57a3f9;font-weight:bold;}
+	.next-section-content{padding:0px 20px;}
+	.next-link-1{text-decoration:none;cursor:pointer;}
+	.next-link-1 h5{color:#53565b;line-height:23px;padding-top: 13px;text-align:left;}
+	.next-link-2{color:#57a3f9;font-weight:bold;text-align:left;float:left;}
+	.inner-thumnbail{padding: 15px;display:inline-block;}
+	.winner_image img{width:50%!important;top:18px;left:0px;}
+	.score_image{margin-bottom: 30px;} 
+	.score_image img{width:100%;}
+	.small-slide img{padding:10px;width:20%;}
+	.big_thumbnail img{padding:10px;}
+	.up img{width:40%;}
+	.navbar-brand{float:none!important;}
+	.navbar { margin-bottom: 0px!important;}
+	.navbar-toggle {margin-top: 30px;}
+	.navbar-nav>li>a {padding-top: 10px!important; padding-bottom: 10px!important;}
+	.related_post{text-align:center;}
+	.product_score{margin:0px;}
+	.product_score p{padding:10px;}
+	.stay_block{margin-bottom:10px;}
+	.stay_block-new{margin-bottom:10px;}
+	.footer_link{margin:20px 0px;}
+	.footer_social_icon{margin-top:10px;}
+	
+.remark_image_winner img{text-align:center;width: 20%!important;position: relative;top: 21px;left: 98px;}
+.remarkwinner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin: 10px 84px;text-align:center}
+	.remarkwinner-content{}
+	.remarkwinner-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkwinner-footer{}
+	.remarkwinner-footer p{margin: 0px;background: #f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;}
+
+	.remark_image_first img{}
+	.remarkfirst{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin: 10px 84px;text-align:center}
+	.remarkfirst-content{}
+	.remarkfirst-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkfirst-footer{}
+	.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+	.remark_image_second img{}
+	.remarksecond{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin: 10px 84px;text-align:center}
+	.remarksecond-content{}
+	.remarksecond-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarksecond-footer{}
+	.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+
+}
+
+/* ipad css */
+@media screen and (min-width:768px) and (max-width:1024px) and (orientation : portrait){
+	.navbar-brand{height:0px;}
+	.navbar-brand img{padding:10px;}
+	.inner-thumnbail{padding: 15px;display:inline-block;}
+	.first-row{padding:0px;}
+	.small-slide img{width:20%;padding: 20px;}
+	.big_thumbnail img{padding: 20px;}
+	.slider-title{font-size: 20px;}
+	.slider-right-section{font-size:17px;}
+	.slider-title-2{font-size: 20px;}
+	.slider-right-section-2{font-size:17px;}
+	.count p{font-size:30px;}
+	.remark p{font-size:18px;}
+	.cost{font-size:25px;}
+	.related_post_title{font-size: 20px;}
+	.related_post_link_title{font-size: 18px;}
+	.winner_image img {width: 45%!important;position: relative;top: 34px;left: 36px;}
+	.winner{width: 100%;height: 100%;}
+	.winner-content p{padding-top: 50px;font-size:45px;}
+	.winner-footer p{font-size:20px;}
+	
+	.footer_social_icon{margin-top:10px;}
+	.product_score p{padding:20px}
+	.footer_link{margin:10px 0px;}
+	.product_image{text-align:center;}
+	.product_image img{width:40%;}
+	.related_category_image{text-align:center;}
+	.related_category_image img{width:50%;}
+	.other_products_detail_title{font-size:16px;}
+	.remark_image_winner{margin-bottom:10px;}
+	.remark_image_winner img{text-align:center;width: 10%!important;position: relative;top: 9px;left: 241px;}
+	.remarkwinner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left:auto;margin-right:auto;text-align:center}
+	.remarkwinner-content{}
+	.remarkwinner-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkwinner-footer{}
+	.remarkwinner-footer p{margin: 0px;background: #f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;}
+
+	.remark_image_first{margin-bottom:10px;}
+	.remark_image_first img{}
+	.remarkfirst{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left:auto;margin-right:auto;text-align:center}
+	.remarkfirst-content{}
+	.remarkfirst-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkfirst-footer{}
+	.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+	.remark_image_second{margin-bottom:10px;}
+	.remark_image_second img{}
+	.remarksecond{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left:auto;margin-right:auto;text-align:center}
+	.remarksecond-content{}
+	.remarksecond-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarksecond-footer{}
+	.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+}
+
+/* ipad css */
+@media screen and (min-width:768px) and (max-width:1024px) and (orientation : landscape){
+}
+
+/* ipad pro css */
+@media screen and (min-width:1024px) and (max-width:1366px) and (orientation : portrait){
+	.inner-thumnbail{padding:0px;}
+	.winner_image img{width: 70%;position: relative;top: 8px;
+    left: 26px;}
+	.winner{margin-left:25px;}
+	.winner_image img{top:9px;}
+	.winner-content p{padding-top:0px;font-size:29px;}
+	.winner-footer p{font-size: 13px;}
+	.small-slide img{padding-top:16px;width:100%;padding-right: 0px;}
+	.slider-title{font-size:20px;padding-top:20px;}
+	.slider-title-2{font-size:16px;padding-top:0px;}
+	.remark p{font-size:12px;}
+	.related_post_link_title{font-size:13px;}
+	.navbar-brand img{padding:0px;}
+	.other_products_detail_title {font-size: 11px;}
+	.related_category_image img {width: 100%;}
+	.product_image img{width:100%;}
+	.remark_image_winner img{text-align:center;width: 100%!important;position: relative;top: 11px;left: -61px;}
+	.remarkwinner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
+	.remarkwinner-content{}
+	.remarkwinner-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkwinner-footer{}
+	.remarkwinner-footer p{margin: 0px;background: #f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;}
+
+	.remark_image_first img{}
+	.remarkfirst{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
+	.remarkfirst-content{}
+	.remarkfirst-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkfirst-footer{}
+	.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+	.remark_image_second img{}
+	.remarksecond{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
+	.remarksecond-content{}
+	.remarksecond-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarksecond-footer{}
+	.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+		
+	
+}
+
+/* ipad pro css */
+@media screen and (min-width:1024px) and (max-width:1366px) and (orientation : landscape){}
+
+/* Large Desktops css */
+@media screen and (min-width:1025px) and (max-width:1281px){}
+
+/* specific smart phones genric Portrait css*/
+@media only screen and (min-width: 360px) and (max-height: 640px) and (orientation : portrait) {}
+
+/* specific smart phones genric landscape css*/
+@media screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) {
+	.navbar-header{margin-top:10px;}
+	.navbar-brand{height: 0px;padding: 0px!important;}
+	.inner-thumnbail{display:inline-block;padding:15px;}
+	.winner{width:100%;height:100%;}
+	.winner_image img{top: 20px;left: 30px;}
+	.winner-content p{padding-top: 30px;padding-bottom: 30px;}
+	.winner-footer p{font-size:16px;}
+	.small-slide img{width:20%;}
+	.slider-title{font-size: 25px;margin-top: 30px;}
+	.slider-right-section{font-size: 20px;}
+	.slider-title-2{font-size: 25px;}
+	.slider-right-section-2{font-size: 20px;}
+	.cost{font-size:25px;}
+	.related_post_title{font-size:25px;}
+	.related_post_link_title{font-size:18px;}
+	.positive-title{font-size:20px;}
+	.negative-title{font-size:20px;}
+	.big_thumbnail img{padding:10px 20px;}
+	
+	.product_score{margin:0px;}
+	.product_score p{padding:20px;}
+	.stay_block{margin-bottom:10px;}
+	.stay_block-new{margin-bottom:10px;}
+	.footer_link{margin:20px 0px;}
+	.footer_social_icon{margin-top:10px;}
+	.product_image{text-align:center;}
+	.product_image img{width:40%;}
+	.related_category_image{text-align:center;}
+	.related_category_image img{width:50%;}
+	.other_products_detail_title{font-size:16px;}
+	.remark_image_winner{margin-bottom:10px;}
+	.remark_image_winner img{text-align:center;width: 10%!important;position: relative;top: 9px;left: 241px;}
+	.remarkwinner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left:auto;margin-right:auto;text-align:center}
+	.remarkwinner-content{}
+	.remarkwinner-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkwinner-footer{}
+	.remarkwinner-footer p{margin: 0px;background: #f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;}
+
+	.remark_image_first{margin-bottom:10px;}
+	.remark_image_first img{}
+	.remarkfirst{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left:auto;margin-right:auto;text-align:center}
+	.remarkfirst-content{}
+	.remarkfirst-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarkfirst-footer{}
+	.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+	.remark_image_second{margin-bottom:10px;}
+	.remark_image_second img{}
+	.remarksecond{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left:auto;margin-right:auto;text-align:center}
+	.remarksecond-content{}
+	.remarksecond-content p{font-family: RubikRegular;
+	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+	.remarksecond-footer{}
+	.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+
+
+}
+
+	/*.inner-thumnbail{padding:0px;}
+	.winner_image img{width: 70%;position: relative;top: 8px;
+    left: 26px;}
+	.winner{margin-left:25px;}
+	.winner_image img{top:9px;}
+	.winner-content p{padding-top:0px;font-size:29px;}
+	.winner-footer p{font-size: 13px;}
+	.small-slide img{padding-top:16px;width:100%;padding-right: 0px;}
+	.slider-title{font-size:20px;padding-top:20px;}
+	.slider-title-2{font-size:16px;padding-top:0px;}
+	.remark p{font-size:12px;}
+	.related_post_link_title{font-size:13px;}
+	.navbar-brand img{padding:0px;}*/
+	

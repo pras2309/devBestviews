@@ -1,0 +1,11 @@
+/*
+Theme Name: Best Views Reviews
+Theme URI: https://www.bestviewsreviews.com
+Author: Shorthills Technologies
+Author URI: https://www.shorthillstech.com/
+Description: BestViewsReviews (BVR) analyzes and summarizes millions of user views and reviews on products and simplifies the purchase decision for you. BVR accounts for all user reviews/ ratings, filters out the fake content, and summarizes this information.
+Version: 1.9
+ */
+@import url("main.css");
+@import url("responsive.css");
+@import url("style.css");

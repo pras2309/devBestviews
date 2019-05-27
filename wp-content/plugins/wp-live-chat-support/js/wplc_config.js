@@ -1,0 +1,1 @@
+var wplc_api_server = 'https://update.wp-livechat.com';
