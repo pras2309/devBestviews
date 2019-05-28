@@ -6,7 +6,7 @@ global $wpdb;
 $get_product = $wpdb->get_results("SELECT * FROM bestviews.products 
 WHERE  wp_post_id = 0 AND subcategory_processed = 1 
 AND (s3_output_url IS NOT NULL AND s3_output_url !='') 
-AND s3_input_url IS NOT NULL AND s3_input_url!='' AND id= 3508 ");
+AND s3_input_url IS NOT NULL AND s3_input_url!='' LIMIT 5");
 
 
 //read product information::::
@@ -204,72 +204,100 @@ if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=
     $reviewTrend = @file_get_contents($decode_json->charts->reviewtrend);
 }
 
-$content =<<<CONTENT
-            <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-9">
-            <div class="left-section">
-            <div class="row first-row">
-                <div class="col-md-8">
-                    <div class="row">
-                     <img title="$product_title" src="$product_image_url" alt="$product_title" width="602px" height="604px">
-                    </div>
-                </div> <!-- end of col-md-8 -->
-
-            <div class="col-md-4">
-            <div class="row">
-            <div class="col-md-12">
-            <h5 class="slider-title">Review Trend</h5>
-CONTENT;
-            if($reviewTrend){  
-                $content .=<<<CONTENT
-                        $reviewTrend
-CONTENT;
-             }
-        $content .=<<<CONTENT
-            <div class="col-md-12"></div>
-            </div> <!-- end of first row in col-4 -->
-            <div class="row">
-            <div class="col-md-12">
-                <h5 class="slider-title-2">Sentiment Analysis</h5>
-                <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
-            </div> <!-- end of col-4 -->
-                <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
-                    <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"></div>
-                    <div class="count">
-                    $reviews_positive_sentiment_last_6_months
-                    </div>
-                    <div class="remark"><p>Positive</p></div>
-                </div> <!-- end of col-4 -->
-                <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
-                        <div class="up" style="padding-bottom: 7px;"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"></div>
-                        <div class="count">
-                        $percent_neutral_sentiment_reviews_last6_months
-                        </div>
-                    <div class="remark"><p>Neutral</p></div>
-                </div> <!-- end of col-4 -->
-                <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
-                    <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"></div>
-                    <div class="count">$reviews_negative_sentiment_last_6_months</div>
-                    <div class="remark">
-                    <p>Negative</p>
-                    </div>
-                </div> <!-- end of col-4 -->
-            </div> <!-- end of col-12 -->
-            </div> <!-- end of row  --> <!-- end of second row in col-4 -->
-            </div> <!-- end of first row -->
-                <div class="row second-row">
-                    <div class="col-md-5" style="text-align: center;"><img style="width: 40%;" src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png"></div>
-                    <div class="col-md-3" style="text-align: center;">
-                    <p class="cost">$ $product_msrp</p>
-                    </div>
-                    <div class="col-md-4" style="text-align: center;"><a class="btn partner_button" href="$buy_link">Shop now</a></div>
-                </div> <!-- end of second row -->
-            <!-- third row has been removed -->
-            <div class="row fourth-row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-            <h3>BVR Product Analysis:</h3>
-            <table class="table table-striped">
-            <tbody>
+    $content .=<<<CONTENT
+    <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-9">
+       <div class="left-section">
+          <div class="row first-row">
+             <div class="col-md-7">
+                <div class="row">
+                   <div class="col-md-3 small-slide">
+                      <!-- <img src="images/slider-image-2.png"/>
+                      <img src="images/slider-image-1.png"/>
+                      <img src="images/slider-image-2.png"/>
+                      <img src="images/slider-image-2.png"/> -->
+                      <img src="$product_image_url"/>
+                   </div>
+                   <div class="col-md-9 big_thumbnail">
+                      $image_content
+                   </div>
+                </div>
+             </div>
+             <div class="col-md-5">
+                <div class="row">
+                   <div class="col-md-12">
+                      <h5 class="slider-title">Review Trend</h5>
+                      $reviewTrend
+                   </div>
+                   <div class="col-md-12"></div>
+                </div>
+                <div class="row">
+                   <div class="col-md-12">
+                      <h5 class="slider-title-2">Sentiment Analysis</h5>
+                      <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
+                   </div>
+                   <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                      <div class="up">
+                         <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"/>
+                      </div>
+                      <div class="count">
+                         <p>$reviews_positive_sentiment_last_6_months</p>
+                      </div>
+                      <div class="remark">
+                         <p>Positive</p>
+                      </div>
+                   </div>
+                   <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
+                      <div class="up" style="padding-bottom:7px;">
+                         <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"/>
+                      </div>
+                      <div class="count">
+                         <p>$percent_neutral_sentiment_reviews_last6_months</p>
+                      </div>
+                      <div class="remark">
+                         <p>Neutral</p>
+                      </div>
+                   </div>
+                   <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                      <div class="up">
+                         <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"/>
+                      </div>
+                      <div class="count">
+                         <p>$reviews_negative_sentiment_last_6_months</p>
+                      </div>
+                      <div class="remark">
+                         <p>Negative</p>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <div class="row second-row">
+             <div class="col-md-5" style="text-align:center;">
+                <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
+             </div>
+             <div class="col-md-3" style="text-align:center;">
+                <p class="cost">$ $product_msrp</p>
+             </div>
+             <div class="col-md-4" style="text-align:center;">
+                <a href="$buy_link" target="_blank" class="btn partner_button">Shop now</a>
+             </div>
+          </div>
+          <div class="row third-row" style="display:none;">
+             <div class="col-md-5" style="text-align:center;">
+                <img src="images/walmart.png" style="width:40%;">
+             </div>
+             <div class="col-md-3" style="text-align:center;">
+                <p class="cost">$349.99</p>
+             </div>
+             <div class="col-md-4" style="text-align:center;">
+                <button type="button" class="btn partner_button">Shop now</button>
+             </div>
+          </div>
+          <div class="row fourth-row" style="display:none;">
+             <div class="col-md-6">
+                <table class="table table-responsive table-striped">
+                    <tbody>
                     <tr>
                         <th>Rank (out of $no_of_products)</th>
                         <td>$product_rank</td>
@@ -298,14 +326,14 @@ CONTENT;
                     <tr>
                         <th>Recent Reviews with Negative Sentiment</th>
                         <td>$reviews_negative_sentiment_last_6_months</td>
-                   </tr>
+                </tr>
 
-                   <tr>
+                <tr>
                         <th>Positive Sentiment</th>
                         <td>$percent_reviews_positive_sentiment_last_6_months</td>
-                   </tr>
+                </tr>
 
-                   <tr>
+                <tr>
                         <th>Negative Sentiment</th>
                         <td>$percent_reviews_negative_sentiment_last_6_months</td>
                     </tr>
@@ -315,31 +343,17 @@ CONTENT;
                         <td>$percent_neutral_sentiment_reviews_last6_months</td>
                     </tr>
                 </tbody>
-            </table>
-            </div>
-            </div> <!-- end of first fourth row -->
-CONTENT;
-    if($youtube_url){
-        $content .=<<<CONTENT
-            <!-- start of youtube resectionviews -->
-            <div class="row fourth-row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-                    <div class="wp-block-embed__wrapper">
-                    $youtube_url
-                    </div>
-                </figure>
-                <span class="text-center">Video Source: YouTube</span>
+                </table>
+             </div>
+          </div>
+          <div class="row fourth-row">
+             <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="detail-text">
+                   <p>$summary_text</p>
                 </div>
-            </div> <!-- end of second fourth row -->
-            <!-- ends  of youtube section -->
-CONTENT;
-}
-    $content .=<<<CONTENT
-            <!-- start of positive reviews -->
-            <div class="row fourth-row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="detail-text-title">
+             </div>
+             <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="detail-text">
 CONTENT;
     if($decode_json->top_positive_reviews){
             foreach($decode_json->top_positive_reviews as $positive_review){
@@ -351,27 +365,16 @@ CONTENT;
                 if($positive_review->review_date != NULL && $positive_review->review_date != ''){
                     $pr_date = $positive_review->review_date;
                     $positive_review_date = $pr_date;
-                }
-                        $min++;
-                        if($min == 6) break;
-                $content .=<<<CONTENT
-                        <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/left-quotes.jpg">
-                        <p>$review_text</p>
-                        <p>$positive_review_date<br>
-                        <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/right-quotes.jpg"></p>
+                } 
+            $min++;
+            if($min == 6) break;
+            $content .=<<<CONTENT
+               <blockquote>  
+                <p>$review_text</p>
+                </blockquote>
 CONTENT;
-            }
         }
-        $content .=<<<CONTENT
-                    </div>
-                </div>                
-            </div> <!-- end of second fourth row -->
-            <!-- ends  of positive reviews -->
-            <!-- start of negative reviews -->
-            <div class="row fourth-row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="detail-text-title">
-CONTENT;
+    }
     if($decode_json->top_negative_reviews){
         $min1=0;
         foreach($decode_json->top_negative_reviews as $bottom_review){
@@ -384,26 +387,26 @@ CONTENT;
                 $nr_date = $bottom_review->review_date;
                 $negative_review_date = $nr_date;
             }
-        $min1++;
-        if ($min1 == 6) break;
-            $content .=<<<CONTENT
-                    <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/left-quotes.jpg">
-                    <p>$n_review_text</p>
-                    <p>$negative_review_date<br>
-                    <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/right-quotes.jpg"></p>
+            $min1++;
+            if ($min1 == 6) break;
+        $content .=<<<CONTENT
+            <blockquote>  
+                <p>$n_review_text</p>
+            </blockquote>
 CONTENT;
         }
     }
         $content .=<<<CONTENT
-                <img class="img img-responsive" title="$product_title" src="$wordCloudImage" alt="$product_title">
                 </div>
-            </div>
-            <!-- ends of negative reviews --> <!-- end of third fourth row -->
-            <!--  end of fourth fourth row -->
-            </div>
+             </div>
+             <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="detail-text">
+                   <img src="$wordCloudImage" alt="$product_title" title="$product_title"/>
+                </div>
+             </div>
+          </div>
 CONTENT;
 
-// echo $content; exit;
 //get the randomly user list 
 $get_user_list = $wpdb->get_results("SELECT ID from $wpdb->users ORDER BY RAND() LIMIT 1");
 $author_id =  $get_user_list[0]->ID;
