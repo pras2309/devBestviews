@@ -10,9 +10,9 @@ AND s3_input_url IS NOT NULL AND s3_input_url!='' AND id= 3508 ");
 
 
 //read product information::::
+$content = '';
   foreach($get_product  as $product){
 	  //   echo $product->model;
-      $content = '';
     if($product->category != '' && $product->category != NULL){
         $product_category = str_replace('&amp;','&',$product->category);
         $product_category = str_replace("s'","'s",$product->category);
@@ -233,7 +233,6 @@ CONTENT;
                 <h5 class="slider-title-2">Sentiment Analysis</h5>
                 <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
             </div> <!-- end of col-4 -->
-
                 <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
                     <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"></div>
                     <div class="count">
@@ -241,7 +240,6 @@ CONTENT;
                     </div>
                     <div class="remark"><p>Positive</p></div>
                 </div> <!-- end of col-4 -->
-
                 <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
                         <div class="up" style="padding-bottom: 7px;"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"></div>
                         <div class="count">
@@ -249,7 +247,6 @@ CONTENT;
                         </div>
                     <div class="remark"><p>Neutral</p></div>
                 </div> <!-- end of col-4 -->
-
                 <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
                     <div class="up"><img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"></div>
                     <div class="count">$reviews_negative_sentiment_last_6_months</div>
@@ -258,10 +255,8 @@ CONTENT;
                     </div>
                 </div> <!-- end of col-4 -->
             </div> <!-- end of col-12 -->
-
             </div> <!-- end of row  --> <!-- end of second row in col-4 -->
             </div> <!-- end of first row -->
-
                 <div class="row second-row">
                     <div class="col-md-5" style="text-align: center;"><img style="width: 40%;" src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png"></div>
                     <div class="col-md-3" style="text-align: center;">
@@ -269,7 +264,6 @@ CONTENT;
                     </div>
                     <div class="col-md-4" style="text-align: center;"><a class="btn partner_button" href="$buy_link">Shop now</a></div>
                 </div> <!-- end of second row -->
-
             <!-- third row has been removed -->
             <div class="row fourth-row">
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -406,9 +400,6 @@ CONTENT;
             </div>
             <!-- ends of negative reviews --> <!-- end of third fourth row -->
             <!--  end of fourth fourth row -->
-            </div>
-            </div>
-            </div>
             </div>
 CONTENT;
 
