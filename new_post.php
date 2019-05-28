@@ -291,8 +291,18 @@ CONTENT;
                 <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
              </div>
              <div class="col-md-3" style="text-align:center;">
+CONTENT;
+        if($product_msrp){
+            $content .=<<<CONTENT
                 <p class="cost">$ $product_msrp</p>
-             </div>
+CONTENT;
+          } else {
+          $content .=<<<CONTENT
+              <p class="cost">Buy Here</p>
+CONTENT;
+          }
+          $content .=<<<CONTENT
+          </div>
              <div class="col-md-4" style="text-align:center;">
                 <a href="$buy_link" target="_blank" class="btn partner_button">Shop now</a>
              </div>
@@ -482,4 +492,3 @@ else:
 endif;
 } //end of looop
 $wpdb->close();
-
