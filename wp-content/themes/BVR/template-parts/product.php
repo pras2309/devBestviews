@@ -22,7 +22,7 @@
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
 	
 	?>

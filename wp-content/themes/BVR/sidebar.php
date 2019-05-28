@@ -23,12 +23,10 @@
 			<?php
         while ($my_query->have_posts()) : $my_query->the_post(); 
         //get post images from product table
-        $getImageDetails = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post->ID");
+        $getImageDetails = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
         $getImageDetails = $getImageDetails[0];
         $post_image_url = $getImageDetails->s3_image_url;
         $product_title = $getImageDetails->product_title;
-
-        
         ?>
 			<li>
 				<div class="row">

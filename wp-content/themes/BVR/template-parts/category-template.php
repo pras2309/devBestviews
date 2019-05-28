@@ -17,7 +17,7 @@ $category_name = $category_details->name;
 //$product_category = str_replace('&amp;','&',$category_name);
 //$product_category = str_replace("s'","'s",  $category_name);
 $product_category = trim($category_name);
-$get_product_items  = $wpdb->get_results("SELECT * FROM bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
+$get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of the first product in the list.
 if(isset($get_product_items[0])){
@@ -26,7 +26,7 @@ if(isset($get_product_items[0])){
 //get total no_of reviews 
 
 //get total no_of reviews  from new table product_category
-$category_details_info =  $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name= '".esc_sql($product_category)."'");
+$category_details_info =  $wpdb->get_results("SELECT * FROM dev_bestviews.product_category WHERE subcategory_name= '".esc_sql($product_category)."'");
 if(isset($category_details_info[0])){
 $category_details_info = $category_details_info[0];
 }
@@ -226,7 +226,7 @@ $category_details_info = $category_details_info[0];
 							<div class="row">
 								<div class="col-xs-4 col-sm-4 col-md-4 other_products_image">
 								<?php
-	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url FROM bestviews.products WHERE wp_post_id=$post->ID");
+	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url FROM dev_bestviews.products WHERE wp_post_id=$post->ID");
 								$get_image = $get_image[0];
 								if($get_image){ ?>
 								<img src="<?php echo $get_image->s3_image_url;?>" alt="<?php echo $get_image->product_title; ?>" title="<?php echo $get_image->product_title; ?>"/>

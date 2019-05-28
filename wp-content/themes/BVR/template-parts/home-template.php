@@ -46,7 +46,7 @@ get_template_part('template-parts/bottom-header');
 			$child_id = $childCategory->cat_ID;
 			$count = $count + 1;
 			//get 3 product from this subcategory
-			$cate_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE subcategory='".esc_sql($childCategory->name)."' LIMIT 3");
+			$cate_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory='".esc_sql($childCategory->name)."' LIMIT 3");
 			//get image of first product 
 			$firstProdImage = $cate_products[0]->s3_image_url;
 			

@@ -3,7 +3,7 @@
 	<div class="container">
 	<div class="row">
 	<div class="col-md-6">
-	<?php $first_product = $wpdb->get_results("SELECT * FROM bestviews.products  where wp_post_id != 0 ORDER BY rand() limit 1 "); 
+	<?php $first_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 ORDER BY rand() limit 1 "); 
 			$first_product = $first_product[0];
 			$first_product_post_id = $first_product->wp_post_id;
 			//$first_product_post_id =  273;
@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<div class="col-md-6">
-	<?php $second_product = $wpdb->get_results("SELECT * FROM bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id ORDER BY rand() limit 1 "); 
+	<?php $second_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id ORDER BY rand() limit 1 "); 
 			$second_product = $second_product[0];
 			$second_product_post_id = $second_product->wp_post_id;
 		//	$second_product_post_id =  264;
@@ -78,7 +78,7 @@
 	</div>
 	</div>
 	<div class="col-md-12">
-	<?php $third_product = $wpdb->get_results("SELECT * FROM bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id and wp_post_id != $second_product_post_id ORDER BY rand() limit 1 "); 
+	<?php $third_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id and wp_post_id != $second_product_post_id ORDER BY rand() limit 1 "); 
 			$third_product = $third_product[0];
 			$third_product_post_id = $third_product->wp_post_id;
 		//	$third_product_post_id =  131;
