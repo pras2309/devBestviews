@@ -223,7 +223,11 @@ CONTENT;
                 $content .=<<<CONTENT
                       <img src="$product_image_url"/>
 CONTENT;
-            }
+            }else {
+               $content .=<<<CONTENT
+                    $image_content
+CONTENT;
+                }
             $content .=<<<CONTENT
                    </div>
                    <div class="col-md-9 big_thumbnail">
@@ -232,7 +236,11 @@ CONTENT;
                 $content .=<<<CONTENT
                     $image_content
 CONTENT;
-            }
+            }else{
+              $content .=<<<CONTENT
+                <img src="$product_image_url"/>
+CONTENT;
+           }
             $content .=<<<CONTENT
                    </div>
                 </div>
