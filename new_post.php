@@ -10,8 +10,8 @@ AND s3_input_url IS NOT NULL AND s3_input_url!='' LIMIT 5");
 
 
 //read product information::::
-$content = '';
   foreach($get_product  as $product){
+    $content = '';
 	  //   echo $product->model;
     if($product->category != '' && $product->category != NULL){
         $product_category = str_replace('&amp;','&',$product->category);
@@ -49,6 +49,15 @@ $content = '';
         if($product->image_snippet != '' && $product->image_snippet != NULL){
             $image_content =  $product->image_snippet;
         }
+
+        //get product price
+        $product_msrp = '';
+        if($product->msrp != ''
+            && $product->msrp != NULL){
+            $product_msrp = $product->msrp;
+        }
+
+
 
         $buy_link = '';
         if($product->buy_url != '' && $product->buy_url != NULL){
@@ -97,13 +106,6 @@ if($decode_json->bestviewsreviews_product_analysis->rank != ''
     $product_rank = $decode_json->bestviewsreviews_product_analysis->rank;
 }
 
-//get product rank
-$product_msrp = '';
-if($decode_json->introduction->msrp != ''
-    && $decode_json->introduction->msrp != NULL
-    && $decode_json->introduction->msrp != 'NaN'){
-    $product_msrp = $decode_json->introduction->msrp;
-}
 
 
 //get score of the product
@@ -204,7 +206,7 @@ if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=
     $reviewTrend = @file_get_contents($decode_json->charts->reviewtrend);
 }
 
-    $content .=<<<CONTENT
+    $content =<<<CONTENT
     <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-9">
        <div class="left-section">
@@ -216,10 +218,22 @@ if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=
                       <img src="images/slider-image-1.png"/>
                       <img src="images/slider-image-2.png"/>
                       <img src="images/slider-image-2.png"/> -->
+CONTENT;
+            if($product_image_url){                
+                $content .=<<<CONTENT
                       <img src="$product_image_url"/>
+CONTENT;
+            }
+            $content .=<<<CONTENT
                    </div>
                    <div class="col-md-9 big_thumbnail">
-                      $image_content
+CONTENT;
+            if($image_content){
+                $content .=<<<CONTENT
+                    $image_content
+CONTENT;
+            }
+            $content .=<<<CONTENT
                    </div>
                 </div>
              </div>
@@ -294,8 +308,8 @@ if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=
                 <button type="button" class="btn partner_button">Shop now</button>
              </div>
           </div>
-          <div class="row fourth-row" style="display:none;">
-             <div class="col-md-6">
+          <div class="row fourth-row">
+             <div class="col-md-12">
                 <table class="table table-responsive table-striped">
                     <tbody>
                     <tr>
@@ -322,22 +336,18 @@ if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=
                         <th>Recent Reviews with Positive Sentiment</th>
                         <td>$reviews_positive_sentiment_last_6_months</td>
                     </tr>
-
                     <tr>
                         <th>Recent Reviews with Negative Sentiment</th>
                         <td>$reviews_negative_sentiment_last_6_months</td>
-                </tr>
-
-                <tr>
+                     </tr>
+                     <tr>
                         <th>Positive Sentiment</th>
                         <td>$percent_reviews_positive_sentiment_last_6_months</td>
-                </tr>
-
-                <tr>
+                     </tr>
+                     <tr>
                         <th>Negative Sentiment</th>
                         <td>$percent_reviews_negative_sentiment_last_6_months</td>
                     </tr>
-
                     <tr>
                         <th>Neutral Sentiment</th>
                         <td>$percent_neutral_sentiment_reviews_last6_months</td>
