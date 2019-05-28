@@ -27,8 +27,6 @@
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/jquery.desoslide.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/animate.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/magic.min.css" rel="stylesheet">
-								<script src="<?php bloginfo('template_url'); ?>/js/jquery.desoslide.min.js"></script>
-								<script src="<?php bloginfo('template_url'); ?>/js/demo.js"></script>
 								<?php wp_head(); ?>
 										</head>
 										<body 
