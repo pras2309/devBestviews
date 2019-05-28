@@ -368,7 +368,16 @@ CONTENT;
 CONTENT;
             }
         }
-
+        $content .=<<<CONTENT
+                    </div>
+                </div>                
+            </div> <!-- end of second fourth row -->
+            <!-- ends  of positive reviews -->
+            <!-- start of negative reviews -->
+            <div class="row fourth-row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="detail-text-title">
+CONTENT;
     if($decode_json->top_negative_reviews){
         $min1=0;
         foreach($decode_json->top_negative_reviews as $bottom_review){
@@ -390,12 +399,17 @@ CONTENT;
                     <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/right-quotes.jpg"></p>
 CONTENT;
         }
-    }          
-            $content .=<<<CONTENT
+    }
+        $content .=<<<CONTENT
                 <img class="img img-responsive" title="$product_title" src="$wordCloudImage" alt="$product_title">
                 </div>
-            </div>                
-        </div> <!-- end of second fourth row -->
+            </div>
+            <!-- ends of negative reviews --> <!-- end of third fourth row -->
+            <!--  end of fourth fourth row -->
+            </div>
+            </div>
+            </div>
+            </div>
 CONTENT;
 
 // echo $content; exit;
@@ -414,7 +428,7 @@ $data = array(  'title' => $product_title,
 $data_string = json_encode($data);
 // echo $data_string; exit;
 //the standard end point for posts in an initialised Curl
-$process = curl_init('http://bestviewsreviews.com/wp-json/wp/v2/posts');
+$process = curl_init('http://dev.bestviewsreviews.com/wp-json/wp/v2/posts');
 // create the options starting with basic authentication
 curl_setopt($process, CURLOPT_USERPWD, 'admin'.":".'Best@xy123');
 curl_setopt($process, CURLOPT_TIMEOUT, 30);
