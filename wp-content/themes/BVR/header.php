@@ -27,6 +27,21 @@
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/jquery.desoslide.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/animate.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/magic.min.css" rel="stylesheet">
+								<style type="text/css">
+								.wordcloud {
+								height: 4in;
+								margin: 0.5in auto;
+								padding: 0;
+								page-break-after: always;
+								page-break-inside: avoid;
+								width: 7in;
+								}
+								.detail-text-title > img {
+									display:none;
+								}
+								</style>
+
+								<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 								<?php wp_head(); ?>
 										</head>
 										<body 
