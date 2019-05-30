@@ -87,6 +87,32 @@
 				});
 				
 			});
+			$("#getModelBox").click(function(){
+				//get value of amazon URL
+				var a_url = $("#amazon_product_url").val();
+				//now set up this value to hidden field into model box
+				$("#a_product_url").val(a_url);
+			});
+			//submit the form of amazon product URL submission.
+
+			$("#amazonProductForm").on('submit', function(e){
+				var $form = $(this);
+				$.ajax({
+					url:$form.attr('action'),
+					type:'post',
+					data:$form.serialize(),
+					success:function(res){
+						$("$responseMsg").html(res);
+						$("$responseMsg").css("{display:block;color:green}");
+					},
+					error:function(res){
+						$("$responseMsg").html(res);
+						$("$responseMsg").css("{display:block;color:red;}");
+					},
+
+				});
+			});
+
 		</script> 
 <!--[if lt IE 7 ]>
 		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
