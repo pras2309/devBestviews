@@ -47,7 +47,7 @@
 						<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form id="amazonProductForm" action="<?php echo admin_url('admin-ajax.php'); ?>" method="post">
+					<form id="amazonProductForm" method="post">
 					<div class="modal-body">
 						<input type="hidden" name="a_product_url" id="a_product_url">
 						<input type="hidden" name="action" value="prod_submit_action">

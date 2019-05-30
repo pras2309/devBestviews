@@ -97,13 +97,15 @@
 
 			$("#amazonProductForm").on('submit', function(e){
 				var $form = $(this);
+				var ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
 				$.ajax({
-					url:$form.attr('action'),
+					url:ajaxurl,
 					type:'post',
 					data:$form.serialize(),
 					success:function(res){
-						$("$responseMsg").html(res);
-						$("$responseMsg").css("{display:block;color:green}");
+						alert("Your Request has been submitted sucessfully");
+						//$("$responseMsg").html(res);
+						//$("$responseMsg").css("{display:block;color:green}");
 					},
 					error:function(res){
 						$("$responseMsg").html(res);

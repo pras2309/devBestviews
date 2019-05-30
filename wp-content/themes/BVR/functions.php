@@ -131,13 +131,13 @@ function prod_submit_action(){
 	if(trim($_POST['user_email']) == ''){
 		$response['error'] = true;
 		$response['error_message'] = "Email is required";
-		exit(json_encode($response));
+		echo json_encode($response);
 
 	}	
 	//prevent XSS
 	if(!isset($_POST['amazon_product_submit'])
 	|| !wp_verify_nonce($_POST['amazon_product_submit'],'prod_submit_action_nonce')){
-		exit("This submission is not valid.");
+		echo "This submission is not valid.";
 	}
 
 	//now insert information into database.
@@ -159,9 +159,12 @@ function prod_submit_action(){
 					</p>
 CONTENT;
 		$res = wp_mail($to, $subject, $message_body);
+		$response['success']=true;
+		$response['success_message'] = "Your request have been submitted successfully";
 		}	
 				
-	exit(json_encode($response));
+	echo json_encode($response);
+	wp_die();
 
 }
 add_action('wp_ajax_prod_submit_action', 'prod_submit_action');
