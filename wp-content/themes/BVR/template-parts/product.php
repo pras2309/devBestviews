@@ -131,20 +131,9 @@
 			<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="review_block_new">
 					<h5>Would you like us to review a product?</h5>
-					<p>Submit the product’s URL on Amazon and we’ll tell you everything about the product</p>
-								<div class="form-group custome-form-group">
-										<div class="input-group">
-											<input type="email" class="form-control custome-input" placeholder="Product amazon url">
-											<span class="input-group-btn">
-											<button class="btn" type="submit" style="background-color: #63ccac;color:#fff;">Submit URL</button>
-											</span>
-										</div>
-								</div>
-					</div>
+					<?php get_template_part('template-parts/amazon-submit'); ?>
 			</div>
-		</div>
-	</div>
-</div>
+
 		<!-- sidebar would be here -->
 		<?php get_sidebar(); ?>
 	<!-- end of the sidebar -->
