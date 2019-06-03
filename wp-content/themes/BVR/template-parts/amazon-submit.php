@@ -1,10 +1,12 @@
 	<p>Submit the product’s URL on Amazon and we’ll tell you everything about the product</p>
-	<span style="display:none" id="responseMsg"></span>
+	<span id="responseMsg"></span>
+	<span id="errorMsg"></span>
 	<div class="form-group custome-form-group">
+	<form id="amazonProductForm" method="post">
      <div class="input-group">
-         <input type="text" class="form-control custome-input" id="amazon_product_url" placeholder="Product amazon url" required="required">
+         <input type="url" class="form-control custome-input" id="amazon_product_url" placeholder="Product amazon url">
          <span class="input-group-btn">
-         <button class="btn" type="button" id="getModelBox" style="background-color: #63ccac;color:#fff;" data-toggle="modal" data-target="#productModal">Submit URL</button>
+         <button class="btn" type="button" id="getModelBox" style="background-color: #63ccac;color:#fff;" data-toggle="modal" data-target="#productModal" disabled="disabled">Submit URL</button>
          </span>
 		  </div>
     </div>
@@ -26,7 +28,6 @@
 						<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<form id="amazonProductForm" method="post">
 					<div class="modal-body">
 						<input type="hidden" name="a_product_url" id="a_product_url">
 						<input type="hidden" name="action" value="prod_submit_action">

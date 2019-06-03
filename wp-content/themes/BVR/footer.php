@@ -87,15 +87,33 @@
 				});
 				
 			});
+
+
+				$("#amazon_product_url").keyup(function(){
+					if($(this).val().length>1){
+						$("#getModelBox").attr("disabled",false);
+						$("#getModelBox").css("opacity","1.0");
+					}else{
+						$("#getModelBox").attr("disabled",true);
+						$("#getModelBox").css("opacity","0.4");
+				}
+				});
+
+
 			$("#getModelBox").click(function(){
 				//get value of amazon URL
 				var a_url = $("#amazon_product_url").val();
-				//now set up this value to hidden field into model box
-				$("#a_product_url").val(a_url);
+					//now set up this value to hidden field into model box
+					$("#a_product_url").val(a_url);
+				
 			});
+
+
 			//submit the form of amazon product URL submission.
 
+
 			$("#amazonProductForm").on('submit', function(e){
+				e.preventDefault();
 				var $form = $(this);
 				var ajaxurl = "<?php echo admin_url( 'admin-ajax.php' ); ?>";
 				$.ajax({
@@ -103,16 +121,19 @@
 					type:'post',
 					data:$form.serialize(),
 					success:function(res){
-						alert("Your Request has been submitted sucessfully");
-						//$("$responseMsg").html(res);
-						//$("$responseMsg").css("{display:block;color:green}");
+						// alert("Your Request has been submitted sucessfully");
+						$("#responseMsg").html("Your Request has been submitted sucessfully");
+						$("#responseMsg").css({"color":"white","font-weight":"bold"});
+						$('#productModal').modal('toggle');
+						$("#amazonProductForm")[0].reset();
 					},
 					error:function(res){
-						$("$responseMsg").html(res);
-						$("$responseMsg").css("{display:block;color:red;}");
+						$("#responseMsg").html("Unable to submit Your Request now, please try later. ");
+						$("#responseMsg").css({"color":"red","font-weight":"bold"});
 					},
 
 				});
+				
 			});
 
 		</script> 
