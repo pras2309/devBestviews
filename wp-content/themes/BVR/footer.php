@@ -29,17 +29,17 @@
 						<div class="col-xs-12 col-sm-12 col-md-5 footer_social_icon">
 							<ul>
 								<li>
-									<a href="#">
+									<a href="https://www.facebook.com/BestViewsReviews/">
 										<i class="fa fa-facebook"></i>
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="https://twitter.com/BestViewsReview">
 										<i class="fa fa-twitter"></i>
 									</a>
 								</li>
 								<li>
-									<a href="#">
+									<a href="https://www.instagram.com/best_views_reviews/">
 										<i class="fa fa-instagram"></i>
 									</a>
 								</li>
