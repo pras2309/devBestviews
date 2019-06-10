@@ -12,28 +12,23 @@ global $wpdb;
 $category_details = get_queried_object();
 
 $category_name = $category_details->name;
+
 // echo "SELECT * FROM bestviews.products WHERE subcategory = '".$category_name."' AND rank <= 10 ORDER BY rank DESC LIMIT 10 ";
 // exit;
 //$product_category = str_replace('&amp;','&',$category_name);
 //$product_category = str_replace("s'","'s",  $category_name);
 $product_category = trim($category_name);
-$get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
+
+$get_product_items  = $wpdb->get_results("SELECT * FROM bestviews.products WHERE (subcategory = '".esc_sql($product_category)."' OR category = '".esc_sql($product_category)."') AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of the first product in the list.
 if(isset($get_product_items[0])){
 	$image_url  = $get_product_items[0]->s3_image_url;
 }
-//get total no_of reviews 
-
-//get total no_of reviews  from new table product_category
-$category_details_info =  $wpdb->get_results("SELECT * FROM dev_bestviews.product_category WHERE subcategory_name= '".esc_sql($product_category)."'");
-if(isset($category_details_info[0])){
-$category_details_info = $category_details_info[0];
-}
-
 ?>
 
-	<section class="header-new" style="background-image: url(<?php echo $image_url; ?>);background-position: center;background-size: cover;background-repeat: no-repeat;width: 100%;">
+	<section class="header-new">
+		<img src="<?php //echo $image_url; ?>"/>
     <div class="container">
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 breadcrumb">
@@ -60,22 +55,13 @@ $category_details_info = $category_details_info[0];
 	<div class="col-xs-12 col-sm-12 col-md-3">
 	<div class="review_scanned_div">
 	<p class="review_scanned_div_title">Reviews Scanned</p>
-	<p class="review_scanned_count"><?php 
-			if(isset($category_details_info->total_no_of_reviews)){
-				echo  $category_details_info->total_no_of_reviews;
-			}
-			?></p>
+	<p class="review_scanned_count"></p>
 	</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-3">
 	<div class="updated_div">
 	<p class="updated_div_title">Updated on</p>
-	<p class="updated_div_date"><?php 
-					if(isset($category_details_info->updated_on)){
-						echo date("F, Y", strtotime($category_details_info->updated_on));
-				}
-				?>
-			</p>
+	<p class="updated_div_date"></p>
 	</div>
 	</div>
 	</div>
@@ -112,10 +98,8 @@ $category_details_info = $category_details_info[0];
 	<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="product_score">
 				<!-- category description -->
-				<?php if ($category_details_info->category_description):  ?>
-					<p><?php echo $category_details_info->category_description;?></p>
-					<?php endif; ?>
-			
+					<p></p>
+
 			<div class="row" style="margin:0px;">
 				<!-- product list start -->
 			<?php foreach ($get_product_items as $product_item) {
@@ -164,14 +148,20 @@ $category_details_info = $category_details_info[0];
 									<?php } ?>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-2 product_image">
-								<img class="img-responsive" src="<?php echo $product_item->s3_image_url ?>" alt="<?php echo $product_item->product_title; ?>" title="<?php echo $product_item->product_title; ?>"/>
+								<?php echo $product_item->image_snippet; ?>
 								</div>
 								<div class="col-xs-10 col-sm-10 col-md-7 product_detail">
 												<h4><a href="<?php echo get_permalink($product_item->wp_post_id);?>" title = "<?php echo $product_item->product_title; ?>" ><?php echo $product_item->product_title; ?></a></h4>
 												<p><?php //echo substr($summary_text, 0, 300); ?></p>
 								</div>
 								<div class="col-xs-2 col-sm-2 col-md-2 product_detail_score">
-										<?php echo $product_item->score_out_of_10; ?>
+											<div class="GaugeMeter" 
+													data-percent="<?php echo ((round($product_item->score_out_of_10)) * 100) / 10; ?>" 
+													data-label="Popular"  data-style="Arch" data-width="20"
+													data-append="%" data-size="150"
+													>
+											</div>
+										
 								</div>
 				</div> <!-- end of product list -->
 				<hr/>
@@ -226,10 +216,11 @@ $category_details_info = $category_details_info[0];
 							<div class="row">
 								<div class="col-xs-4 col-sm-4 col-md-4 other_products_image">
 								<?php
-	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url FROM dev_bestviews.products WHERE wp_post_id=$post->ID");
+	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url, image_snippet FROM bestviews.products WHERE wp_post_id=$post->ID");
+					if(isset($get_image[0])){
 								$get_image = $get_image[0];
-								if($get_image){ ?>
-								<img src="<?php echo $get_image->s3_image_url;?>" alt="<?php echo $get_image->product_title; ?>" title="<?php echo $get_image->product_title; ?>"/>
+								 ?>
+								<?php echo $get_image->image_snippet; ?>
 									<?php } else{ ?>
 								<img src="<?php bloginfo('template_url'); ?>/images/no-image.jpg" alt="no-image"/>
 								<?php } ?>

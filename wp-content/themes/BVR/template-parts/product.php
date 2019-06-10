@@ -35,7 +35,7 @@
 	<div class="soundbars">
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-2">
-	<?php the_category( ', ' ); ?>
+		<p><?php echo get_the_category($post->ID)[0]->name; ?></p>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-10">
 	<span class="inner-thumnbail">
@@ -83,8 +83,13 @@
 				</div> <!-- end of winner_image div -->
 
 				<div class="col-xs-6 col-sm-6 col-md-6 score_image">
-						<strong>Score</strong>
-						<?php echo $prodResult->score_out_of_10; ?>
+						<div class="GaugeMeter" 
+													data-percent="<?php echo round($prodResult->score_out_of_10) * 10; ?>" 
+													data-label="Popular"  data-style="Arch" data-width="20"
+													data-append="%" data-size="150"
+													>
+						</div>
+
 				</div>
 	</div>
 	</div>
@@ -108,13 +113,12 @@
 			$feature_data = json_decode($feature_data, true);
 			if(isset($feature_data[0])):
 	?>
-			<h3 class="text-center">Tag Cloud</h3>
 		<div id="wordcloud1" class="wordcloud">
 		<?php			
 				$feature_data = $feature_data[0];
 				foreach($feature_data as $key => $value):
 		?>
-			<span data-weight="<?php echo $value ?>"><a href="/tag-template?product=<?php echo $product_id;?>&keyword=<?php echo $key; ?>&code=<?php echo $es_code;?>" target="_blank"><?php echo $key; ?></a></span>
+			<span data-weight="<?php echo $value ?>"><?php echo $key; ?></span>
 		<?php
 				endforeach;
 		?>

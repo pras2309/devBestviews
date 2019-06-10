@@ -69,8 +69,11 @@
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.desoslide.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/demo.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.awesomeCloud-0.2.js"></script>
+<script src="<?php bloginfo('template_url'); ?>/js/GaugeMeter.js"></script>
 <script>
 			$(document).ready(function(){
+				$(".GaugeMeter").gaugeMeter();
+				
 				$("#wordcloud1").awesomeCloud({
 					"size" : {
 						"grid" : 16,
@@ -142,5 +145,10 @@
 		<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 		<![endif]-->
 
-
-<?php wp_footer(); ?></body></html>
+<!-- livezilla.net PLACE SOMEWHERE IN BODY -->
+<script type="text/javascript" 
+	id="lzdefsc" src="//bestviewsreviews.com/livezilla/script.php?id=lzdefsc" defer>
+</script>
+<!-- livezilla.net PLACE SOMEWHERE IN BODY -->
+<?php wp_footer(); ?>
+</body></html>

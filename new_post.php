@@ -248,7 +248,7 @@ CONTENT;
              <div class="col-md-5">
                 <div class="row">
                    <div class="col-md-12">
-                      <h5 class="slider-title">Review Trend</h5>
+                      <h5 class="slider-title">Product Popularity Trend</h5>
                       $reviewTrend
                    </div>
                    <div class="col-md-12"></div>
@@ -299,18 +299,7 @@ CONTENT;
                 <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
              </div>
              <div class="col-md-3" style="text-align:center;">
-CONTENT;
-        if($product_msrp){
-            $content .=<<<CONTENT
-                <p class="cost">$ $product_msrp</p>
-CONTENT;
-          } else {
-          $content .=<<<CONTENT
-              <p class="cost">Buy Here</p>
-CONTENT;
-          }
-          $content .=<<<CONTENT
-          </div>
+             </div>
              <div class="col-md-4" style="text-align:center;">
                 <a href="$buy_link" target="_blank" class="btn partner_button">Shop now</a>
              </div>
@@ -380,7 +369,7 @@ CONTENT;
                    <p>$summary_text</p>
                 </div>
              </div>
-             <div class="col-xs-12 col-sm-12 col-md-12">
+             <div class="col-xs-12 col-sm-12 col-md-12" style="display:none;">
                 <div class="detail-text">
 CONTENT;
     if($decode_json->top_positive_reviews){
