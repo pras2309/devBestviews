@@ -6,14 +6,14 @@
                         $pre_post_id = $prevPost->ID;
                         $pre_post_title = $prevPost->post_title;
                         //now get the image from product table
-                        $pre_image_details = $wpdb->get_results("SELECT s3_image_url FROM dev_bestviews.products WHERE wp_post_id = $pre_post_id");
+                        $pre_image_details = $wpdb->get_results("SELECT image_snippet FROM dev_bestviews.products WHERE wp_post_id = $pre_post_id");
                         $pre_image_details = $pre_image_details[0];
-                        $pre_image_url = $pre_image_details->s3_image_url;
+                        $pre_image_url = $pre_image_details->image_snippet;
                         
                         ?>
 						<div class="row">
 									<div class="col-xs-5 col-sm-5 col-md-5 previous-section">
-												<img src="<?php  echo $pre_image_url;?>" class="img-responsive" title="<?php echo $pre_post_title; ?>">
+										<?php echo $pre_image_url; ?>
 									</div>
 								<div class="col-xs-7 col-sm-7 col-md-7 previous-section-content">
 										<a href="<?php echo get_permalink($pre_post_id); ?>" class="previous-link-1"><h5><?php echo $pre_post_title; ?></h5></a>
@@ -29,9 +29,9 @@
                 if($nextPost){
                 $next_post_id = $nextPost->ID;
                 $next_post_title = $nextPost->post_title;
-                $next_image_details = $wpdb->get_results("SELECT s3_image_url FROM dev_bestviews.products WHERE wp_post_id = $next_post_id");
+                $next_image_details = $wpdb->get_results("SELECT image_snippet FROM dev_bestviews.products WHERE wp_post_id = $next_post_id");
                 $next_image_details = $next_image_details[0];
-                $next_image_url = $next_image_details->s3_image_url;
+                $next_image_url = $next_image_details->image_snippet;
                 ?>
 					<div class="row">
 							<div class="col-xs-7 col-sm-7 col-md-7 next-section-content">
@@ -40,7 +40,7 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="col-xs-5 col-sm-5 col-md-5 next-section">
-									<img src="<?php echo $next_image_url; ?>" title="<?php echo $next_post_title; ?>" class="img-responsive">
+								<?php echo $next_image_url; ?>
 							</div>
                     </div>
                 <?php } ?>

@@ -46,8 +46,8 @@ get_header();
 		    foreach($result as $document){
 		  	 $dataSet  = $document["_source"];
 	    
-	    $getprodInfo = $wpdb->get_results("SELECT * FROM bestviews.products WHERE id = $product_id");
-	   // print_r($getprodInfo); exit;
+	    $getprodInfo = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE id = $product_id");
+	//   print_r($getprodInfo); exit;
 	    $wp_post_id = $getprodInfo[0]->wp_post_id;
 
             //display all the related review in a list here........
@@ -58,7 +58,7 @@ get_header();
 		<td><?php //echo $dataSet['category']; ?> >> <strong><a href="#"><?php //echo $dataSet['subcategory']; ?></a></td>
 		<td><?php //echo $dataSet['review']; ?></td>
 		</tr> -->
-
+		<tr>
 		<div class="card">
 		  <div class="card-body">
 		    <h4 class="card-title"><a href="<?php echo get_permalink($wp_post_id); ?>"><?php echo $dataSet['model']; ?></a></h4>
@@ -67,6 +67,7 @@ get_header();
 			    <a href="#" class="card-link"><?php echo $dataSet['subcategory']; ?></a>
 		  </div>
 		</div>
+		</tr>
             <?php } ?>
             </table>
         </div>

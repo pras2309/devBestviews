@@ -9,7 +9,7 @@
 require_once 'wp-config.php';
 global $wpdb;
 //get all subcategory
-$get_categories = $wpdb->get_results("SELECT subcategory FROM bestviews.products 
+$get_categories = $wpdb->get_results("SELECT subcategory FROM dev_bestviews.products 
 WHERE  wp_post_id = 0 AND subcategory_processed = 1 
 AND (s3_output_url IS NOT NULL AND s3_output_url !='') 
 AND s3_input_url IS NOT NULL GROUP BY subcategory");
@@ -29,7 +29,7 @@ AND s3_input_url IS NOT NULL GROUP BY subcategory");
             $category_slug = strtolower(preg_replace('/[_& ]/', '-', $subcategory->subcategory ));
             $category_slug = preg_replace('/--+/', '-', $subcategory->subcategory);
             // the standard end point for posts in an initialised Curl
-            $process = curl_init('http://bestviewsreviews.com/wp-json/wp/v2/categories');
+            $process = curl_init('http://dev.bestviewsreviews.com/wp-json/wp/v2/categories');
            
             // create an array of data to use, this is basic - see other examples for more complex inserts
             $data = array('description' => $subcategory->subcategory, 

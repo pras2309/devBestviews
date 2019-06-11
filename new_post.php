@@ -3,10 +3,10 @@ require_once 'wp-config.php';
 global $wpdb;
 //check wordpress category matched with the product table, and get the category ID from the wordpress table.
 
-$get_product = $wpdb->get_results("SELECT * FROM bestviews.products 
+$get_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products 
 WHERE  wp_post_id = 0 AND subcategory_processed = 1 
 AND (s3_output_url IS NOT NULL AND s3_output_url !='') 
-AND s3_input_url IS NOT NULL AND s3_input_url!='' LIMIT 5");
+AND s3_input_url IS NOT NULL AND s3_input_url!='' LIMIT 450");
 
 
 //read product information::::
@@ -464,7 +464,7 @@ $publish_post_metadata  =  json_decode($return, true);
 
 $post_id =  $publish_post_metadata['id'];
 if($post_id){
-$update_product_table = $wpdb->query($wpdb->prepare("UPDATE bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
+$update_product_table = $wpdb->query($wpdb->prepare("UPDATE dev_bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
 }else{
 	echo "No Product to publish";
 }

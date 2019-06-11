@@ -18,7 +18,7 @@ $category_name = $category_details->name;
 //$product_category = str_replace('&amp;','&',$category_name);
 //$product_category = str_replace("s'","'s",  $category_name);
 $product_category = trim($category_name);
-
+// echo "SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10"; exit;
 $get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of the first product in the list.
@@ -105,6 +105,7 @@ if(isset($get_product_items[0])){
 			<?php foreach ($get_product_items as $product_item) {
 				$prod_summary_url = $product_item->summary_url;
 				$summary_text = @file_get_contents($prod_summary_url);
+				//print_r($product_item); exit;
 				?>
 				<div class="product_list_row">
 								<div class="col-xs-12 col-sm-12 col-md-1 rank_score">
@@ -154,9 +155,8 @@ if(isset($get_product_items[0])){
 												<h4><a href="<?php echo get_permalink($product_item->wp_post_id);?>" title = "<?php echo $product_item->product_title; ?>" ><?php echo $product_item->product_title; ?></a></h4>
 												<p><?php //echo substr($summary_text, 0, 300); ?></p>
 								</div>
-								<div class="col-xs-2 col-sm-2 col-md-2 product_detail_score">
-											<div class="GaugeMeter" 
-													data-percent="<?php echo intdiv(($product_item->score_out_of_10  * 100), 10); ?>" 
+								<div class="col-xs-2 col-sm-2 col-md-2 gauge_score product_detail_score">
+											<div class="GaugeMeter"													data-percent="<?php echo intdiv(($product_item->score_out_of_10  * 100), 10); ?>"
 													data-label="Popular"  data-style="Arch" data-width="20"
 													data-append="%" data-size="150"
 													>
@@ -216,7 +216,7 @@ if(isset($get_product_items[0])){
 							<div class="row">
 								<div class="col-xs-4 col-sm-4 col-md-4 other_products_image">
 								<?php
-	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url, image_snippet FROM bestviews.products WHERE wp_post_id=$post->ID");
+	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url, image_snippet FROM dev_bestviews.products WHERE wp_post_id=$post->ID");
 					if(isset($get_image[0])){
 								$get_image = $get_image[0];
 								 ?>

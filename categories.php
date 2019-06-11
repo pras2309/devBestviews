@@ -8,12 +8,12 @@
 ///////////////////////////////////////////////////////////////////////////////////
 require_once 'wp-config.php';
 global $wpdb;
-$get_categories = $wpdb->get_results("SELECT distinct(category) as category FROM bestviews.products GROUP BY category");
+$get_categories = $wpdb->get_results("SELECT distinct(category) as category FROM dev_bestviews.products GROUP BY category");
     foreach($get_categories as $prod_category){
             $category_slug = strtolower(preg_replace('/[_& ]/', '-', $prod_category->category ));
             $category_slug = preg_replace('/--+/', '-', $prod_category->category);
             // the standard end point for posts in an initialised Curl
-            $process = curl_init('http://bestviewsreviews.com/wp-json/wp/v2/categories');
+            $process = curl_init('http://dev.bestviewsreviews.com/wp-json/wp/v2/categories');
 
             // create an array of data to use, this is basic - see other examples for more complex inserts
             $data = array('description' => $prod_category->category, 

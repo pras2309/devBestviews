@@ -21,7 +21,7 @@ get_template_part('template-parts/bottom-header');
 		'parent' => 0, //get the top level category,
 		'number' => 10
 	);
-	$all_categories = get_categories($get_parent_cat);
+$all_categories = get_categories($get_parent_cat);
 	$count = 0;
 	foreach($all_categories as $single_category):
 			//for each category their ID
@@ -31,8 +31,7 @@ get_template_part('template-parts/bottom-header');
 	<?php
 	//get the children category of this category
 	$get_child_cat = array(
-		"child_of" => $catID,
-		'number' => 4
+		"child_of" => $catID
 	);
 	$child_categories = get_categories($get_child_cat);
 	if ($count % 3 ==0 && $count==0){
@@ -68,7 +67,7 @@ get_template_part('template-parts/bottom-header');
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<ul class="main_item_panel_detail">
 					<?php
-					foreach($cate_products as $productInfo):	
+					foreach($cate_products as $productInfo):
 					?>
 					<li>
 						<div class="row">

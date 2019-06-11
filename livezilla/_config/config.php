@@ -9,16 +9,16 @@
 *
 ********************************************************************************/
 
-$_CONFIG['gl_pr_cr'] = '1559637536';
-$_CONFIG['gl_lzid'] = '3efaad48ce';
+$_CONFIG['gl_pr_cr'] = '1559725825';
+$_CONFIG['gl_lzid'] = '563b90958d';
 $_CONFIG['b64'] = false;
 
-$_CONFIG[0]['gl_db_host'] = 'localhost';
-$_CONFIG[0]['gl_db_user'] = 'localuser';
+$_CONFIG[0]['gl_db_host'] = 'bestviews.cspacyaan8uj.us-west-2.rds.amazonaws.com';
+$_CONFIG[0]['gl_db_user'] = 'bestviews';
 $_CONFIG[0]['gl_db_ext'] = 'mysqli';
 $_CONFIG[0]['gl_db_eng'] = 'InnoDB';
-$_CONFIG[0]['gl_db_pass'] = 'R@5gull@';
-$_CONFIG[0]['gl_db_name'] = 'wp_bestviews';
-$_CONFIG[0]['gl_db_prefix'] = 'lz_';
+$_CONFIG[0]['gl_db_pass'] = 'bestxy123';
+$_CONFIG[0]['gl_db_name'] = 'bestviews_chatbox';
+$_CONFIG[0]['gl_db_prefix'] = 'bvr_';
 
 ?>

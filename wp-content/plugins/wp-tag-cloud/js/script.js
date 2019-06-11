@@ -1,8 +1,8 @@
-jQuery(document).ready(function(){
+jQuery(function(){
 
-    jQuery(".cloud-tags").prettyTag();
+    //$(".cloud-tags").prettyTag();
     
-    jQuery(".tags").prettyTag({
+    jQuery(".cloud-tags").prettyTag({
       randomColor: true,
       tagicon: false,
     

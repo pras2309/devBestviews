@@ -114,8 +114,8 @@ body{background:#f8f8f8;font-family: 'Rubik'; font-weight: normal; font-style: n
 .subscription_div p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;padding:10px 0px;}
 
 .small-slide img{width:100%;padding-left:20px;padding-bottom:10px;}
-.previous-section img{padding: 20px;}
-.next-section img{padding: 20px;}
+.previous-section img{padding: 20px; width:153px;}
+.next-section img{padding: 20px; width:153px;}
 /*.winner{border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;}*/
 .winner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:40px;}
 /*.winner-content p{padding-top: 20px;padding-bottom: 15px;margin: 0px;margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2.2;letter-spacing: normal;font-family: RubikLight;}*/
@@ -297,13 +297,18 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 	.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
 
 	.remark_image_second img{}
-	.remarksecond{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin: 10px 84px;text-align:center}
+	.remarksecond{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin: 10px 106px;text-align:center}
 	.remarksecond-content{}
 	.remarksecond-content p{font-family: RubikRegular;
 	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
 	.remarksecond-footer{}
 	.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
+.GaugeMeter{
+	margin-left:-204px;
+	margin-top:86px;
+}
 
+.gauge_score {  margin-left:0px !important; } 
 
 }
 
@@ -563,8 +568,9 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 	color: #000;
 	font-weight: 200;
 	opacity: .8;
-  }
+ }
 .category-image{
 	width:122px;
 	padding:5px;
 }
+.gauge_score {  margin-left:582px; } 
