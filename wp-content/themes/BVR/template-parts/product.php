@@ -84,7 +84,7 @@
 
 				<div class="col-xs-6 col-sm-6 col-md-6 score_image">
 						<div class="GaugeMeter" 
-													data-percent="<?php echo round($prodResult->score_out_of_10) * 10; ?>" 
+													data-percent="<?php echo intdiv(($prodResult->score_out_of_10  * 100), 10); ?>" 
 													data-label="Popular"  data-style="Arch" data-width="20"
 													data-append="%" data-size="150"
 													>
@@ -113,7 +113,7 @@
 			$feature_data = json_decode($feature_data, true);
 			if(isset($feature_data[0])):
 	?>
-		<div id="wordcloud1" class="wordcloud">
+		<div id="wordcloud1" class="wordcloud" style="display:none;">
 		<?php			
 				$feature_data = $feature_data[0];
 				foreach($feature_data as $key => $value):

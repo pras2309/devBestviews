@@ -19,7 +19,7 @@ $category_name = $category_details->name;
 //$product_category = str_replace("s'","'s",  $category_name);
 $product_category = trim($category_name);
 
-$get_product_items  = $wpdb->get_results("SELECT * FROM bestviews.products WHERE (subcategory = '".esc_sql($product_category)."' OR category = '".esc_sql($product_category)."') AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
+$get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of the first product in the list.
 if(isset($get_product_items[0])){
@@ -28,7 +28,6 @@ if(isset($get_product_items[0])){
 ?>
 
 	<section class="header-new">
-		<img src="<?php //echo $image_url; ?>"/>
     <div class="container">
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 breadcrumb">
@@ -50,7 +49,7 @@ if(isset($get_product_items[0])){
 	<div class="title">
 	<h1>Top 10 <?php echo $product_category; ?></h1>
 	</div>
-	<div class="review_div_section">
+	<div class="review_div_section" style="display:none;">
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-3">
 	<div class="review_scanned_div">
@@ -67,24 +66,25 @@ if(isset($get_product_items[0])){
 	</div>
 	</div>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-md-3" style="display:none;">
-	<div class="row">
-	<div class="col-xs-6 col-sm-6 col-md-6 winner_image">
-	<img src="<?php bloginfo('template_url'); ?>/images/winner-new.png"/>
-	<div class="winner">
-	<div class="winner-content">
-	<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;">1</span></p>
-	</div>
-	<div class="winner-footer">
-	<p>Winner</p>
-	</div>
-	
-	</div>
-	</div>
-	<div class="col-xs-6 col-sm-6 col-md-6 score_image">
-	<img src="<?php bloginfo('template_url'); ?>/images/score.png"/>
-	</div>
-	</div>
+	<div class="col-xs-12 col-sm-12 col-md-3" >
+			<div class="row">
+							<img src="<?php echo $image_url; ?>" class="img img-responsive category-image" />
+					<!-- <div class="col-xs-6 col-sm-6 col-md-6 winner_image">
+							<img src="<?php //bloginfo('template_url'); ?>/images/winner-new.png"/>
+							<div class="winner">
+								<div class="winner-content">
+								<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;">1</span></p>
+								</div>
+								<div class="winner-footer">
+								<p>Winner</p>
+								</div>
+							
+							</div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 score_image">
+							<img src="<?php //bloginfo('template_url'); ?>/images/score.png"/>
+					</div> -->
+			</div>
 	</div>
 	</div>
 	</div>
@@ -107,7 +107,7 @@ if(isset($get_product_items[0])){
 				$summary_text = @file_get_contents($prod_summary_url);
 				?>
 				<div class="product_list_row">
-								<div class="col-xs-12 col-sm-12 col-md-1">
+								<div class="col-xs-12 col-sm-12 col-md-1 rank_score">
 									<?php if($i == 1) { ?>
 													<div class="remark_image_winner">
 																<img src="<?php bloginfo('template_url');?>/images/winner-new.png">
@@ -156,7 +156,7 @@ if(isset($get_product_items[0])){
 								</div>
 								<div class="col-xs-2 col-sm-2 col-md-2 product_detail_score">
 											<div class="GaugeMeter" 
-													data-percent="<?php echo ((round($product_item->score_out_of_10)) * 100) / 10; ?>" 
+													data-percent="<?php echo intdiv(($product_item->score_out_of_10  * 100), 10); ?>" 
 													data-label="Popular"  data-style="Arch" data-width="20"
 													data-append="%" data-size="150"
 													>
@@ -246,7 +246,7 @@ if(isset($get_product_items[0])){
 		?>
 		<div class="pagination">
 			<?php wp_pagenavi( array( 'query' => $arr_posts) ); ?>
-		</div>
+		</div>`
 		<!-- </div> -->
 	</div>
 	

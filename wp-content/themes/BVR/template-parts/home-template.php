@@ -11,7 +11,7 @@ get_template_part('template-parts/bottom-header');
 			<div class="row">
 					<div class="col-md-12">
 						<div class="category_title">
-							<h4>All Categories</h4>
+							<h4>Popular Categories</h4>
 						</div>
 					</div>
 			</div>
@@ -46,11 +46,9 @@ get_template_part('template-parts/bottom-header');
 			$child_id = $childCategory->cat_ID;
 			$count = $count + 1;
 			//get 3 product from this subcategory
-			$cate_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory='".esc_sql($childCategory->name)."' LIMIT 3");
+			$cate_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE subcategory='".esc_sql($childCategory->name)."' LIMIT 3");
 			//get image of first product 
 			$firstProdImage = $cate_products[0]->s3_image_url;
-			
-			
 		?>
 	
 	<div class="col-xs-12 col-sm-12 col-md-4">
@@ -58,34 +56,33 @@ get_template_part('template-parts/bottom-header');
 		<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail">
 						<?php if($firstProdImage) : ?>
-							<img src="<?php echo $firstProdImage; ?>"/>
+							<img src="<?php echo $firstProdImage ?>" class="img img-responsive" />
 						<?php else:  ?>
 						<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" width="360px" height="167px"/>	
 						<?php endif; ?>
 					
 						<div class="item_panel_thumbnail_caption"> 
-							<a href="<?php echo get_category_link($childCategory->term_id); ?>"><?php echo $childCategory->name; ?></a>
+							<a class="post_title_heading" href="<?php echo get_category_link($childCategory->term_id); ?>"><?php echo $childCategory->name; ?></a>
 						</div>
 				</div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<ul class="main_item_panel_detail">
 					<?php
-					foreach($cate_products as $productInfo):
-						
+					foreach($cate_products as $productInfo):	
 					?>
 					<li>
-					<div class="row">
-							<div class="col-xs-3 col-sm-3 col-md-3">
-								<?php if ($productInfo->s3_image_url) :  ?>
-									<img src="<?php echo $productInfo->s3_image_url; ?>" class="img-responsive mobile-view-image" title="<?php //echo $productInfo->product_title; ?>">
-								<?php else : ?>
-								<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" class="img img-resposinve mobile-view-image"/>	
-								<?php endif; ?>
-							</div>
-							<div class="col-xs-9 col-sm-9 col-md-9">
-							<a href="<?php echo get_permalink($productInfo->wp_post_id); ?>" class="main_item_link"><?php echo ucfirst($productInfo->product_title); ?></a>
-							</div>
-					</div>
+						<div class="row">
+								<div class="col-xs-3 col-sm-3 col-md-3">
+									<?php if ($productInfo->s3_image_url) :  ?>
+										<img src="<?php echo $productInfo->s3_image_url; ?>" class="img-responsive mobile-view-image" title="<?php //echo $productInfo->product_title; ?>">
+									<?php else : ?>
+									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" class="img img-resposinve mobile-view-image"/>	
+									<?php endif; ?>
+								</div>
+								<div class="col-xs-9 col-sm-9 col-md-9">
+								<a href="<?php echo get_permalink($productInfo->wp_post_id); ?>" class="main_item_link"><?php echo ucfirst($productInfo->product_title); ?></a>
+								</div>
+						</div>
 					</li>
 					<?php endforeach; ?>
 				</ul>
@@ -96,7 +93,6 @@ get_template_part('template-parts/bottom-header');
 					</div>
 					</div>
 				</div>
-			
 			</div>
 		</div>
 		</div>
