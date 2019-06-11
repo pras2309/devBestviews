@@ -13,7 +13,7 @@
                         ?>
 						<div class="row">
 									<div class="col-xs-5 col-sm-5 col-md-5 previous-section">
-										<?php echo $pre_image_url; ?>
+												<?php  echo $pre_image_url;?>
 									</div>
 								<div class="col-xs-7 col-sm-7 col-md-7 previous-section-content">
 										<a href="<?php echo get_permalink($pre_post_id); ?>" class="previous-link-1"><h5><?php echo $pre_post_title; ?></h5></a>
@@ -40,7 +40,7 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="col-xs-5 col-sm-5 col-md-5 next-section">
-								<?php echo $next_image_url; ?>
+									<?php echo $next_image_url; ?>
 							</div>
                     </div>
                 <?php } ?>

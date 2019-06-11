@@ -101,12 +101,12 @@ body{background:#f8f8f8;font-family: 'Rubik'; font-weight: normal; font-style: n
 .other_products_detail a:hover{box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.05);background-color: #ffffff;display:inline-block;padding:10px;}
 .other_products_detail_title{font-family: RubikRegular;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;}
 .other_products_detail a:hover .other_products_detail_title{color:#57a3f9;}
-.stay_block{border-radius: 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(63deg, #342e54, #054a91);padding: 20px 40px;
+.stay_block{border-radius: 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(63deg, #342e54, #054a91);background-color: #054a91;padding: 20px 40px;
  position: relative;top:100px;}
 .stay_block h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
 .stay_block p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
 .stay_block_new{border-radius: 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);padding: 20px 40px;
- position: relative;top:100px;}
+ position: relative;top:100px;background-color:#3589a9;}
 .stay_block_new h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
 .stay_block_new p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
 .custome-email{  opacity: 0.5;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
@@ -180,9 +180,9 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 .first_image{height:550px;width: 100%;margin-bottom:10px;position: relative;top: -50px;}
 .second_image{width: 100%;margin-bottom: 27px;position: relative;top: -50px;height:260px;}
 .third_image{width: 100%;margin-bottom:10px;position: relative;top: -48px;height: 260px;}
-
-.item_panel_thumbnail img{width:50%;position:relative;display:block;margin-left:auto;margin-right:auto;padding:20px;}
-.item_panel_thumbnail_caption a{position: absolute;bottom:35px;left: 0px;font-family: RubikMedium;font-size: 23px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.25;letter-spacing: normal;color: #337ab7;margin:0px 40px;text-decoration:none; text-align: center;}
+.item_panel_thumbnail{width:360px; height:167px;}
+.item_panel_thumbnail img{width:60%;height:175px;position:relative;display:block;margin-left:auto;margin-right:auto;padding:20px;margin-top:-20px;}
+.item_panel_thumbnail_caption a{text-align:center; top:140px; position: absolute;bottom:35px;left: 0px;font-family: RubikMedium;font-size: 23px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.25;letter-spacing: normal;color: #337ab7;margin:0px 40px;text-decoration:none;}
 .item_panel_thumbnail_caption a:hover{text-decoration:none;color: #337ab7;}
 
 .display_all_product{padding:12px;background:#57a3f9;}
@@ -325,13 +325,13 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 }
 
 
-/* safari browser css
+/* safari browser css*/
 @media screen and (min-color-index:0) and(-webkit-min-device-pixel-ratio:0)
 { @media {
     .footer-list{margin-top: 200px;margin-bottom:50px;}
 	.best_views_middle_content{background-image: linear-gradient(71deg, #342e54, #054a91);background-color: #054a91;}
 	.stay_block{background-image: linear-gradient(63deg, #342e54, #054a91);background-color:#183f79;}
 	.stay_block_new{background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);background-color:#3589a9;}
-}}*/
+}}
 
-
+.home_product_image > a > img { width:67px; height:67px;}

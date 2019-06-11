@@ -3,6 +3,7 @@
 <div class="col-xs-12 col-sm-12 col-md-3">
 	<div class="right-section">
 		<?php
+		global $post;
     //for use in the loop, list 5 post titles related to first tag on current post
     $tags = wp_get_post_tags($post->ID);
     
@@ -25,15 +26,13 @@
         //get post images from product table
         $getImageDetails = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
         $getImageDetails = $getImageDetails[0];
-        $post_image_url = $getImageDetails->s3_image_url;
+        $post_image_url = $getImageDetails->image_snippet;
         $product_title = $getImageDetails->product_title;
         ?>
 			<li>
 				<div class="row">
-					<div class="col-xs-4 col-sm-4 col-md-4">
-						<img src="
-							<?php echo $post_image_url; ?>" title="
-							<?php echo $product_title; ?>" class="img-responsive mobile-view-image" height="100" width="100">
+					<div class="col-xs-4 col-sm-4 col-md-4 related_post_image">
+							<?php echo $post_image_url; ?>
 						</div>
 						<div class="col-md-8">
 							<a href="

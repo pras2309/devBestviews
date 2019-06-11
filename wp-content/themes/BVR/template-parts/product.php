@@ -84,7 +84,7 @@
 
 				<div class="col-xs-6 col-sm-6 col-md-6 score_image">
 						<div class="GaugeMeter" 
-													data-percent="<?php echo intdiv(($prodResult->score_out_of_10  * 100), 10); ?>"
+													data-percent="<?php echo intdiv(($prodResult->score_out_of_10  * 100), 10); ?>" 
 													data-label="Popular"  data-style="Arch" data-width="20"
 													data-append="%" data-size="150"
 													>
@@ -109,7 +109,7 @@
 			$es_code = $feature_details->es_id;
 			$feature_data = $feature_details->word_freq;
 			$feature_data = "[".$feature_data."]";
-		$feature_data = str_replace("'", '"', $feature_data);
+			$feature_data = str_replace("'", '"', $feature_data);
 			$feature_data = json_decode($feature_data, true);
 			if(isset($feature_data[0])):
 	?>

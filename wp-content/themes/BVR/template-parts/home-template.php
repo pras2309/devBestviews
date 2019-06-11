@@ -21,7 +21,7 @@ get_template_part('template-parts/bottom-header');
 		'parent' => 0, //get the top level category,
 		'number' => 10
 	);
-$all_categories = get_categories($get_parent_cat);
+	$all_categories = get_categories($get_parent_cat);
 	$count = 0;
 	foreach($all_categories as $single_category):
 			//for each category their ID
@@ -31,7 +31,8 @@ $all_categories = get_categories($get_parent_cat);
 	<?php
 	//get the children category of this category
 	$get_child_cat = array(
-		"child_of" => $catID
+		"child_of" => $catID,
+		'number' => 4
 	);
 	$child_categories = get_categories($get_child_cat);
 	if ($count % 3 ==0 && $count==0){
@@ -45,9 +46,10 @@ $all_categories = get_categories($get_parent_cat);
 			$child_id = $childCategory->cat_ID;
 			$count = $count + 1;
 			//get 3 product from this subcategory
-			$cate_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE subcategory='".esc_sql($childCategory->name)."' LIMIT 3");
+			$cate_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory='".esc_sql($childCategory->name)."' LIMIT 3");
 			//get image of first product 
-			$firstProdImage = $cate_products[0]->s3_image_url;
+			// $firstProdImage = $cate_products[0]->s3_image_url;
+			$firstProdImage = $cate_products[0]->image_snippet;
 		?>
 	
 	<div class="col-xs-12 col-sm-12 col-md-4">
@@ -55,7 +57,8 @@ $all_categories = get_categories($get_parent_cat);
 		<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail">
 						<?php if($firstProdImage) : ?>
-							<img src="<?php echo $firstProdImage ?>" class="img img-responsive" />
+							<!-- <img src="<?php //echo $firstProdImage ?>" class="img img-responsive" /> -->
+							<?php echo $firstProdImage; ?>
 						<?php else:  ?>
 						<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" width="360px" height="167px"/>	
 						<?php endif; ?>
@@ -65,15 +68,16 @@ $all_categories = get_categories($get_parent_cat);
 						</div>
 				</div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
+				<hr style="margin-top:43px;"/>
 				<ul class="main_item_panel_detail">
 					<?php
-					foreach($cate_products as $productInfo):
+					foreach($cate_products as $productInfo):	
 					?>
 					<li>
 						<div class="row">
-								<div class="col-xs-3 col-sm-3 col-md-3">
-									<?php if ($productInfo->s3_image_url) :  ?>
-										<img src="<?php echo $productInfo->s3_image_url; ?>" class="img-responsive mobile-view-image" title="<?php //echo $productInfo->product_title; ?>">
+								<div class="col-xs-3 col-sm-3 col-md-3 home_product_image">
+									<?php if ($productInfo->image_snippet) :  ?>
+									<?php echo $productInfo->image_snippet; ?>
 									<?php else : ?>
 									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" class="img img-resposinve mobile-view-image"/>	
 									<?php endif; ?>

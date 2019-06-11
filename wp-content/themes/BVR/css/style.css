@@ -114,8 +114,8 @@ body{background:#f8f8f8;font-family: 'Rubik'; font-weight: normal; font-style: n
 .subscription_div p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;padding:10px 0px;}
 
 .small-slide img{width:100%;padding-left:20px;padding-bottom:10px;}
-.previous-section img{padding: 20px;}
-.next-section img{padding: 20px;}
+.previous-section img{padding: 20px; width:145px;}
+.next-section img{padding: 20px; width:145px; }
 /*.winner{border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;}*/
 .winner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:40px;}
 /*.winner-content p{padding-top: 20px;padding-bottom: 15px;margin: 0px;margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2.2;letter-spacing: normal;font-family: RubikLight;}*/
@@ -452,6 +452,7 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 	.navbar-brand{height: 0px;padding: 0px!important;}
 	.inner-thumnbail{display:inline-block;padding:15px;}
 	.winner{width:100%;height:100%;}
+	.winner_image { margin-top:43px;}
 	.winner_image img{top: 20px;left: 30px;}
 	.winner-content p{padding-top: 30px;padding-bottom: 30px;}
 	.winner-footer p{font-size:16px;}
@@ -566,5 +567,8 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
   }
 .category-image{
 	width:122px;
-	padding:5px;
-}
+	padding:5px;}
+.category_header_image > a > img { height:150px; width:251px;}
+
+.small-slide {  display:none !important;}
+.related_post_image > a > img {  height:50px; width:50px;}
