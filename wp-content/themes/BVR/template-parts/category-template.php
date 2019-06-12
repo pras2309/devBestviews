@@ -10,15 +10,13 @@ get_header();
 global $wpdb;
 //get top trending product of this category
 $category_details = get_queried_object();
-
 $category_name = $category_details->name;
+$product_category = trim($category_name);
 
-// echo "SELECT * FROM bestviews.products WHERE subcategory = '".$category_name."' AND rank <= 10 ORDER BY rank DESC LIMIT 10 ";
+// echo "SELECT * FROM dev_bestviews.products WHERE $query_part AND rank <= 10 ORDER BY rank DESC LIMIT 10 ";
 // exit;
 //$product_category = str_replace('&amp;','&',$category_name);
 //$product_category = str_replace("s'","'s",  $category_name);
-$product_category = trim($category_name);
-
 $get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of the first product in the list.
@@ -68,7 +66,9 @@ if(isset($get_product_items[0])){
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-3" >
 			<div class="row category_header_image">
+				<?php if(isset($image_url)):  ?>
 							<?php echo $image_url ?>
+				<?php endif; ?>
 					<!-- <div class="col-xs-6 col-sm-6 col-md-6 winner_image">
 							<img src="<?php //bloginfo('template_url'); ?>/images/winner-new.png"/>
 							<div class="winner">
@@ -166,16 +166,18 @@ if(isset($get_product_items[0])){
 				</div> <!-- end of product list -->
 				<hr/>
 				<?php $i++; ?>
-				<?php }} ?> 
+				<?php }?> 
 				
 				</div> <!-- end of row --> 
 				</div> <!-- end of product score class -->
 	
 			</div>
+		
 		</div>
+		
 	
 	</div>
-    
+	<?php } ?>
 	<!-- section for other products of the category -->
 	<section class="other_products">
 					<div class="container">
@@ -186,11 +188,10 @@ if(isset($get_product_items[0])){
 						</div>
 				<?php
 				$paged = (get_query_var( 'paged' )) ? get_query_var( 'paged' ) : 1;
-				$cat_id = get_queried_object_id();
 				$args = array(
 						'post_type' => 'post',
 						'post_status' => 'publish',
-						'cat' => $cat_id,
+						'cat' => $category_details->term_id,
 						'paged'=> $paged,
 						"posts_per_page"=>8
 				);
@@ -212,7 +213,6 @@ if(isset($get_product_items[0])){
 			?>
 		<div class="col-xs-12 col-sm-12 col-md-3">
 			<div class="other_products_detail">
-			<a href="<?php the_permalink();?>" title="<?php //echo $get_image[0]->product_title; ?>" class="post-title">
 							<div class="row">
 								<div class="col-xs-4 col-sm-4 col-md-4 other_products_image">
 								<?php

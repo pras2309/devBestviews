@@ -6,7 +6,7 @@ global $wpdb;
 $get_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products 
 WHERE  wp_post_id = 0 AND subcategory_processed = 1 
 AND (s3_output_url IS NOT NULL AND s3_output_url !='') 
-AND s3_input_url IS NOT NULL AND s3_input_url!='' LIMIT 450");
+AND s3_input_url IS NOT NULL AND s3_input_url!='' LIMIT 50");
 
 
 //read product information::::
@@ -213,7 +213,7 @@ if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=
           <div class="row first-row">
              <div class="col-md-7">
                 <div class="row">
-                   <div class="col-md-3 small-slide">
+                   <div class="col-md-3 small-slide" style="display:none;">
                       <!-- <img src="images/slider-image-2.png"/>
                       <img src="images/slider-image-1.png"/>
                       <img src="images/slider-image-2.png"/>
@@ -305,15 +305,6 @@ CONTENT;
              </div>
           </div>
           <div class="row third-row" style="display:none;">
-             <div class="col-md-5" style="text-align:center;">
-                <img src="images/walmart.png" style="width:40%;">
-             </div>
-             <div class="col-md-3" style="text-align:center;">
-                <p class="cost">$349.99</p>
-             </div>
-             <div class="col-md-4" style="text-align:center;">
-                <button type="button" class="btn partner_button">Shop now</button>
-             </div>
           </div>
           <div class="row fourth-row">
              <div class="col-md-12">

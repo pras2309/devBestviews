@@ -19,37 +19,28 @@ get_template_part('template-parts/bottom-header');
 	<?php
 	$get_parent_cat =array(
 		'parent' => 0, //get the top level category,
-		'number' => 10
+		'number' => 6
 	);
 	$all_categories = get_categories($get_parent_cat);
 	$count = 0;
 	foreach($all_categories as $single_category):
+		if($single_category->count > 0 ):
 			//for each category their ID
 			$catID = $single_category->cat_ID;   
 	?>
 			
 	<?php
-	//get the children category of this category
-	$get_child_cat = array(
-		"child_of" => $catID,
-		'number' => 4
-	);
-	$child_categories = get_categories($get_child_cat);
 	if ($count % 3 ==0 && $count==0){
-
 		?>
 		<div class="row">
 		<?php
 		}
-	foreach($child_categories as $childCategory):
-			if($childCategory->count > 0 ):
-			$child_id = $childCategory->cat_ID;
 			$count = $count + 1;
 			//get 3 product from this subcategory
-			$cate_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory='".esc_sql($childCategory->name)."' LIMIT 3");
+			$category_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory='".esc_sql($single_category->name)."' LIMIT 3");
 			//get image of first product 
 			// $firstProdImage = $cate_products[0]->s3_image_url;
-			$firstProdImage = $cate_products[0]->image_snippet;
+			$firstProdImage = $category_products[0]->image_snippet;
 		?>
 	
 	<div class="col-xs-12 col-sm-12 col-md-4">
@@ -64,14 +55,15 @@ get_template_part('template-parts/bottom-header');
 						<?php endif; ?>
 					
 						<div class="item_panel_thumbnail_caption"> 
-							<a class="post_title_heading" href="<?php echo get_category_link($childCategory->term_id); ?>"><?php echo $childCategory->name; ?></a>
+							<a class="post_title_heading" href="<?php echo get_category_link($single_category->term_id); ?>"><?php echo $single_category->name; ?></a>
 						</div>
 				</div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<hr style="margin-top:43px;"/>
 				<ul class="main_item_panel_detail">
 					<?php
-					foreach($cate_products as $productInfo):	
+					$firstProdImage = $category_products[0]->image_snippet;
+					foreach($category_products as $productInfo):	
 					?>
 					<li>
 						<div class="row">
@@ -103,7 +95,7 @@ get_template_part('template-parts/bottom-header');
 	</div> <!-- end of col-4 -->
 	<?php if ($count % 3 ==0){  ?>
 		</div><div class="row">
-	<?php } endif; endforeach; endforeach; ?>
+	<?php } endif; endforeach; ?>
 	 <!-- end of row -->
 	 
 	</div> <!-- end of container -->

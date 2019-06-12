@@ -8,7 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////////////
 require_once 'wp-config.php';
 global $wpdb;
-$get_categories = $wpdb->get_results("SELECT distinct(category) as category FROM dev_bestviews.products GROUP BY category");
+$get_categories = $wpdb->get_results("SELECT distinct(subcategory) as category FROM dev_bestviews.products");
     foreach($get_categories as $prod_category){
             $category_slug = strtolower(preg_replace('/[_& ]/', '-', $prod_category->category ));
             $category_slug = preg_replace('/--+/', '-', $prod_category->category);
@@ -39,17 +39,9 @@ $get_categories = $wpdb->get_results("SELECT distinct(category) as category FROM
             // process the request
             $return = curl_exec($process);
 
-            $result = json_decode($return);
-
-            curl_close($process);
-            
-
-            if($result->data->status != 400 ):
-                echo "$prod_category->category has been created \n";
-                //update the category taxonomy
-            else:
-                echo " Error: $result->message \n";
-            endif;
+	   curl_close($process);
+	   $result = json_decode($return);
+            echo $result;
         } //checking the category exists into wp or not.
 
 

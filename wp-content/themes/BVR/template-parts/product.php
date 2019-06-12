@@ -113,7 +113,7 @@
 			$feature_data = json_decode($feature_data, true);
 			if(isset($feature_data[0])):
 	?>
-		<div id="wordcloud1" class="wordcloud" style="display:none;">
+		<div id="wordcloud1" class="wordcloud">
 		<?php			
 				$feature_data = $feature_data[0];
 				foreach($feature_data as $key => $value):
