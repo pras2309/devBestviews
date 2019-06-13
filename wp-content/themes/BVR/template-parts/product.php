@@ -22,7 +22,7 @@
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
 	
 	?>
@@ -102,7 +102,7 @@
 	<?php the_content(); ?>
 	<?php 
 	//get product feature and their count
-	$feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM bestviews.products WHERE wp_post_id = $post->ID");
+	$feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
 	if(isset($feature_details[0])):
 			$feature_details = $feature_details[0];
 			$product_id = $feature_details->id;
@@ -113,7 +113,7 @@
 			$feature_data = json_decode($feature_data, true);
 			if(isset($feature_data[0])):
 	?>
-		<div id="wordcloud1" class="wordcloud">
+		<div id="wordcloud1" class="wordcloud"  style="width:300px; height: 200px;">
 		<?php			
 				$feature_data = $feature_data[0];
 				foreach($feature_data as $key => $value):
