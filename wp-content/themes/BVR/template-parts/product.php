@@ -22,7 +22,7 @@
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
 	
 	?>
@@ -41,7 +41,7 @@
 	<span class="inner-thumnbail">
 	<?php $author_id=$post->post_author; ?>
 		<!-- <img src="https://keenthemes.com/metronic/preview/demo12/assets/media/users/300_25.jpg"/>Samuil Sadovsky -->
-		<img src="<?php echo the_author_meta( 'avatar' , $author_id ); ?> " class="avatar" alt="<?php echo the_author_meta( 'display_name' , $author_id ); ?>" />
+		<?php echo get_avatar( $author_id); ?>
 		<?php ucfirst(the_author_meta( 'user_nicename' , $author_id )); ?>
 	</span>
 	<span class="date"><?php echo get_the_date('F j, Y');?></span>
@@ -102,7 +102,7 @@
 	<?php the_content(); ?>
 	<?php 
 	//get product feature and their count
-	$feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
+	$feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM bestviews.products WHERE wp_post_id = $post->ID");
 	if(isset($feature_details[0])):
 			$feature_details = $feature_details[0];
 			$product_id = $feature_details->id;
@@ -130,6 +130,7 @@
 	<?php endwhile; else : ?>
 			<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
 	<?php endif; ?>
+	<hr/>
 	<?php get_template_part('template-parts/next-previous') ?>
 		<div class="row sixth-row">
 			<div class="col-xs-12 col-sm-12 col-md-12">

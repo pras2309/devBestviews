@@ -74,7 +74,7 @@ body{background:#f8f8f8;font-family: 'Rubik'; font-weight: normal; font-style: n
 .third-row{padding:30px 0px;border-bottom:1px solid #f5f5f5}
 .fourth-row{padding:30px 0px;border-bottom:1px solid #f5f5f5}
 .detail-text{padding:0px 20px;}
-.detail-text img{width:100%;}
+.detail-text img{width:100%; display:none;}
 .detail-text-title{padding:0px 20px;}
 .detail-text-title p{font-family: RubikMedium;font-size: 24px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: 1.33;letter-spacing: -0.6px;color: #292c32;}
 .detail-text p{font-family: RubikRegular;font-size: 16px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.63;letter-spacing: normal;color: #5e5e5e;}

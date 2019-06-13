@@ -17,7 +17,7 @@ $product_category = trim($category_name);
 // exit;
 //$product_category = str_replace('&amp;','&',$category_name);
 //$product_category = str_replace("s'","'s",  $category_name);
-$get_product_items  = $wpdb->get_results("SELECT * FROM bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
+$get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of the first product in the list.
 if(isset($get_product_items[0])){
@@ -216,7 +216,7 @@ if(isset($get_product_items[0])){
 							<div class="row">
 								<div class="col-xs-4 col-sm-4 col-md-4 other_products_image">
 								<?php
-	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url, image_snippet FROM bestviews.products WHERE wp_post_id=$post->ID");
+	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url, image_snippet FROM dev_bestviews.products WHERE wp_post_id=$post->ID");
 					if(isset($get_image[0])){
 								$get_image = $get_image[0];
 								 ?>
