@@ -303,7 +303,10 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 	font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
 	.remarksecond-footer{}
 	.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
-
+	#wordcloud1 > canvas {
+		width:303px !important;
+		height:250px !important;
+	}
 
 }
 
@@ -572,3 +575,20 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 
 .small-slide {  display:none !important;}
 .related_post_image > a > img {  height:50px; width:50px;}
+.product_link {
+	width: 200px;
+    height: 54px;
+    opacity: 0.8;
+    font-family: RubikMedium;
+    font-size: 12px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #292c32;
+}
+.product_link:hover{
+	text-decoration: none;
+	color: #292c32;
+}
