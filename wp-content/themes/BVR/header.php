@@ -27,6 +27,7 @@
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/jquery.desoslide.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/animate.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/magic.min.css" rel="stylesheet">
+								<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet"/>
 								<style type="text/css">
 								.wordcloud {
 								height: 4in;
@@ -63,13 +64,15 @@
 																		<a class="navbar-brand" href="
 																			<?php echo esc_url( home_url( '/' ) ); ?>">
 																			<img src="
-																				<?php bloginfo('template_url'); ?>/images/logo-new.png"/>
+																				<?php bloginfo('template_url'); ?>/images/logo-new.png" class="logo"/>
 																			</a>
 																		</div>
 																		<!-- Collect the nav links, forms, and other content for toggling -->
 																		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 																			<?php wp_nav_menu(array('theme_location'=>'primary', 'menu_class'=> 'nav navbar-nav navbar-right')); ?>
+
 																		</div>
+
 																		<!-- /.navbar-collapse -->
 																	</div>
 																	<!-- /.container-fluid -->

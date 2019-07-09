@@ -24,6 +24,9 @@
 	}
 	
 								</style>
+								<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css"/>
+								<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"/>
+
 								<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 								<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 								<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,6 +40,16 @@
 								<?php body_class(); ?>>
 								<div class="header">
 									<div class="container">
+										<div class="row">
+											<div class="col-xs-8 col-sm-8 col-md-8"></div>
+											<div class="col-xs-4 col-sm-4 col-md-4 region_selector">
+											<select class="selectpicker" data-width="fit">
+												<option >Select your Country...</option>
+												<option data-content='<span class="flag-icon flag-icon-us"></span> English'><a href="<?php echo esc_url(home_url("/")); ?>">US</a></option>
+												<option  data-content='<span class="flag-icon flag-icon-in"></span> India'><a href="<?php echo esc_url(home_url("/")); ?>india/">India</a></option>
+											</select>
+											</div>
+										</div>
 										<div class="row">
 											<div class="col-xs-12 col-sm-12 col-md-12 navigation">
 												<nav class="navbar navbar-default">
@@ -57,10 +70,11 @@
 															</div>
 															<!-- Collect the nav links, forms, and other content for toggling -->
 															<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-																<?php wp_nav_menu(array('theme_location'=>'primary', 'menu_class'=> 'nav navbar-nav navbar-right')); ?>
+																<?php wp_nav_menu(array('theme_location'=>'primary', 'menu_class'=> 'nav navbar-nav navbar-right top_menu')); ?>
 																<!-- <ul class="nav navbar-nav navbar-right"><li><a href="#">Art Supplies</a></li><li><a href="#">Detox Tea</a></li><li><a href="#">Men's Sandals</a></li><li><a href="#">Software</a></li><li><a href="#">Wall Art</a></li></ul> -->
 															</div>
 															<!-- /.navbar-collapse -->
+															
 														</div>
 														<!-- /.container-fluid -->
 													</nav>

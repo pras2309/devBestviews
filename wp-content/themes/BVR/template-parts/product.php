@@ -22,8 +22,9 @@
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
+	$product_id = $prodResult->id;
 	
 	?>
 
@@ -34,16 +35,17 @@
 	</div>
 	<div class="soundbars">
 	<div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-2">
-		<p><?php echo get_the_category($post->ID)[0]->name; ?></p>
+	<div class="col-xs-12 col-sm-12 col-md-2 rectangle">
+		<p class="category_name"><?php echo get_the_category($post->ID)[0]->name; ?></p>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-md-10">
+	<div class="col-xs-12 col-sm-12 col-md-10 category_thumbnail">
 	<span class="inner-thumnbail">
 	<?php $author_id=$post->post_author; ?>
 		<!-- <img src="https://keenthemes.com/metronic/preview/demo12/assets/media/users/300_25.jpg"/>Samuil Sadovsky -->
 		<?php echo get_avatar( $author_id); ?>
 		<?php ucfirst(the_author_meta( 'user_nicename' , $author_id )); ?>
 	</span>
+
 	<span class="date"><?php echo get_the_date('F j, Y');?></span>
 	</div>
 	</div>
@@ -102,7 +104,7 @@
 	<?php the_content(); ?>
 	<?php 
 	//get product feature and their count
-	$feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
+	/* $feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM bestviews.products WHERE wp_post_id = $post->ID");
 	if(isset($feature_details[0])):
 			$feature_details = $feature_details[0];
 			$product_id = $feature_details->id;
@@ -111,21 +113,22 @@
 			$feature_data = "[".$feature_data."]";
 			$feature_data = str_replace("'", '"', $feature_data);
 			$feature_data = json_decode($feature_data, true);
-			if(isset($feature_data[0])):
+			if(isset($feature_data[0])): */
+			echo do_shortcode('[multicolor-tag-cloud post_id="'.$post->ID.'"]');
 	?>
-		<div id="wordcloud1" class="wordcloud"  style="width:300px; height: 200px;">
+		<!-- <div id="wordcloud1" class="wordcloud"  style="width:300px; height: 200px;">
 		<?php			
-				$feature_data = $feature_data[0];
-				foreach($feature_data as $key => $value):
+				//$feature_data = $feature_data[0];
+				//foreach($feature_data as $key => $value):
 		?>
-			<span data-weight="<?php echo $value ?>"><?php echo $key; ?></span>
+			<span data-weight="<?php // echo $value ?>"><?php //echo $key; ?></span>
 		<?php
-				endforeach;
+				//endforeach;
 		?>
-	</div>
+	</div> -->
 		<?php	
-			endif;
-	endif;		
+			//endif;
+	//endif;		
 	?>
 	<?php endwhile; else : ?>
 			<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
@@ -145,4 +148,5 @@
 	</div>
 	</div>
 	</div>
+
  <?php get_footer(); ?>

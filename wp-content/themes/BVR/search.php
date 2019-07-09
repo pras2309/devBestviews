@@ -8,6 +8,7 @@
  */
 
 get_template_part('home_header');
+get_template_part('template-parts/top-header');
 ?>
 	</div>
 </div>
@@ -19,45 +20,35 @@ get_template_part('home_header');
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-		<?php if ( $the_query->have_posts() ) : ?>
-		<?php _e("<h2 style='font-weight:bold;color:#000'>Search Results for: ".get_query_var('s')."</h2>"); ?>
-			<?php
-			// Start the loop.
-			while ( $the_query->have_posts() ) :
+		<?php if ( have_posts() ) : ?>
+			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'BVR' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+		<?php else : ?>
+			<h1 class="page-title"><?php _e( 'Nothing Found', 'BVR' ); ?></h1>
+		<?php endif; ?>
+		<hr/>
+		<?php 
+		if ( have_posts() ) :
+			/* Start the Loop */
+			while ( have_posts() ) :
 				the_post();
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'includes/search-result');
+				get_template_part( 'includes/search-result', 'search' );
+		endwhile; // End of the loop.
 
-				// End the loop.
-			 
-			endwhile;
-			wp_reset_postdata();
-				
-			wp_reset_query();
+		 the_posts_pagination( array(
+			 'screen_reader_text' => ' ',
+			'prev_text' => __( 'Previous', 'BVR' ),
+			'next_text' => __( 'Next', 'BVR' ),
+		) );
 
-			flush_rewrite_rules();
-
-			// Previous/next page navigation.
-			wp_pagenavi(
-				array( 'query' => $the_query) 
-			);
-
-			// If no content, include the "No posts found" template.
 		else :
-?>
+			?>
 
-			<h2 style='font-weight:bold;color:#000'>Nothing Found</h2>
-			<div class="alert alert-info">
-			  <p>Sorry, but nothing matched your search criteria. Please try again with some different keywords.</p>
-			</div>
-<?php
+			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'BVR' ); ?></p>
+
+			<?php
+				get_search_form();
 		endif;
 		?>
-   		   </div>
 		 </div>
 	</div>
 </div>

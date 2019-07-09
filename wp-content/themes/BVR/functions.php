@@ -143,7 +143,7 @@ function prod_submit_action(){
 	//now insert information into database.
 	$product_url = $_POST['a_product_url'];
 	$user_email = $_POST['user_email'];
-	$result = $wpdb->query("INSERT INTO dev_bestviews.product_url_info(product_url, requested_by) VALUES('".esc_sql($product_url)."', '".esc_sql($user_email)."')");
+	$result = $wpdb->query("INSERT INTO bestviews.product_url_info(product_url, requested_by) VALUES('".esc_sql($product_url)."', '".esc_sql($user_email)."')");
 	if($result == true){
 		//send a mail to requested User.
 		$to = $user_email;
@@ -169,3 +169,102 @@ CONTENT;
 }
 add_action('wp_ajax_prod_submit_action', 'prod_submit_action');
 add_action( 'wp_ajax_nopriv_prod_submit_action', 'prod_submit_action' );
+
+
+//custom API end points for fetching information from the database.
+
+add_action( 'rest_api_init', 'fetching_product_route' );
+function fetching_product_route() {
+    register_rest_route( 'product', 'product-list', array(
+                    'methods' => 'GET',
+					'callback' => 'getProductList',
+
+                )
+            );
+}
+function getProductList() {
+	//get all the product details
+	global $wpdb;
+	$product_details = $wpdb->get_results("SELECT id as `value`, product_title as `label` FROM bestviews.products WHERE wp_post_id != 0 AND region = 'IND' LIMIT 5");
+    return rest_ensure_response( $product_details );
+}
+
+add_action( 'rest_api_init', 'fetching_product_data' );
+function fetching_product_data() {
+    register_rest_route( 'product', 'product-info', array(
+                    'methods' => 'POST',
+					'callback' => 'product_details',
+
+                )
+            );
+}
+
+function product_details($data) {
+	global $wpdb;
+	$params = $data->get_params();
+	$prod_id = $params['id'];
+	//get the product details
+	$product_details = $wpdb->get_results("SELECT s3_gsm_input_uri FROM bestviews.products  WHERE id=$prod_id AND wp_post_id != 0");
+	$product_gsm_url = $product_details[0]->s3_gsm_input_uri;
+	$product_features = @file_get_contents($product_gsm_url);
+	print_r($product_features);
+    return rest_ensure_response( $product_details );
+}
+
+
+
+
+//get all product urls list;
+
+function getProductURL(){
+	$posts = new WP_Query('post_type=any&posts_per_page=-1&post_status=publish');
+	$posts = $posts->posts;
+	foreach($posts as $post) {
+		switch ($post->post_type) {
+			case 'revision':
+			case 'nav_menu_item':
+				break;
+			case 'page':
+				$permalink = get_page_link($post->ID);
+				break;
+			case 'post':
+				$permalink = get_permalink($post->ID);
+				break;
+			case 'attachment':
+				$permalink = get_attachment_link($post->ID);
+				break;
+			default:
+				$permalink = get_post_permalink($post->ID);
+				break;
+		}
+		echo "\n{$permalink}";
+	}
+}
+add_action( 'rest_api_init', 'fetching_product_urls' );
+function fetching_product_urls() {
+    register_rest_route( 'product', 'product-urlist', array(
+                    'methods' => 'GET',
+					'callback' => 'getProductURL',
+
+                )
+            );
+}
+
+//get the category urls 
+function getCategoryURLs(){
+	$categories = get_categories();
+foreach ($categories as $cat) {
+   $category_link = get_category_link($cat->cat_ID);
+		echo $category_link."\n";
+}
+}
+
+add_action( 'rest_api_init', 'fetching_category_urls' );
+function fetching_category_urls() {
+    register_rest_route( 'category', 'category-urlist', array(
+                    'methods' => 'GET',
+					'callback' => 'getCategoryURLs',
+
+                )
+            );
+}

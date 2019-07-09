@@ -13,19 +13,22 @@
 				</div>
 				<div class="clearfix"></div>
 				<hr/>
-				<p>BestViewsReviews (BVR) analyzes and summarizes millions of user views and reviews on products and simplifies the purchase decision for you.</p>
+				<p  class="footer_info">BestViewsReviews (BVR) analyzes and summarizes millions of user views and reviews on products and simplifies the purchase decision for you.</p>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 notify_div">
 						<p>Get notified about the latest reviews right in your inbox</p>
 					</div>
-					<div class="col-xs-12 col-sm-12 col-md-7 subscription_div">
-						<div class="input-group">
-							<input type="email" class="form-control" placeholder="Enter your email">
+				 </div>
+				 <div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-5 subscription_div">
+							<div class="input-group">
+							<input type="email" class="subscribe_email form-control" placeholder="Enter your email">
 								<span class="input-group-btn">
-									<button class="btn" type="submit" style="background-color: #57a3f9;color:#fff;">Subscribe Now</button>
+									<button class="btn" type="submit" style="width:112px;height:40px;border-radius:2px;background-color: #57a3f9;color:#fff;">Subscribe</button>
 								</span>
 							</div>
 						</div>
+						<div class="col-md-2"></div>
 						<div class="col-xs-12 col-sm-12 col-md-5 footer_social_icon">
 							<ul>
 								<li>
@@ -52,7 +55,7 @@
 						</div>
 					</div>
 					<div class="footer-lower-text-new">
-						<p>Best Views Reviews.All rights are reserved </p>
+						<p>Best Views Reviews. All rights reserved</p>
 					</div>
 				</div>
 			</div>
@@ -64,12 +67,15 @@
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="<?php bloginfo('template_url'); ?>/js/jquery.prettytag.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.desoslide.min.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/demo.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.awesomeCloud-0.2.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/GaugeMeter.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 <script>
 			$(document).ready(function(){
 				$(".GaugeMeter").gaugeMeter();
@@ -81,13 +87,16 @@
 					},
 					"options" : {
 						"color" : "random-dark",
-						"rotationRatio" : 0.35,
+						"rotationRatio" : 0.25,
 						"printMultiplier" : 3,
 						"sort" : "random"
 					},
 					"font" : "'Times New Roman', Times, serif",
 					"shape" : "square"
 				});
+				
+
+				$('.selectpicker').selectpicker();
 				
 			});
 
@@ -138,6 +147,95 @@
 				});
 				
 			});
+			$(document).ready(function(){
+			$("#asin_clipboard").click(function(){
+				try
+					{
+						$('#asin_text').select();
+						document.execCommand('copy');
+					}
+					catch(e)
+					{
+						alert(e);
+					}
+			});
+
+			
+				$('.selectpicker').selectpicker();
+
+			
+
+
+			//copy for product uri
+			$("#product_clipboard").click(function(){
+				try
+					{
+						$('#product_url_text').select();
+						document.execCommand('copy');
+					}
+					catch(e)
+					{
+						alert(e);
+					}
+			}); 
+			
+
+			$(".cloud-tags").prettyTag();
+      
+			$(".tags").prettyTag({
+				randomColor: true,
+				tagicon: false,
+			
+				});
+
+			
+			$("#compareProduct").click(function(){
+				//alert("Awww You have clicked me! ");
+			});
+
+			//change text and href of region menu:
+			$(".region").click(function(){
+				alert("Welcome");
+			});
+			
+		});
+
+
+		$( "#product_one" ).autocomplete({
+			source: function(request, response) {
+					$.ajax({
+				type:"GET",
+				url: "/wp-json/product/product-list/",
+				success: function(data) {
+				response(data.map(function(val) {
+				return {
+					label: val.label,
+					value: val.label,
+					id : val.value
+				}
+				}));
+				}
+			});
+			},
+			change:function(event, ui){
+				var product_id = ui.item.id;
+				var product_name = ui.item.value;
+				$.ajax({
+					type:"POST",
+					url: "/wp-json/product/product-info/",
+					data: {"id":product_id, "product_name":product_name},
+					success:function(response){
+						var resp = response.responseText;
+						console.log(resp);
+						$("#product_one_details").html(resp);
+						$("#product_one_details").css("display", "block");
+					}
+					
+				});
+			}
+			});
+
+			
 
 		</script> 
 <!--[if lt IE 7 ]>

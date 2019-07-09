@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Home Page Template
+Template Name: India Home Page
 */
 get_template_part('home_header');
 get_template_part('template-parts/top-header');
@@ -15,63 +15,58 @@ get_template_part('template-parts/bottom-header');
 						</div>
 					</div>
 			</div>
-	
+		
 	<?php
-	$get_parent_cat =array(
-		'parent' => 0, //get the top level category,
-		'number' => 9
+    $count = 0;
+	//get the children category of this category
+	$get_child_cat = array(
+		"child_of" => 31227
 	);
-	$all_categories = get_categories($get_parent_cat);
-	$count = 0;
-	foreach($all_categories as $single_category):
-		if($single_category->count > 0 ):
-			//for each category their ID
-			$catID = $single_category->cat_ID;   
-	?>
-			
-	<?php
+    $child_categories = get_categories($get_child_cat);
+    
 	if ($count % 3 ==0 && $count==0){
+
 		?>
 		<div class="row">
 		<?php
 		}
+	foreach($child_categories as $childCategory):
+			if($childCategory->count > 0 ):
+			$child_id = $childCategory->cat_ID;
 			$count = $count + 1;
 			//get 3 product from this subcategory
-			$category_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0  AND subcategory='".esc_sql($single_category->name)."' AND rank <= 3 ORDER BY rank ASC");
+			$cate_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0 AND subcategory='".esc_sql($childCategory->name)."' AND rank <= 3 ORDER BY rank ASC");
 			//get image of related category:
-			$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($single_category->name)."'");
+			$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($childCategory->name)."'");
 			$firstProdImage = $category_image_details[0]->s3_category_img;
 		?>
 	
-	<div class="col-xs-12 col-sm-12 col-md-4" style="width:375px;">
+	<div class="col-xs-12 col-sm-12 col-md-4">
 		<div class="item-panel">
 		<div class="row">
-				<?php if($count == 1) { ?>
-				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php bloginfo('template_url');?>/images/raw_black-wallper.jpg');height:160px;width: 346px;background-position: center;margin-left: 15px;">
-				<?php } if($count == 2) { ?>
-					<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php bloginfo('template_url');?>/images/raw_blue_wallpaper.jpg');height:160px;width: 346px;background-position: center;margin-left: 15px;">
-				<?php } if($count == 3) { ?>
-				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php bloginfo('template_url');?>/images/raw_yellow_wallpaper.png');height:160px;width: 346px;background-position: center;margin-left: 15px;">
-				<?php } ?>
-
-				<img src="<?php echo $firstProdImage ?>"  class="randomImg"/>
+				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail">
+						<?php if($firstProdImage) : ?>
+						<img src="<?php echo $firstProdImage ?>" class="img img-responsive" />
+						<?php else:  ?>
+						<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" width="360px" height="167px"/>	
+						<?php endif; ?>
+					
 						<div class="item_panel_thumbnail_caption"> 
-								<a   href="<?php echo get_category_link($single_category->term_id); ?>"><?php echo $single_category->name; ?></a>
+							<a href="<?php echo get_category_link($childCategory->term_id); ?>"><?php echo $childCategory->name; ?></a>
 						</div>
 				</div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<ul class="main_item_panel_detail">
 					<?php
-					$firstProdImage = $category_products[0]->image_snippet;
 					$i = 0;
-					foreach($category_products as $productInfo):	
+					foreach($cate_products as $productInfo):	
 						$i++;
 					?>
-					<li class="product_row">
+					<li>
 						<div class="row">
 								<div class="col-xs-3 col-sm-3 col-md-3 home_product_image">
-									<?php if ($productInfo->image_snippet && $productInfo->image_snippet != '.') :  ?>
-									<?php echo $productInfo->image_snippet; ?>
+									<?php if ($productInfo->image_snippet &&  $productInfo->image_snippet!='.') :  ?>
+										<?php echo $productInfo->image_snippet; ?>
 									<?php else : ?>
 									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" height="85px" width="80px"/>	
 									<?php endif; ?>
@@ -89,7 +84,7 @@ get_template_part('template-parts/bottom-header');
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="display_all_product">
-					<a href="<?php echo get_category_link($catID);?>">View All <?php echo $productInfo->subcategory; ?></a>
+					<a href="<?php echo get_category_link($child_id);?>">View All <?php echo $productInfo->subcategory; ?></a>
 					</div>
 					</div>
 				</div>

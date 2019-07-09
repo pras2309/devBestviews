@@ -24,7 +24,8 @@
 			<?php
         while ($my_query->have_posts()) : $my_query->the_post(); 
         //get post images from product table
-        $getImageDetails = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
+		$getImageDetails = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post->ID");
+		if(isset($getImageDetails[0])){
         $getImageDetails = $getImageDetails[0];
         $post_image_url = $getImageDetails->image_snippet;
         $product_title = $getImageDetails->product_title;
@@ -45,8 +46,10 @@
 					</div>
 				</li>
 				<?php
+				}
             endwhile;
-            }
+			}
+			
             wp_reset_query();
             }
             ?>
@@ -60,31 +63,40 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 related_tag_sidebar">
 				<h4>Related Categories</h4>
 			</div>
+			<?php
+				$cat_args   = array(
+					'orderby' => 'rand',
+					'order' => 'ASC'
+				);
+				$related_categories = get_categories($cat_args);
+				shuffle( $related_categories );
+				$rel_categories = array_slice( $related_categories, 0, 2 );
+			?>
+
 			<div class="col-xs-12 col-sm-12 col-md-12">
+			<?php foreach($rel_categories as $re_category) :
+			//get the category images from the product_category table.
+			$re_category_name = trim($re_category->name);
+			$getCatQry = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name = '".esc_sql($re_category_name)."'");
+			if(isset($getCatQry[0])) :
+			$getCatImageUrl = $getCatQry[0]->s3_category_img;
+			?>
 				<div class="related_category_item">
-					<a href="#">
+					<a href="<?php echo get_category_link($re_category->term_id); ?>">
 						<div class="related_category_image">
+						<?php if(isset($getCatImageUrl)) : ?>
 							<img src="
-								<?php bloginfo('template_url'); ?>/images/related-category-1.jpg"/>
+								<?php echo $getCatImageUrl?>" alt="<?php echo $re_category_name ?>" title="<?php echo $re_category_name ?>" class="img img-responsive" heigh="183px" width=183px"/>
+			 			<?php else: ?>
+								<img src="<?php bloginfo('template_url'); ?>/images/no-image.jpg"/>
+						<?php endif; ?>
+
 							</div>
 							<div class="related_category_title">
-								<p>Beach Cruiser Bikes</p>
+								<p><?php echo $re_category->name; ?></p>
 							</div>
 						</a>
 					</div>
+			<?php  endif; endforeach; ?>
 				</div>
-				<div class="col-xs-12 col-sm-12 col-md-12">
-					<div class="related_category_item">
-						<a href="#">
-							<div class="related_category_image">
-								<img src="
-									<?php bloginfo('template_url'); ?>/images/related-category-2.jpg"/>
-								</div>
-								<div class="related_category_title">
-									<p>Beach Covers</p>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
+			</div> 

@@ -6,7 +6,7 @@
      <div class="input-group">
          <input type="url" class="form-control custome-input" id="amazon_product_url" placeholder="Product amazon url">
          <span class="input-group-btn">
-         <button class="btn" type="button" id="getModelBox" style="background-color: #63ccac;color:#fff;" data-toggle="modal" data-target="#productModal" disabled="disabled">Submit URL</button>
+         <button class="btn" type="button" id="getModelBox" style="background-color: #63ccac;color:#fff;  width: 112px;height: 40px;border-radius: 2px;" data-toggle="modal" data-target="#productModal" disabled="disabled">Submit URL</button>
          </span>
 		  </div>
     </div>
