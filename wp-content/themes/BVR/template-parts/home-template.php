@@ -46,13 +46,7 @@ get_template_part('template-parts/bottom-header');
 	<div class="col-xs-12 col-sm-12 col-md-4" style="width:375px;">
 		<div class="item-panel">
 		<div class="row">
-				<?php if($count == 1) { ?>
-				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php bloginfo('template_url');?>/images/raw_black-wallper.jpg');height:160px;width: 346px;background-position: center;margin-left: 15px;">
-				<?php } if($count == 2) { ?>
-					<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php bloginfo('template_url');?>/images/raw_blue_wallpaper.jpg');height:160px;width: 346px;background-position: center;margin-left: 15px;">
-				<?php } if($count == 3) { ?>
-				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php bloginfo('template_url');?>/images/raw_yellow_wallpaper.png');height:160px;width: 346px;background-position: center;margin-left: 15px;">
-				<?php } ?>
+		<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail">
 
 				<img src="<?php echo $firstProdImage ?>"  class="randomImg"/>
 						<div class="item_panel_thumbnail_caption"> 
