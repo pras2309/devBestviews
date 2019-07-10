@@ -23,10 +23,13 @@ get_template_part('template-parts/bottom-header');
 	);
 	$all_categories = get_categories($get_parent_cat);
 	$count = 0;
+	$colorCounter = 0;
 	foreach($all_categories as $single_category):
 		if($single_category->count > 0 ):
 			//for each category their ID
-			$catID = $single_category->cat_ID;   
+			$catID = $single_category->cat_ID;
+			$colorArray = array("#E74C3C","#E67E22","#F1C40F","#2ECC71","#16A085","#3498DB","#9B59B6","#34495E","#7F8C8D");
+
 	?>
 			
 	<?php
@@ -36,8 +39,10 @@ get_template_part('template-parts/bottom-header');
 		<?php
 		}
 			$count = $count + 1;
+			
 			//get 3 product from this subcategory
-			$category_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0  AND subcategory='".esc_sql($single_category->name)."' AND rank <= 3 ORDER BY rank ASC");
+			$category_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0  AND subcategory='".esc_sql($single_category->name)."' LIMIT 3");
+			// print_r($category_products); exit;
 			//get image of related category:
 			$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($single_category->name)."'");
 			$firstProdImage = $category_image_details[0]->s3_category_img;
@@ -46,17 +51,29 @@ get_template_part('template-parts/bottom-header');
 	<div class="col-xs-12 col-sm-12 col-md-4" style="width:375px;">
 		<div class="item-panel">
 		<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail">
-
-				<img src="<?php echo $firstProdImage ?>"  class="randomImg"/>
-						<div class="item_panel_thumbnail_caption"> 
-								<a   href="<?php echo get_category_link($single_category->term_id); ?>"><?php echo $single_category->name; ?></a>
-						</div>
-				</div>
+			<?php
+			for($x=0;$x<=3;$x++){
+				$backgroundColor = $colorArray[$colorCounter+$x];
+				if($colorCounter <= 3):
+					$colorCounter = $colorCounter+1;
+				else:
+					$colorCounter = 0;
+				endif;
+			}
+			
+			?>
+			<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-color:<?php echo $backgroundColor; ?>;">
+						<img src="<?php echo $firstProdImage ?>"  class="randomImg"/>
+							<div class="item_panel_thumbnail_caption"> 
+									<a href="<?php echo get_category_link($single_category->term_id); ?>"><?php echo $single_category->name; ?></a>
+							</div>
+			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12">
 				<ul class="main_item_panel_detail">
 					<?php
-					$firstProdImage = $category_products[0]->image_snippet;
+					if(isset($category_products)):
+						$firstProdImage = $category_products[0]->image_snippet;
+					endif;
 					$i = 0;
 					foreach($category_products as $productInfo):	
 						$i++;
@@ -93,7 +110,7 @@ get_template_part('template-parts/bottom-header');
 		<!-- end of item panel -->
 	</div> <!-- end of col-4 -->
 	<?php if ($count % 3 ==0){  ?>
-		</div><div class="row">
+		</div><div class="row home_product_row">
 	<?php } endif; endforeach; ?>
 	 <!-- end of row -->
 	 
