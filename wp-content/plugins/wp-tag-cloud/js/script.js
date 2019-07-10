@@ -1,11 +1,11 @@
-jQuery(function(){
+// $(document).ready(function(){
 
-    //$(".cloud-tags").prettyTag();
+//       $(".cloud-tags").prettyTag();
+      
+//       $(".tags").prettyTag({
+//         randomColor: true,
+//         tagicon: false,
+      
+//         });
     
-    jQuery(".cloud-tags").prettyTag({
-      randomColor: true,
-      tagicon: false,
-    
-      });
-    
-    }); //jQuery
+//     }); //jQuery

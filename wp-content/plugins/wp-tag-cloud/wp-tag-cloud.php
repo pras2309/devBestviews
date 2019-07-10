@@ -19,13 +19,7 @@ class MTagCloud{
 
 
     public function wtc_scripts(){
-
-	 wp_register_script('wtc-script', plugins_url('/js/jquery.min.js', __FILE__), array('jquery'));
-	//wp_register_script('wtc-script', plugin_dir_url(__FILE__).'js/jquery.min.js');
-        wp_register_script('script1', plugin_dir_url(__FILE__).'js/jquery.prettytag.js');
-	wp_register_script('script2', plugin_dir_url(__FILE__).'js/script.js');
-	wp_enqueue_script('wtc-script');
-        wp_enqueue_script('script1');
+        wp_register_script('script2', plugin_dir_url(__FILE__).'js/script.js');
         wp_enqueue_script('script2');
 
     }

@@ -1,20 +1,28 @@
 <?php 
 global $wpdb;
 $post_id = $atts['post_id'];
-//$post_id = 9010;
-$getTagsQry = $wpdb->get_results("SELECT id, es_id, product_feature FROM dev_bestviews.products WHERE wp_post_id =  $post_id");
-$prod_feature = $getTagsQry[0]->product_feature;
-$product_id = $getTagsQry[0]->id;
-$prod_es_id = $getTagsQry[0]->es_id;
-$feature_list = explode(',', $prod_feature);
+// $post_id = 9010;
+$getTagsQry = $wpdb->get_results("SELECT id, word_freq FROM bestviews.products WHERE wp_post_id =  $post_id");
+if (isset($getTagsQry[0])):
+   $prod_feature_url = trim($getTagsQry[0]->word_freq);
+   $product_id = $getTagsQry[0]->id;
+   $features_collection_json = @file_get_contents($prod_feature_url);
+   $features_collection = json_decode($features_collection_json, true);
+   /* $feature_data = "[".$prod_feature."]";
+   $feature_data = str_replace("'", '"', $feature_data);
+	$feature_data = json_decode($feature_data, true);
+   $feature_data = $feature_data[0];
+   // print_r($feature_data);exit; */
+   
 ?>
 <ul class="cloud-tags">
    <?php 
-      foreach($feature_list as $feature ) : 
-      $feature = str_replace('{', '', $feature);
-      $feature = str_replace('}', '', $feature);
-      $feature = str_replace("'", '', $feature);
+      foreach($features_collection as $k=>$v):
    ?>
-      <li><a href="/tag-template?product=<?php echo $product_id;?>&keyword=<?php echo $feature;?>&code=<?php echo $prod_es_id; ?>" target="_blank"><?php echo ucfirst($feature);?></a> </li>
-   <?php endforeach; ?>
+   <li>
+   <a href="#" style="pointer-events: none; cursor: default;">
+   <?php echo ucfirst($k);?>
+   </a>
+    </li>
+   <?php endforeach; endif; ?>
 </ul>
