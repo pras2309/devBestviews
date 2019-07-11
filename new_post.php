@@ -3,11 +3,11 @@ require_once 'wp-config.php';
 global $wpdb;
 //check wordpress category matched with the product table, and get the category ID from the wordpress table.
 
-$get_product = $wpdb->get_results('SELECT * FROM bestviews.products 
+$get_product = $wpdb->get_results('SELECT * FROM dev_bestviews.products 
 WHERE  wp_post_id = 0 
 AND (s3_output_url IS NOT NULL AND s3_output_url !="") 
 AND s3_input_url IS NOT NULL AND s3_input_url!="" AND subcategory IN ("Cameras","Photo Printers","Smart Tv","Air Purifier","Touch Laptops","Projectors","LED Lightning","Natural Hair","Software","Drones","Camping Hammocks","Floor Lamps","Camping Cots","Camping Pots, Pans & Griddles","Tool Sets","Tablets","Travel Systems","External Hard Drives","Hair Removal","Open Fire Cookware","Computer Memory","Women Hats","Wireless Charging stations","Travel Bags","Patio Furniture Sets","Umbrellas & Shade","Art Supplies","Room Air Conditioners","Internal Hard Drives","Women heels")
-AND image_snippet !='.' AND region!="IND"'); 
+AND image_snippet !="." AND region!="IND"'); 
 
 
 
@@ -61,14 +61,13 @@ AND image_snippet !='.' AND region!="IND"');
         $product_feature = '';
         $prod_tags_list = array();
         if($product->word_freq != ''  && $product->word_freq !=NULL){
-                $prod_feature = trim($product->word_freq);
-                $feature_data = "[".$prod_feature."]";
-                $feature_data = str_replace("'", '"', $feature_data);
-                $feature_data = json_decode($feature_data, true);
-                $feature_data = $feature_data[0];
-                foreach($feature_data as $k=>$v){
-                    array_push($prod_tags_list, $k);
-                }
+            $prod_feature = trim($product->word_freq);
+            $features_collection_json = @file_get_contents($prod_feature);
+            $features_collection = json_decode($features_collection_json, true);
+            foreach($features_collection as $k=>$v){
+                array_push($prod_tags_list, $k);
+            }
+            
         }
         
       
