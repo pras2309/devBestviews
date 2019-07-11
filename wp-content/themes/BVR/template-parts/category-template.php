@@ -20,7 +20,7 @@ $product_category = trim($category_name);
 $get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of this category
-$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($product_category)."'");
+$category_image_details = $wpdb->get_results("SELECT * FROM dev_bestviews.product_category WHERE subcategory_name='".esc_sql($product_category)."'");
 $category_image_url = $category_image_details[0]->s3_category_img;
 function roundoff($n,$bound=0, $sym=""){
 	$l=min((floor(log10($n))),3);
@@ -122,7 +122,7 @@ endif;
 
 			<div class="row" style="margin:0px;">
 				<!-- product list start -->
-			<?php foreach ($get_product_items as $product_item) {
+<?php foreach ($get_product_items as $product_item) {
 				// $prod_summary_url = $product_item->summary_url;
 				// $summary_text = @file_get_contents($prod_summary_url);
 				?>

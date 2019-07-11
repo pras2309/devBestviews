@@ -24,7 +24,7 @@
                         <?php  } }  ?>
 			</div>
 			<div class="col-md-6">
-                <?php 
+                <?php
                 //get the next product link
                 $nextPost = get_next_post(true);
                 if($nextPost){
