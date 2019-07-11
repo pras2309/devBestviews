@@ -53,14 +53,14 @@
 																<span class="icon-bar"></span>
 															</button>
 															<a class="navbar-brand" href="
-																<?php echo esc_url( home_url( '/' ) ); ?>">
+																<?php echo esc_url( home_url( '/india' ) ); ?>">
 																<img src="
 																	<?php bloginfo('template_url'); ?>/images/logo-new.png"/>
 																</a>
 															</div>
 															<!-- Collect the nav links, forms, and other content for toggling -->
 															<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-																<?php wp_nav_menu(array('theme_location'=>'primary', 'menu_class'=> 'nav navbar-nav navbar-right top_menu')); ?>
+																<?php wp_nav_menu(array('theme_location'=>'primary-menu-india', 'menu_class'=> 'nav navbar-nav navbar-right top_menu')); ?>
 																<!-- <ul class="nav navbar-nav navbar-right"><li><a href="#">Art Supplies</a></li><li><a href="#">Detox Tea</a></li><li><a href="#">Men's Sandals</a></li><li><a href="#">Software</a></li><li><a href="#">Wall Art</a></li></ul> -->
 															</div>
 															<!-- /.navbar-collapse -->

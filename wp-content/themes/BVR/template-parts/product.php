@@ -22,7 +22,7 @@
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
 	$product_id = $prodResult->id;
 	
@@ -39,13 +39,6 @@
 		<p class="category_name"><?php echo get_the_category($post->ID)[0]->name; ?></p>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-10 category_thumbnail">
-	<span class="inner-thumnbail">
-	<?php $author_id=$post->post_author; ?>
-		<!-- <img src="https://keenthemes.com/metronic/preview/demo12/assets/media/users/300_25.jpg"/>Samuil Sadovsky -->
-		<?php echo get_avatar( $author_id); ?>
-		<?php ucfirst(the_author_meta( 'user_nicename' , $author_id )); ?>
-	</span>
-
 	<span class="date"><?php echo get_the_date('F j, Y');?></span>
 	</div>
 	</div>
@@ -104,7 +97,7 @@
 	<?php the_content(); ?>
 	<?php 
 	//get product feature and their count
-	/* $feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM bestviews.products WHERE wp_post_id = $post->ID");
+	/* $feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
 	if(isset($feature_details[0])):
 			$feature_details = $feature_details[0];
 			$product_id = $feature_details->id;
@@ -139,7 +132,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="review_block_new">
 					<h5>Would you like us to review a product?</h5>
-					<?php get_template_part('template-parts/amazon-submit'); ?>
+					<?php get_template_part('template-parts/amazon-submit-product'); ?>
 			</div>
 
 		<!-- sidebar would be here -->

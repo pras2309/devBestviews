@@ -6,7 +6,7 @@ get_header();
 //get default product information:
     $prod_id = $_GET['item'];
     
-    $prodDetails = $wpdb->get_results("SELECT image_snippet,s3_gsm_input_uri FROM bestviews.products where id = $prod_id");
+    $prodDetails = $wpdb->get_results("SELECT image_snippet,s3_gsm_input_uri FROM dev_bestviews.products where id = $prod_id");
     if(isset($prodDetails[0])):
         $prodDetailsJson = @file_get_contents($prodDetails[0]->s3_gsm_input_uri);
         $product_image = $prodDetails[0]->image_snippet;

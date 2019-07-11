@@ -6,7 +6,7 @@
                         $pre_post_id = $prevPost->ID;
                         $pre_post_title = $prevPost->post_title;
                         //now get the image from product table
-                        $pre_image_details = $wpdb->get_results("SELECT image_snippet FROM bestviews.products WHERE wp_post_id = $pre_post_id");
+                        $pre_image_details = $wpdb->get_results("SELECT image_snippet FROM dev_bestviews.products WHERE wp_post_id = $pre_post_id");
                         if(isset($pre_image_details[0])){
                         $pre_image_details = $pre_image_details[0];
                         $pre_image_url = $pre_image_details->image_snippet;
@@ -30,7 +30,7 @@
                 if($nextPost){
                 $next_post_id = $nextPost->ID;
                 $next_post_title = $nextPost->post_title;
-                $next_image_details = $wpdb->get_results("SELECT image_snippet FROM bestviews.products WHERE wp_post_id = $next_post_id");
+                $next_image_details = $wpdb->get_results("SELECT image_snippet FROM dev_bestviews.products WHERE wp_post_id = $next_post_id");
                 if(isset($next_image_details[0])){
                 $next_image_details = $next_image_details[0];
                 $next_image_url = $next_image_details->image_snippet;

@@ -4,7 +4,7 @@ Template Name: Submit Affiliate
 */
 get_header();
 require_once 'wp-config.php';
-$getProductDetails = $wpdb->get_results("SELECT * FROM bestviews.products WHERE asin_code IS NOT NULL  AND region = 'IND' ORDER BY rand() LIMIT 1");
+$getProductDetails = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE asin_code IS NOT NULL  AND region = 'IND' ORDER BY rand() LIMIT 1");
 $product_asin_code  = $getProductDetails[0]->asin_code;
 $product_id  = $getProductDetails[0]->id;
 $product_url = $getProductDetails[0]->product_uri;

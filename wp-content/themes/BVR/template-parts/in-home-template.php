@@ -2,7 +2,7 @@
 /*
 Template Name: India Home Page
 */
-get_template_part('home_header');
+get_template_part('india_home_header');
 get_template_part('template-parts/top-header');
 get_template_part('template-parts/bottom-header');
 ?>
@@ -20,7 +20,7 @@ get_template_part('template-parts/bottom-header');
     $count = 0;
 	//get the children category of this category
 	$get_child_cat = array(
-		"child_of" => 31227
+		"child_of" => 2365
 	);
     $child_categories = get_categories($get_child_cat);
     
@@ -35,7 +35,7 @@ get_template_part('template-parts/bottom-header');
 			$child_id = $childCategory->cat_ID;
 			$count = $count + 1;
 			//get 3 product from this subcategory
-			$cate_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0 AND subcategory='".esc_sql($childCategory->name)."' AND rank <= 3 ORDER BY rank ASC");
+			$cate_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id !=0 AND subcategory='".esc_sql($childCategory->name)."' AND rank <= 3 ORDER BY rank ASC");
 			//get image of related category:
 			$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($childCategory->name)."'");
 			$firstProdImage = $category_image_details[0]->s3_category_img;
@@ -296,4 +296,5 @@ get_template_part('template-parts/bottom-header');
 	</div>
 	
 	<?php get_template_part('template-parts/top-footer'); ?>
-	<?php get_footer(); ?>
+	<?php get_template_part('india-footer'); ?>
+	

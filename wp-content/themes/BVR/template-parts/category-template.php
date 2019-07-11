@@ -13,11 +13,11 @@ $category_details = get_queried_object();
 $category_name = $category_details->name;
 $product_category = trim($category_name);
 
-// echo "SELECT * FROM bestviews.products WHERE $query_part AND rank <= 10 ORDER BY rank DESC LIMIT 10 ";
+// echo "SELECT * FROM dev_bestviews.products WHERE $query_part AND rank <= 10 ORDER BY rank DESC LIMIT 10 ";
 // exit;
 //$product_category = str_replace('&amp;','&',$category_name);
 //$product_category = str_replace("s'","'s",  $category_name);
-$get_product_items  = $wpdb->get_results("SELECT * FROM bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
+$get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE subcategory = '".esc_sql($product_category)."' AND rank <= 10 AND wp_post_id !=0 ORDER BY rank ASC LIMIT 10 ");
 $no_of_rows =  $wpdb->num_rows;
 //get image of this category
 $category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($product_category)."'");
@@ -34,7 +34,7 @@ function roundoff($n,$bound=0, $sym=""){
 	$x=round($x);
 	return "$x$sym+";
 }
-$category_details_sem = $wpdb->get_results("SELECT sum(no_of_reviews) as `total_reviews`, DATE_FORMAT(updated_on, '%M %Y') as `updated_on` FROM bestviews.products WHERE subcategory='".esc_sql($product_category)."'");
+$category_details_sem = $wpdb->get_results("SELECT sum(no_of_reviews) as `total_reviews`, DATE_FORMAT(updated_on, '%M %Y') as `updated_on` FROM dev_bestviews.products WHERE subcategory='".esc_sql($product_category)."'");
 if(isset($category_details_sem[0])):
 	$total_reviews = $category_details_sem[0]->total_reviews;
 	$last_updated = $category_details_sem[0]->updated_on;
@@ -87,7 +87,7 @@ endif;
 	<div class="col-xs-12 col-sm-12 col-md-3" >
 			<div class="row category_header_image">
 				<?php if(isset($category_image_url)):  ?>
-					<img src="<?php echo $category_image_url;?>" class="img img-responsive">
+					<img src="<?php echo $category_image_url;?>" height="160px" width="200px">
 				<?php endif; ?>
 					<!-- <div class="col-xs-6 col-sm-6 col-md-6 winner_image">
 							<img src="<?php //bloginfo('template_url'); ?>/images/winner-new.png"/>
@@ -237,7 +237,7 @@ endif;
 							<div class="row">
 								<div class="col-xs-4 col-sm-4 col-md-4 other_products_image">
 								<?php
-	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url, image_snippet FROM bestviews.products WHERE wp_post_id=$post->ID");
+	$get_image = $wpdb->get_results("SELECT product_title, s3_image_url, image_snippet FROM dev_bestviews.products WHERE wp_post_id=$post->ID");
 					if(isset($get_image[0])){
 								$get_image = $get_image[0];
 								 ?>

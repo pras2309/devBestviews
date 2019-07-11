@@ -1,6 +1,6 @@
 <footer class="footer">
 	<div class="container">
-	<?php get_template_part('template-parts/footer-links'); ?>
+	<?php get_template_part('template-parts/india-footer-links'); ?>
 	</div>
 	<div class="container-fluid custome-fluid-container">
 		<div class="row">
@@ -8,7 +8,7 @@
 			<div class="col-xs-12 col-sm-12 col-md-9 right-footer-text">
 				<div class="footer_bottom_links">
 					<ul>
-						<?php wp_nav_menu(array("theme_location"=>"footer-menu")); ?>
+						<?php wp_nav_menu(array("theme_location"=>"footer-menu-india")); ?>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
@@ -29,7 +29,7 @@
 							</div>
 						</div>
 						<div class="col-md-2">
-						
+							
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-5 footer_social_icon">
 							<ul>
@@ -80,15 +80,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 <script>
 
-	$(window).load(function(){
-		$.get("http://ip-api.com/json", function(response) {
+$(window).load(function(){
+	$.get("http://ip-api.com/json", function(response) {
 			var countryCode = response.countryCode;     // "United States"
 			if(countryCode == 'US'){
 				document.cookie = "region=US";
+				<?php
+				if($_COOKIE['region']=="US"){
+					header('Location://bestviewsreviews.com');
+				}
+				?>
 			}
 
 			if(countryCode == 'IN'){
 				document.cookie = "region=IN";
+				<?php
+				if($_COOKIE['region']=="IN"){
+					header('Location://bestviewsreviews.com/india/');
+				}
+				?>
 
 			}
 			}, "jsonp");
@@ -164,6 +174,8 @@
 				
 			});
 			$(document).ready(function(){
+
+
 			$("#asin_clipboard").click(function(){
 				try
 					{
@@ -251,6 +263,8 @@
 			}
 
 			
+
+
 			});
 
 			

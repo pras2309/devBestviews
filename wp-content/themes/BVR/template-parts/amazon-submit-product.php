@@ -1,11 +1,11 @@
-	<p>Submit the product’s URL on Amazon and we’ll tell you everything about the product</p>
-	<img src="<?php bloginfo('template_url'); ?>/images/bg-product.png" class="stay_block_image"/>
+<p>Submit the product’s URL on Amazon and we’ll tell you everything about the product</p>
+	<img src="<?php bloginfo('template_url'); ?>/images/bg-product.png" class="stay_block_image_product"/>
 	<span id="responseMsg"></span>
 	<span id="errorMsg"></span>
 	<div class="form-group custome-form-group">
 	<form id="amazonProductForm" method="post">
      <div class="input-group">
-         <input type="url" class="form-control custome-input" id="amazon_product_url" placeholder="Product amazon url">
+         <input type="url" class="form-control custome-input-product" id="amazon_product_url" placeholder="Product amazon url">
          <span class="input-group-btn">
          <button class="btn" type="button" id="getModelBox" style="background-color: #63ccac;color:#fff;  width: 112px;height: 40px;border-radius: 2px;" data-toggle="modal" data-target="#productModal" disabled="disabled">Submit URL</button>
          </span>

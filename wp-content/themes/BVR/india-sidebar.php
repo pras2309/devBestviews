@@ -24,7 +24,7 @@
 			<?php
         while ($my_query->have_posts()) : $my_query->the_post(); 
         //get post images from product table
-		$getImageDetails = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post->ID and region = 'US' ");
+		$getImageDetails = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post->ID and region = 'IND' ");
 		if(isset($getImageDetails[0])){
         $getImageDetails = $getImageDetails[0];
         $post_image_url = $getImageDetails->image_snippet;

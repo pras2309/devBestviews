@@ -24,7 +24,10 @@ register_nav_menus(
     array(
 		'primary' => __( 'Primary Menu', 'bvr' ),
 		'category_menu' => __('Category Link', 'bvr'),
-        'footer-menu'  => __( 'Footer Menu', 'bvr' ),
+		'footer-menu'  => __( 'Footer Menu', 'bvr' ),
+		//menu for india
+		'primary-menu-india'  => __( 'Top Menu (India)', 'bvr' ),
+		'footer-menu-india'  => __( 'Footer Menu (India)', 'bvr' ),
     )
 );
 /*
@@ -185,7 +188,7 @@ function fetching_product_route() {
 function getProductList() {
 	//get all the product details
 	global $wpdb;
-	$product_details = $wpdb->get_results("SELECT id as `value`, product_title as `label` FROM bestviews.products WHERE wp_post_id != 0 AND region = 'IND' LIMIT 5");
+	$product_details = $wpdb->get_results("SELECT id as `value`, product_title as `label` FROM dev_bestviews.products WHERE wp_post_id != 0 AND region = 'IND' LIMIT 5");
     return rest_ensure_response( $product_details );
 }
 
@@ -204,7 +207,7 @@ function product_details($data) {
 	$params = $data->get_params();
 	$prod_id = $params['id'];
 	//get the product details
-	$product_details = $wpdb->get_results("SELECT s3_gsm_input_uri FROM bestviews.products  WHERE id=$prod_id AND wp_post_id != 0");
+	$product_details = $wpdb->get_results("SELECT s3_gsm_input_uri FROM dev_bestviews.products  WHERE id=$prod_id AND wp_post_id != 0");
 	$product_gsm_url = $product_details[0]->s3_gsm_input_uri;
 	$product_features = @file_get_contents($product_gsm_url);
 	print_r($product_features);

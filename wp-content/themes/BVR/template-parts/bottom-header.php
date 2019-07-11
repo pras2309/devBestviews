@@ -1,9 +1,33 @@
 <?php global $wpdb; ?>
+<?php 
+function prepare_title($title){
+	$ex_title = explode(" ", $title);
+	$character_counter = 0;
+	$space_counter = 0;
+	$product_title = '';
+	foreach($ex_title as $k=>$v){
+		if($character_counter + $space_counter + strlen($v) <= 64){
+			$product_title .= $v." ";
+			$a = strlen($v);
+			$character_counter += $a;
+			$space_counter +=1;
+
+		}
+	}
+	// echo $product_title."<--- string ----> <br>";
+	// echo $title;
+	$tmp = $title." ";
+	if (strcmp($product_title, $tmp) !== 0){
+		$product_title = $product_title." ...";
+	}
+	return $product_title;
+}
+?>
 <div class="main-first">
 	<div class="container">
 	<div class="row">
 	<div class="col-md-6">
-	<?php $first_product = $wpdb->get_results("SELECT * FROM bestviews.products  where wp_post_id != 0 ORDER BY rand() limit 1 "); 
+	<?php $first_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 ORDER BY rand() limit 1 "); 
 			$first_product = $first_product[0];
 			$first_product_post_id = $first_product->wp_post_id;
 			//$first_product_post_id =  273;
@@ -24,13 +48,10 @@
 								<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family: RubikMedium;background-color: #57a3f9;font-size: 13px;"><?php echo $first_product->subcategory; ?></button>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 product_middle_title">
-								<h1 class="camera_title"><a href="<?php echo get_permalink($first_product_post_id); ?>"><?php echo substr($first_product->product_title, 0, 70); ?></a></h1>
+								<h1 class="camera_title">
+									<a title="<?php echo $first_product->product_title; ?>" href="<?php echo get_permalink($first_product_post_id); ?>"><?php echo prepare_title($first_product->product_title); ?></a></h1>
 							</div>
-							<div class="col-xs-12 col-sm-12 col-md-12">
-								 <span class="inner-thumnbail-new">
-								 <?php echo get_avatar( $wp_post_info_first->user_id ); ?>  </span>
-								<!--	<img src="https://keenthemes.com/metronic/preview/demo12/assets/media/users/300_25.jpg"> -->
-								<span class="author_name"><?php echo ucfirst($wp_post_info_first->user_login); ?> </span>
+							<div class="col-xs-12 col-sm-12 col-md-12 product_date">
 								<span class="date-new"><?php echo get_the_date("M, Y", $first_product_post_id); ?></span>
 							</div>
 						</div>
@@ -41,7 +62,7 @@
 		</div>
 	</div>
 	<div class="col-md-6">
-	<?php $second_product = $wpdb->get_results("SELECT * FROM bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id ORDER BY rand() limit 1 "); 
+	<?php $second_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id ORDER BY rand() limit 1 "); 
 			$second_product = $second_product[0];
 			$second_product_post_id = $second_product->wp_post_id;
 		//	$second_product_post_id =  264;
@@ -63,15 +84,10 @@
 	<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family: RubikMedium;background-color: #57a3f9;font-size: 13px;"><?php echo $second_product->subcategory; ?></button>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-	<h1 class="camera_title_new"><a href="<?php echo get_permalink($second_product_post_id); ?>"><?php echo substr($second_product->product_title,0, 70); ?></a></h1>
+	<h1 class="camera_title_new">
+		<a title="<?php echo $second_product->product_title; ?>" href="<?php echo get_permalink($second_product_post_id); ?>"><?php echo prepare_title($second_product->product_title); ?></a></h1>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-	<span class="inner-thumnbail-new">
-			<?php echo get_avatar( $wp_post_info_second->user_id ); ?> 
-	</span>
-			<!--	<img src="https://keenthemes.com/metronic/preview/demo12/assets/media/users/300_25.jpg"> -->
-	<span class="author_name"><?php echo ucfirst($wp_post_info_second->user_login); ?></span>
-	
 	<span class="date-new"><?php echo get_the_date("M, Y", $second_product_post_id); ?></span>
 	</div>
 	</div>
@@ -81,7 +97,7 @@
 	</div>
 	</div>
 	<div class="col-md-12">
-	<?php $third_product = $wpdb->get_results("SELECT * FROM bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id and wp_post_id != $second_product_post_id ORDER BY rand() limit 1 "); 
+	<?php $third_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id and wp_post_id != $second_product_post_id ORDER BY rand() limit 1 "); 
 			$third_product = $third_product[0];
 			$third_product_post_id = $third_product->wp_post_id;
 		//	$third_product_post_id =  131;
@@ -103,15 +119,9 @@
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 	<h1 class="camera_title_new">
-		<a href="<?php  echo get_permalink($third_product_post_id);?>"><?php  echo substr($third_product->product_title,0,70); ?></a></h1>
+		<a title="<?php echo $third_product->product_title; ?>" href="<?php  echo get_permalink($third_product_post_id);?>"><?php  echo prepare_title($third_product->product_title); ?></a></h1>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-	<span class="inner-thumnbail-new">
-			<?php echo get_avatar( $wp_post_info_thrid->user_id ); ?> 
-	</span>
-			<!--	<img src="https://keenthemes.com/metronic/preview/demo12/assets/media/users/300_25.jpg"> -->
-	<span class="author_name"><?php echo ucfirst($wp_post_info_thrid->user_login); ?></span>
-	</span>
 	<span class="date-new"><?php echo get_the_date("M, Y", $third_product_post_id); ?></span>
 	</div>
 	</div>

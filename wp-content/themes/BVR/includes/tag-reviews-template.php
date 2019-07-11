@@ -46,7 +46,7 @@ get_header();
 		    foreach($result as $document){
 		  	 $dataSet  = $document["_source"];
 	    
-	    $getprodInfo = $wpdb->get_results("SELECT * FROM bestviews.products WHERE id = $product_id");
+	    $getprodInfo = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE id = $product_id");
 	//   print_r($getprodInfo); exit;
 	    $wp_post_id = $getprodInfo[0]->wp_post_id;
 

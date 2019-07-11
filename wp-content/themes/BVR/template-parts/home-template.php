@@ -41,14 +41,14 @@ get_template_part('template-parts/bottom-header');
 			$count = $count + 1;
 			
 			//get 3 product from this subcategory
-			$category_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0  AND subcategory='".esc_sql($single_category->name)."' LIMIT 3");
+			$category_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id !=0  AND subcategory='".esc_sql($single_category->name)."' LIMIT 3");
 			// print_r($category_products); exit;
 			//get image of related category:
 			$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($single_category->name)."'");
 			$firstProdImage = $category_image_details[0]->s3_category_img;
 		?>
 	
-	<div class="col-xs-12 col-sm-12 col-md-4" style="width:375px;">
+	<div class="col-xs-12 col-sm-12 col-md-4">
 		<div class="item-panel">
 		<div class="row">
 			<?php
@@ -62,8 +62,7 @@ get_template_part('template-parts/bottom-header');
 			}
 			
 			?>
-			<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-color:<?php echo $backgroundColor; ?>;">
-						<img src="<?php echo $firstProdImage ?>"  class="randomImg"/>
+			<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail2" style="background-image:url('<?php echo $firstProdImage; ?>');">
 							<div class="item_panel_thumbnail_caption"> 
 									<a href="<?php echo get_category_link($single_category->term_id); ?>"><?php echo $single_category->name; ?></a>
 							</div>
@@ -75,8 +74,42 @@ get_template_part('template-parts/bottom-header');
 						$firstProdImage = $category_products[0]->image_snippet;
 					endif;
 					$i = 0;
+					
 					foreach($category_products as $productInfo):	
 						$i++;
+						$title = $productInfo->product_title;
+						$ex_title = explode(" ", $title);
+						$character_counter = 0;
+						$space_counter = 0;
+						$product_title = '';
+						foreach($ex_title as $k=>$v){
+							if($character_counter + $space_counter + strlen($v) <= 64){
+								$product_title .= $v." ";
+								$a = strlen($v);
+								$character_counter += $a;
+								$space_counter +=1;
+
+							}
+						}
+						// echo $product_title."<--- string ----> <br>";
+						// echo $title;
+						$tmp = $title." ";
+						if (strcmp($product_title, $tmp) !== 0){
+							$product_title = $product_title." ...";
+						}
+
+						// if(count($ex_title) > 6){
+						// foreach($ex_title  as $k=>$v){
+						// if($k <= 6){
+						// 		$product_title .= $v." ";
+						// 	}
+						// }
+						// $product_title =  $product_title."...";
+						// }else{
+						// 	$product_title = $title;
+						// }
+						
+						// echo $product_title;
 					?>
 					<li class="product_row">
 						<div class="row">
@@ -88,7 +121,7 @@ get_template_part('template-parts/bottom-header');
 									<?php endif; ?>
 								</div>
 								<div class="col-xs-9 col-sm-9 col-md-9">
-								<a href="<?php echo get_permalink($productInfo->wp_post_id); ?>" class="main_item_link"><?php echo ucfirst($productInfo->product_title); ?></a>
+								<a title="<?php echo $title;  ?>" href="<?php echo get_permalink($productInfo->wp_post_id); ?>" class="main_item_link"><?php echo ucfirst($product_title); ?></a>
 								</div>
 						</div>
 						<?php if ($i <= 2): ?>
