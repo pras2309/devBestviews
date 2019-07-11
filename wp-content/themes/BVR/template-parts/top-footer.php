@@ -61,7 +61,7 @@
 							<?php if(isset($cate_image_url)) : ?>
 							<img src="<?php echo $cate_image_url; ?>" height="183px">
 							<?php else : ?>
-							<img src="<?php bloginfo('template_url'); ?>/images/jw_no-image_3.jpg"/>
+							<img src="<?php bloginfo('template_url'); ?>/images/jw_no-image_3.jpg" height="183px"/>
 							<?php endif; ?>
 							</div>
 							<div class="related_category_title">
