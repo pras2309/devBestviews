@@ -275,7 +275,7 @@ CONTENT;
                          <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"/>
                       </div>
                       <div class="count">
-                         <p>$reviews_positive_sentiment_last_6_months</p>
+                         <p>$percent_reviews_positive_sentiment_last_6_months</p>
                       </div>
                       <div class="remark">
                          <p>Positive</p>
@@ -297,7 +297,7 @@ CONTENT;
                          <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"/>
                       </div>
                       <div class="count">
-                         <p>$reviews_negative_sentiment_last_6_months</p>
+                         <p>$percent_reviews_negative_sentiment_last_6_months</p>
                       </div>
                       <div class="remark">
                          <p>Negative</p>
@@ -482,7 +482,7 @@ $publish_post_metadata  =  json_decode($return, true);
 
 $post_id =  $publish_post_metadata['id'];
 if($post_id){
-$update_product_table = $wpdb->query($wpdb->prepare("UPDATE bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
+$update_product_table = $wpdb->query($wpdb->prepare("UPDATE dev_bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
 }else{
 	echo "No Product to publish";
 }
