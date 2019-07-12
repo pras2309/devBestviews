@@ -9,12 +9,17 @@
     
     if ($tags) {
         $first_tag = $tags[0]->term_id;
-        $args=array(
+        /* $args=array(
         'tag__in' => array($first_tag),
         'post__not__in' => array($post->ID),
         'posts_per_page'=>5,
        // 'caller_get_posts'=>1
-        );
+); */
+	$args = array(
+	'category__in' => wp_get_post_categories( $post->ID ), 
+        'posts_per_page'  => 5, 
+        'post__not_in' => array( $post->ID ) 	
+	);
         $my_query = new WP_Query($args);
         
         if( $my_query->have_posts() ) {

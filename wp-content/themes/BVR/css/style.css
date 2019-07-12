@@ -117,7 +117,7 @@ body{background:#f8f8f8;font-family: "LatoLatin", sans-serif; font-weight: norma
 .previous-section img{padding: 20px; width:145px;}
 .next-section img{padding: 20px; width:145px; }
 /*.winner{border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;}*/
-.winner{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:40px;}
+.winner{width: 80px;height: 99px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:40px;}
 /*.winner-content p{padding-top: 20px;padding-bottom: 15px;margin: 0px;margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2.2;letter-spacing: normal;font-family: RubikLight;}*/
 .winner-content p{margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2;letter-spacing: normal;font-family: RubikLight;padding-top: 7px;}
 .winner-footer p{margin:0px;background:#f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform:uppercase;}
@@ -175,6 +175,7 @@ width: 336px;
     border-radius: 4px;
     background-color: #ffffff;
 }
+.winner-content{height:64px;margin-top:20px;}
 .other_products_detail a{padding:10px;display:block;}
 .other_products_detail:hover{box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.05);background-color: #ffffff;display:block;padding:10px;}
 .other_products_detail_title{margin-top:0px;font-family: RubikRegular;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;}
@@ -224,7 +225,7 @@ width: 336px;
 	top: 0px;
     left: 763px;
   }
-
+.category_thumbnail{ width:150px;margin-top:18px;} 
   .stay_block_image_two{
 	width: 99px;
 	height: 100px;
@@ -249,7 +250,7 @@ width: 336px;
 .remark_image_winner { height: 96px;}
 .remark_image_winner img{text-align:center;width: 100%!important;position: relative;top: 11px;left: -61px;}
 .remarkwinner{width: 80px;height: 96px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -81px;text-align:center}
-.remarkwinner-content{margin-top:23px;}
+.remarkwinner-content{margin-top:15px;}
 .remarkwinner-content p{font-family: RubikRegular;
 font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
 .remarkwinner-footer{ margin-top:14px;}
@@ -289,7 +290,8 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 	.product_detail_score {margin-top: 20px; width: 200px; margin-left: 75px;}
 	.product_list_row{padding:10px;display:inline-block;}
 	.sixth-row{margin-bottom: 30px;}
-	.winner{width:100%;height:100%;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:0px;}
+	.winner{width:80px;height:100%;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:0px;}
+	.winner-content{ height:77px; margin-top:8px; }
 	.winner-content p{padding-top: 20px;padding-bottom: 15px;margin: 0px;margin: 0px;color: #bbbfc0;font-size: 25px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 2.2;letter-spacing: normal;font-family: RubikLight;}
 	.mobile-view-image{margin-left: auto;margin-right: auto;}
 	.previous-section-content{padding:0px 20px;}
@@ -302,7 +304,7 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 	.next-link-1 h5{color:#53565b;line-height:23px;padding-top: 13px;text-align:left;padding-left:10px;}
 	.next-link-2{color:#57a3f9;font-weight:bold;text-align:left;float:left;padding-left: 10px;padding-bottom: 10px;}
 	.inner-thumnbail{padding: 15px;display:inline-block;}
-	.winner_image img{width:50%!important;top:18px;left:0px;}
+	.winner_image img{width:20%!important;top:9px;left:-38px;}
 	.score_image{margin-bottom: 30px;} 
 	.score_image img{width:100%;}
 	.small-slide{padding-right: 0px;}
@@ -452,7 +454,7 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 		background-color: #57a3f9;
 		padding: 7px 0px 4px 14px;
 	}
-	.category_thumbnail { width: 385px;}
+	.category_thumbnail { width: 150px;}
 	.footer_info {  width: 332px; }
 	.footer_social_icon {
 		margin-left: -7px;
@@ -484,7 +486,7 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 	.winner_image img{left:15px;}
 	.product_detail { width:430px;}
 	.rectangle { width:111px; margin:16px;}
-	.category_thumbnail { width: 385px;}
+	.category_thumbnail { width: 150px;}
 	.custome-input { width: 282px !important;}
 	.stay_block { left:0px;}
 	.stay_block_image { display: none;}

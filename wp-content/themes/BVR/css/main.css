@@ -19,7 +19,6 @@ body{background:#f8f8f8;font-family: "LatoLatin", sans-serif; font-weight: norma
 }
 .left-content-section { width: 656px; height:auto;}
 .right-content-section { width: 464px; height: auto;}
-
 .footer{text-align:center;padding:30px 0px;color:#7e7e7e;font-size:13px;}
 .footer-list{margin:50px 0px;}
 .footer_link ul li{list-style:none;}
@@ -244,6 +243,8 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 
 /* smart phones css */
 @media screen and (min-width:320px) and (max-width:600px){
+	.left-content-section { width: 391px; height:613px}
+	.right-content-section {  width: 391px; height:536px; } 
 	.related_category_item_main{margin-bottom:10px;margin-top:10px;}
 	.best_views_middle_content{height:auto;}
 	.stay_block{top:25px}

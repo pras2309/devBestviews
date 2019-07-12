@@ -26,7 +26,7 @@ function prepare_title($title){
 <div class="main-first">
 	<div class="container">
 	<div class="row">
-	<div class="col-md-6">
+	<div class="col-md-6 left-content-section">
 	<?php $first_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 ORDER BY rand() limit 1 "); 
 			$first_product = $first_product[0];
 			$first_product_post_id = $first_product->wp_post_id;
@@ -61,7 +61,7 @@ function prepare_title($title){
 	
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6 right-content-section">
 	<?php $second_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 and wp_post_id != $first_product_post_id ORDER BY rand() limit 1 "); 
 			$second_product = $second_product[0];
 			$second_product_post_id = $second_product->wp_post_id;

@@ -62,7 +62,7 @@ get_template_part('template-parts/bottom-header');
 			}
 			
 			?>
-			<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail2" style="background-image:url('<?php echo $firstProdImage; ?>');">
+			<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php echo $firstProdImage; ?>');">
 							<div class="item_panel_thumbnail_caption"> 
 									<a href="<?php echo get_category_link($single_category->term_id); ?>"><?php echo $single_category->name; ?></a>
 							</div>
