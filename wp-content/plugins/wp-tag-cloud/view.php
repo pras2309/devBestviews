@@ -8,6 +8,7 @@ if (isset($getTagsQry[0])):
    $product_id = $getTagsQry[0]->id;
    $features_collection_json = @file_get_contents($prod_feature_url);
    $features_collection = json_decode($features_collection_json, true);
+   unset($features_collection['total_number_of_reviews']);
    /* $feature_data = "[".$prod_feature."]";
    $feature_data = str_replace("'", '"', $feature_data);
 	$feature_data = json_decode($feature_data, true);

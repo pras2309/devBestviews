@@ -188,7 +188,7 @@ function fetching_product_route() {
 function getProductList() {
 	//get all the product details
 	global $wpdb;
-	$product_details = $wpdb->get_results("SELECT id as `value`, product_title as `label` FROM dev_bestviews.products WHERE wp_post_id != 0 AND region = 'IND' LIMIT 5");
+	$product_details = $wpdb->get_results("SELECT id as `value`, product_title as `label` FROM bestviews.products WHERE wp_post_id != 0 AND region = 'IND' LIMIT 5");
     return rest_ensure_response( $product_details );
 }
 
@@ -207,7 +207,7 @@ function product_details($data) {
 	$params = $data->get_params();
 	$prod_id = $params['id'];
 	//get the product details
-	$product_details = $wpdb->get_results("SELECT s3_gsm_input_uri FROM dev_bestviews.products  WHERE id=$prod_id AND wp_post_id != 0");
+	$product_details = $wpdb->get_results("SELECT s3_gsm_input_uri FROM bestviews.products  WHERE id=$prod_id AND wp_post_id != 0");
 	$product_gsm_url = $product_details[0]->s3_gsm_input_uri;
 	$product_features = @file_get_contents($product_gsm_url);
 	print_r($product_features);
@@ -271,3 +271,36 @@ function fetching_category_urls() {
                 )
             );
 }
+
+
+function bvr_startSession() {
+    if(!session_id()) {
+        session_start();
+    }
+}
+add_action('init', 'bvr_startSession', 1);
+
+
+function prepare_title($title){
+	$ex_title = explode(" ", $title);
+	$character_counter = 0;
+	$space_counter = 0;
+	$product_title = '';
+	foreach($ex_title as $k=>$v){
+		if($character_counter + $space_counter + strlen($v) <= 64){
+			$product_title .= $v." ";
+			$a = strlen($v);
+			$character_counter += $a;
+			$space_counter +=1;
+
+		}
+	}
+	// echo $product_title."<--- string ----> <br>";
+	// echo $title;
+	$tmp = $title." ";
+	if (strcmp($product_title, $tmp) !== 0){
+		$product_title = $product_title." ...";
+	}
+	return $product_title;
+}
+add_action('init', 'prepare_title');

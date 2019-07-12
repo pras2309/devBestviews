@@ -7,7 +7,7 @@
 	<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image"/>
 	<div class="form-group custome-form-group">
       <div class="input-group">
-         <input type="email" class="form-control custome-input" placeholder="Your eamil address">
+         <input type="email" class="form-control custome-input" placeholder="Your email address">
          <span class="input-group-btn">
          <button class="btn stay_btn" type="submit" style="background-color: #57a3f9;color:#fff;  width: 112px;height: 40px;border-radius: 2px;">Subscribe now</button>
          </span>
@@ -29,48 +29,33 @@
 			</div>
 		</div>
 	</section>
-	
+	<?php
+	if(isset($_SESSION["recentlyViewed"]) && !empty($_SESSION["recentlyViewed"])){
+	$criteria = (isset($_SESSION["recentlyViewed"])?implode(", ",$_SESSION["recentlyViewed"]):"-1");
+	//get current post and store them into session.
+	$getRecentViewedProduct = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id IN ($criteria)");
+	?>
 	<section class="related_category">
 	<div class="container">
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12">
-	<h4>Related Categories</h4>
+	<h4>Recently Viewed Products</h4>
 	</div>
 	</div>
-	<?php
-	$cat_args   = array(
-		'orderby' => 'rand',
-		'order' => 'ASC'
-	);
-	$categories = get_categories($cat_args);
-	shuffle( $categories );
-	$categories = array_slice( $categories, 1, 4 );
-?>
-
 	<div class="row">
-		<?php foreach($categories as $category) : 
-			$category_name = trim($category->name);
-			$getCatDetails = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name = '".esc_sql($category_name)."'");
-			if(isset($getCatDetails[0])):
-				$cate_image_url = $getCatDetails[0]->s3_category_img;
-		?>
+	<?php  foreach($getRecentViewedProduct as $recentProduct): ?>
 			<div class="col-xs-12 col-sm-12 col-md-3">
 					<div class="related_category_item_main">
-							<a href="<?php echo get_category_link($category->term_id); ?>">
 							<div class="related_category_image">
-							<?php if(isset($cate_image_url)) : ?>
-							<img src="<?php echo $cate_image_url; ?>" height="183px">
-							<?php else : ?>
-							<img src="<?php bloginfo('template_url'); ?>/images/jw_no-image_3.jpg" height="183px"/>
-							<?php endif; ?>
+							<?php echo $recentProduct->image_snippet; ?>
 							</div>
 							<div class="related_category_title">
-							<p><?php echo $category->name; ?></p>
-							</div>
-							</a>
+							<p><a href="<?php echo get_permalink($recentProduct->wp_post_id); ?>"><?php echo prepare_title($recentProduct->product_title); ?></a></p>
+							</div>							
 					</div>
 			</div>
-			<?php endif; endforeach; ?>
+	<?php endforeach; ?>
 	</div>
 	</div>
 	</section>
+	<?php } ?>

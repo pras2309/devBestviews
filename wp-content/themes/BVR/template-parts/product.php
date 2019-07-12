@@ -22,7 +22,7 @@
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
 	$product_id = $prodResult->id;
 	
@@ -97,7 +97,7 @@
 	<?php the_content(); ?>
 	<?php 
 	//get product feature and their count
-	/* $feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM dev_bestviews.products WHERE wp_post_id = $post->ID");
+	/* $feature_details = $wpdb->get_results("SELECT id, word_freq, es_id FROM bestviews.products WHERE wp_post_id = $post->ID");
 	if(isset($feature_details[0])):
 			$feature_details = $feature_details[0];
 			$product_id = $feature_details->id;
@@ -127,6 +127,27 @@
 			<p><?php esc_html_e( 'Sorry, no posts matched your criteria.' ); ?></p>
 	<?php endif; ?>
 	<hr/>
+	<?php
+	//setting up recently viewed products
+	if(!isset($_SESSION['recentlyViewed'])){
+		$_SESSION['recentlyViewed']  = array();		
+	}
+	#no of product want to display
+	$noOfProduct = 4;
+	//store the current product into session list of recently viewed.
+	if(isset($post->ID) && $post->ID <> ""){
+		if (in_array($post->ID, $_SESSION["recentlyViewed"])) { // if product id is already in the array
+			$_SESSION["recentlyViewed"] = array_diff($_SESSION["recentlyViewed"],array($post->ID)) ; // remove it
+			$_SESSION["recentlyViewed"] = array_values($_SESSION["recentlyViewed"]); //optionally, re-index the array
+		}
+		if(count($_SESSION['recentlyViewed']) >= $noOfProduct ){
+			$_SESSION["recentlyViewed"] = array_slice($_SESSION["recentlyViewed"],1);
+			array_unshift($_SESSION["recentlyViewed"],$post->ID);
+		}else{
+			array_unshift($_SESSION["recentlyViewed"],$post->ID);	
+		}	
+	}
+	?>
 	<?php get_template_part('template-parts/next-previous') ?>
 		<div class="row sixth-row">
 			<div class="col-xs-12 col-sm-12 col-md-12">
@@ -134,6 +155,7 @@
 					<h5>Would you like us to review a product?</h5>
 					<?php get_template_part('template-parts/amazon-submit-product'); ?>
 			</div>
+		
 
 		<!-- sidebar would be here -->
 		<?php get_sidebar(); ?>
