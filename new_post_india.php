@@ -225,7 +225,7 @@ $content =<<<CONTENT
 CONTENT;
         if($product_image_url){                
             $content .=<<<CONTENT
-                  $product_image_url
+                $product_image_url
 CONTENT;
         }else {
            $content .=<<<CONTENT
@@ -299,20 +299,19 @@ CONTENT;
          </div>
       </div>
 CONTENT;
-        if($product_description){
-        $content .=<<<CONTENT
-          <div class="row fourth-row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                <h4 class="related_post_title">Product Description</h4>
-                    <div class="detail-text">
-                        $product_description
-                    </div>
+    if($product_description){
+    $content .=<<<CONTENT
+      <div class="row fourth-row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+            <h4 class="related_post_title">Product Description</h4>
+                <div class="detail-text">
+                    $product_description
                 </div>
-          </div>
+            </div>
+      </div>
 CONTENT;
-        }
-        $content .=<<<CONTENT
-          <div class="row second-row">
+    }
+    $content .=<<<CONTENT
       <div class="row second-row">
          <div class="col-md-5" style="text-align:center;">
             <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
@@ -383,6 +382,7 @@ CONTENT;
             <div class="detail-text">
 CONTENT;
 if($decode_json->top_positive_reviews){
+        $min = 0;
         foreach($decode_json->top_positive_reviews as $positive_review){
             $review_text = '';
             $positive_review_date = '';
