@@ -63,14 +63,13 @@ ORDER BY subcategory ASC');
         $product_feature = '';
         $prod_tags_list = array();
         if($product->word_freq != ''  && $product->word_freq !=NULL){
-                $prod_feature = trim($product->word_freq);
-                $feature_data = "[".$prod_feature."]";
-                $feature_data = str_replace("'", '"', $feature_data);
-                $feature_data = json_decode($feature_data, true);
-                $feature_data = $feature_data[0];
-                foreach($feature_data as $k=>$v){
-                    array_push($prod_tags_list, $k);
-                }
+            $prod_feature = trim($product->word_freq);
+            $features_collection_json = @file_get_contents($prod_feature);
+            $features_collection = json_decode($features_collection_json, true);
+            foreach($features_collection as $k=>$v){
+                array_push($prod_tags_list, $k);
+            }
+            
         }
 
         
