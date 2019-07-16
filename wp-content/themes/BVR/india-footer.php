@@ -85,21 +85,10 @@ $(window).load(function(){
 			var countryCode = response.countryCode;     // "United States"
 			if(countryCode == 'US'){
 				document.cookie = "region=US";
-				<?php
-				if($_COOKIE['region']=="US"){
-					header('Location://bestviewsreviews.com');
-				}
-				?>
 			}
 
 			if(countryCode == 'IN'){
 				document.cookie = "region=IN";
-				<?php
-				if($_COOKIE['region']=="IN"){
-					header('Location://bestviewsreviews.com/india/');
-				}
-				?>
-
 			}
 			}, "jsonp");
 		});
@@ -189,9 +178,6 @@ $(window).load(function(){
 			});
 
 			
-				$('.selectpicker').selectpicker();
-
-			
 
 
 			//copy for product uri
@@ -217,52 +203,7 @@ $(window).load(function(){
 				});
 
 			
-			$("#compareProduct").click(function(){
-				//alert("Awww You have clicked me! ");
-			});
-
-			//change text and href of region menu:
-			$(".region").click(function(){
-				alert("Welcome");
-			});
-			
-		});
-
-
-		$( "#product_one" ).autocomplete({
-			source: function(request, response) {
-					$.ajax({
-				type:"GET",
-				url: "/wp-json/product/product-list/",
-				success: function(data) {
-				response(data.map(function(val) {
-				return {
-					label: val.label,
-					value: val.label,
-					id : val.value
-				}
-				}));
-				}
-			});
-			},
-			change:function(event, ui){
-				var product_id = ui.item.id;
-				var product_name = ui.item.value;
-				$.ajax({
-					type:"POST",
-					url: "/wp-json/product/product-info/",
-					data: {"id":product_id, "product_name":product_name},
-					success:function(response){
-						var resp = response.responseText;
-						console.log(resp);
-						$("#product_one_details").html(resp);
-						$("#product_one_details").css("display", "block");
-					}
-					
-				});
-			}
-
-			
+		
 
 
 			});
@@ -275,10 +216,5 @@ $(window).load(function(){
 		<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 		<![endif]-->
 
-<!-- livezilla.net PLACE SOMEWHERE IN BODY -->
-<script type="text/javascript" 
-	id="lzdefsc" src="//bestviewsreviews.com/livezilla/script.php?id=lzdefsc" defer>
-</script>
-<!-- livezilla.net PLACE SOMEWHERE IN BODY -->
 <?php wp_footer(); ?>
 </body></html>

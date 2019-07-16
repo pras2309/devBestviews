@@ -304,3 +304,28 @@ function prepare_title($title){
 	return $product_title;
 }
 add_action('init', 'prepare_title');
+
+
+function prepare_title_recent_product($title){
+	$ex_title = explode(" ", $title);
+	$character_counter = 0;
+	$space_counter = 0;
+	$product_title = '';
+	foreach($ex_title as $k=>$v){
+		if($character_counter + $space_counter + strlen($v) <= 40){
+			$product_title .= $v." ";
+			$a = strlen($v);
+			$character_counter += $a;
+			$space_counter +=1;
+
+		}
+	}
+	// echo $product_title."<--- string ----> <br>";
+	// echo $title;
+	$tmp = $title." ";
+	if (strcmp($product_title, $tmp) !== 0){
+		$product_title = $product_title." ...";
+	}
+	return $product_title;
+}
+add_action('init', 'prepare_title');

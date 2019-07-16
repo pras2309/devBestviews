@@ -13,7 +13,7 @@
 		</div>
 		<?php 
 		//get all the parent categories
-		$categories = get_categories(array("parent"=>0, "number"=>40, "order"=>"ASC"));
+		$categories = get_categories(array("parent"=>0, "number"=>40, "order"=>"ASC", "exclude"=>24282));
 		$count = 0;
 		foreach($categories as $categoryList):
 			//get all the parent categories of this category

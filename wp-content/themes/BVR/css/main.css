@@ -1,5 +1,5 @@
 *{margin:0px;padding:0px;}
-body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: normal; font-style: normal;}
+body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: 400; font-style: normal;}
 .main-first{background:#fff;}
 .order-list{padding: 15px;}
 .order-list li{list-style:none;padding: 10px 20px;font-size: 15px;border-bottom: 1px solid #f5f5f5;}
@@ -9,8 +9,8 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: normal; f
 .header{background: #33325a;}
 .navbar{margin-bottom:10px!important;margin-top:15px!important;}
 .navbar-default{background-color: transparent!important;border-color: transparent!important;}
-.navbar-default .navbar-nav>li>a{font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: 0;color: #ffffff!important;font-family: "Rubik", sans-serif;}
-.navbar-default .navbar-nav>li>a:hover .navbar-default .navbar-nav>li>a:focus{font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: 0;color: #ffffff!important;font-family: "Rubik", sans-serif;}
+.navbar-default .navbar-nav>li>a{font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: 0;color: #ffffff!important;font-family: RubikMedium;}
+.navbar-default .navbar-nav>li>a:hover .navbar-default .navbar-nav>li>a:focus{font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: 0;color: #ffffff!important;font-family: RubikMedium;}
 .navbar-brand{padding: 8px 16px}
 .navbar-brand img{width:54%!important;}
 .navbar-nav>li>a {
@@ -22,32 +22,32 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: normal; f
 .footer{text-align:center;padding:30px 0px;color:#7e7e7e;font-size:13px;}
 .footer-list{margin:50px 0px;}
 .footer_link ul li{list-style:none;}
-.footer_link a{padding:5px;display:block;text-align:left;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #5e5e5e;text-decoration:none;}
+.footer_link a{padding:5px;display:block;text-align:left;font-family: 'Rubik', sans-serif;font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #5e5e5e;text-decoration:none;}
 .footer_link a:hover{text-decoration:none;}
 .footer_bottom_links ul li{list-style:none;}
-.footer_bottom_links ul li a{float:left;padding:10px;display:inline-block;font-family: "Rubik", sans-serif;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c32;text-decoration:none;}
+.footer_bottom_links ul li a{float:left;padding:10px;display:inline-block;font-family: RubikMedium;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: normal;color: #292c32;text-decoration:none;}
 .footer_bottom_links ul li a:hover{text-decoration:none;}
-.right-footer-text p{text-align:left;font-family: RubikRegular;font-size: 18px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.33;letter-spacing: normal;color: #5e5e5e;}
-.notify_div p{text-align:left;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #5e5e5e;padding-top:20px;}
+.right-footer-text p{text-align:left;font-family: 'Rubik', sans-serif;font-size: 18px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.33;letter-spacing: normal;color: #5e5e5e;}
+.notify_div p{text-align:left;font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #5e5e5e;padding-top:20px;}
 .footer-text{margin: 20px 0px;}
 .footer-lower-text{margin:10px 0px;}
-.footer-lower-text p{font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.83;letter-spacing: normal;text-align: left;color: #a1a1a1;}
+.footer-lower-text p{font-family: 'Rubik', sans-serif;font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.83;letter-spacing: normal;text-align: left;color: #a1a1a1;}
 .footer-lower-text-new{margin-top:80px;}
-.footer-lower-text-new p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.83;letter-spacing: normal;text-align: left;color: #a1a1a1;}
-.footer-text p{line-height: 25px;opacity: 0.7;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;letter-spacing: normal;color: #5e5e5e;}
+.footer-lower-text-new p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.83;letter-spacing: normal;text-align: left;color: #a1a1a1;}
+.footer-text p{line-height: 25px;opacity: 0.7;font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;letter-spacing: normal;color: #5e5e5e;}
 .footer_social_icon { margin-left:-29px;}
 .footer_social_icon ul li{list-style:none;float:left;}
 .footer_social_icon ul li a{text-decoration:none;color: #57a3f9;padding:10px;font-size:20px;}
 .footer_social_icon ul li a:hover{text-decoration:none;color: #57a3f9;}
 .social_icons{text-align:center;margin: 10px 0px;}
-.subscription_div p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;padding:10px 0px;}
-
+.subscription_div p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;padding:10px 0px;}
+.product_date { margin-top:32px;}
 
 .small-slide img{width:100%;padding-left:20px;padding-bottom:10px;}
 .previous-section img{padding: 20px;}
-.inner-thumnbail{color:#fff;font-size: 14px;font-weight: 500;font-family: RubikRegular;}
+.inner-thumnbail{color:#fff;font-size: 14px;font-weight: 500;font-family: 'Rubik', sans-serif;}
 .inner-thumnbail img{align-self: center; max-height: 34px;border-radius: 100%;padding: 0px 12px;display:inline-block;}
-.date{color:#fff;padding:0px 13px;font-size: 14px;font-weight: 500;font-family: RubikRegular;opacity: 0.6;}
+.date{color:#fff;padding:0px 13px;font-size: 14px;font-weight: 500;font-family: 'Rubik', sans-serif;opacity: 0.6;}
 .first-middle-section{padding: 74px 20px;}
 .first-middle-section-content {
 	margin-top: 234px;
@@ -57,16 +57,16 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: normal; f
 .product_middle_title { height:150px;}
 
 .camera_title{margin:10px;}
-.camera_title a{color: #fff;font-weight: 500;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: "Rubik", sans-serif;cursor:pointer;text-decoration:none;}
-.camera_title a:hover{color: #fff;font-weight: normal;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: "Rubik", sans-serif;cursor:pointer;text-decoration:none;}
+.camera_title a{color: #fff;font-weight: 500;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: RubikMedium;cursor:pointer;text-decoration:none;}
+.camera_title a:hover{color: #fff;font-weight: 400;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: RubikMedium;cursor:pointer;text-decoration:none;}
 
-.inner-thumnbail-new{color:#fff;font-size: 16px;font-weight: 500;font-family: RubikRegular;}
+.inner-thumnbail-new{color:#fff;font-size: 16px;font-weight: 500;font-family: 'Rubik', sans-serif;}
 .inner-thumnbail-new img{align-self: center; max-height: 32px;border-radius: 100%;display:inline-block; height:32px !important; width:32px !important; margin-left:11px;}
 .author_name{ width: 97px;
 	height: 19px;
-	font-family: RubikRegular;
+	font-family: 'Rubik', sans-serif;
 	font-size: 16px;
-	font-weight: normal;
+	font-weight: 400;
 	font-style: normal;
 	font-stretch: normal;
 	line-height: normal;
@@ -74,16 +74,16 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: normal; f
 	color: #ffffff;
 	margin-left:9px;
 }
-.date-new{color:#fff;padding:0px 13px;font-size: 12px;font-weight: 500;font-family: RubikRegular;opacity: 0.6;}
+.date-new{color:#fff;padding:0px 13px;font-size: 12px;font-weight: 500;font-family: 'Rubik', sans-serif;opacity: 0.6;}
 .second-middle-section{padding:62px 20px;display:inline-block;}
 .third-middle-section{padding:80px 20px;display:inline-block;}
 .camera_title_new{margin:10px;}
-.camera_title_new a{color: #fff;font-weight: normal;line-height: 1.25;font-size: 24px;font-weight: normal;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: "Rubik", sans-serif;text-decoration:none;}
+.camera_title_new a{color: #fff;font-weight: 400;line-height: 1.25;font-size: 24px;font-weight: 400;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: RubikMedium;text-decoration:none;}
 
-.camera_title_new a:hover{color: #fff;font-weight: normal;line-height: 1.25;font-size: 24px;font-weight: normal;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: "Rubik", sans-serif;text-decoration:none;}
+.camera_title_new a:hover{color: #fff;font-weight: 400;line-height: 1.25;font-size: 24px;font-weight: 400;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: RubikMedium;text-decoration:none;}
 
 .category_title{margin-top: 50px;}
-.category_title h4{font-family: "Rubik", sans-serif;font-size: 36px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.22;letter-spacing: normal;color: #292c32;}
+.category_title h4{font-family: RubikMedium;font-size: 36px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.22;letter-spacing: normal;color: #292c32;}
 .item-panel{width:344px; background:#fff;margin:43px 0px;border-radius: 4px;box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.05);background-color: #ffffff;}
 .footer{margin-top:50px;}
 
@@ -114,79 +114,79 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: normal; f
 .main_item_panel_detail{padding: 20px;}
 .main_item_panel_detail li{list-style:none;padding:15px 0px;}
 .main_item_panel_detail li:last-child{border-bottom: 0px;}
-.main_item_link{text-decoration:none;cursor:pointer;font-family: "Rubik", sans-serif;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;}
+.main_item_link{text-decoration:none;cursor:pointer;font-family: RubikMedium;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;}
 .main_item_link:hover{text-decoration:none;color:#57a3f9;}
 .custome_category_image{padding:5px;}
 .mobile-view-image{width:100%;}
 
 .other_products_main{margin-top: 30px;}
 .other_products_main h4{text-align:center;font-family: RubikBold;font-size: 17px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;color: #292c31;padding:40px 0px;}
-.other_products_main img{width:100%;}
+
 .other_products_detail{margin-bottom:20px;}
 .other_products_detail a{padding:10px;display:inline-block;}
 .other_products_detail a:hover{box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.05);background-color: #ffffff;display:inline-block;padding:10px;}
-.other_products_detail_title{font-family: RubikRegular;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;}
+.other_products_detail_title{font-family: 'Rubik', sans-serif;font-size: 12px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #292c32;}
 .other_products_detail a:hover .other_products_detail_title{color:#57a3f9;}
 .stay_block{border-radius: 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(63deg, #342e54, #054a91);background-color: #054a91;padding: 20px 40px;
  position: relative;top:100px;}
-.stay_block h5{font-family: "Rubik", sans-serif;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
-.stay_block p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
+.stay_block h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
+.stay_block p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
 .stay_block_new{border-radius: 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);padding: 20px 40px;
  position: relative;top:100px;background-color:#3589a9;}
-.stay_block_new h5{font-family: "Rubik", sans-serif;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
-.stay_block_new p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
-.custome-email{  opacity: 0.5;font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
+.stay_block_new h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
+.stay_block_new p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
+.custome-email{  opacity: 0.5;font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
 .custome-div{padding-left:0px;}
-.sub_button{border-radius: 2px;background-color: #57a3f9; font-family: "Rubik", sans-serif;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;text-align: center;color: #ffffff;}
+.sub_button{border-radius: 2px;background-color: #57a3f9; font-family: RubikMedium;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;text-align: center;color: #ffffff;}
 .sub_button:hover{color: #ffffff;}
 .custome-form-group{padding-bottom:40px;}
 
 .review_block_new{border-radius:0px 0px 12px 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);padding: 20px 40px;
  }
-.review_block_new h5{font-family: "Rubik", sans-serif;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
-.review_block_new p{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
-.custome-email{font-family: RubikRegular;font-size: 14px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
+.review_block_new h5{font-family: RubikMedium;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
+.review_block_new p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
+.custome-email{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
 .custome-div{padding-left:0px;}
-.sub_button{border-radius: 2px;background-color: #57a3f9; font-family: "Rubik", sans-serif;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;text-align: center;color: #ffffff;}
+.sub_button{border-radius: 2px;background-color: #57a3f9; font-family: RubikMedium;font-size: 14px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;text-align: center;color: #ffffff;}
 .sub_button:hover{color: #ffffff;}
 .custome-form-group{padding-bottom:20px;}
 .custome-input{opacity:0.5}
 
 
 .related_category_new{background-color: #57a3f9;}
-.related_category_new_title p{opacity: 0.6;font-family: RubikRegular;font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.58;letter-spacing: normal;text-align: center;color: #ffffff;margin-top: 100px;padding: 50px 0px;}
+.related_category_new_title p{opacity: 0.6;font-family: 'Rubik', sans-serif;font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.58;letter-spacing: normal;text-align: center;color: #ffffff;margin-top: 100px;padding: 50px 0px;}
 .remark_image_winner { height: 96px; } 
 .remark_image_winner img{text-align:center;width: 100%!important;position: relative;top: 11px;left: -61px;}
 .remarkwinner{width: 80px;height: 96px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
 .remarkwinner-content{ margin-top:23px;}
-.remarkwinner-content p{font-family: RubikRegular;
-font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+.remarkwinner-content p{font-family: 'Rubik', sans-serif;
+font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
 .remarkwinner-footer{margin-top:14px;}
-.remarkwinner-footer p{margin: 0px;background: #f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: "Rubik", sans-serif;text-transform: uppercase;}
+.remarkwinner-footer p{margin: 0px;background: #f6cf24;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;}
 .remark_image_first { height: 96px; }
 .remark_image_first img{}
 .remarkfirst{width: 80px;height: 80px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
 .remarkfirst-content{}
-.remarkfirst-content p{font-family: RubikRegular;
-font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+.remarkfirst-content p{font-family: 'Rubik', sans-serif;
+font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
 .remarkfirst-footer{}
-.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: "Rubik", sans-serif;text-transform: uppercase;color:#fff;}
+.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
 .remark_image_second  { height: 96px; }
 .remark_image_second img{}
 .remarksecond{width: 80px;height: 96px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin-left: -73px;text-align:center}
 .remarksecond-content{}
-.remarksecond-content p{font-family: RubikRegular;
-font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
+.remarksecond-content p{font-family: 'Rubik', sans-serif;
+font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
 .remarksecond-footer{}
-.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: "Rubik", sans-serif;text-transform: uppercase;color:#fff;}
+.remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: RubikMedium;text-transform: uppercase;color:#fff;}
 .custome-fluid-container{background-image: url(images/big_star_logo.png);background-repeat: no-repeat;background-size: 305px;background-position: left 0px top 0px;height:300px;}
 .related_category{background-color: #57a3f9;height: 120px;}
 .related_category h4{text-align:center;font-family: RubikBold;font-size: 17px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;color: #fff;}
 .related_category_item{border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding: 20px;margin-top:40px;}
 .related_category_item a{text-decoration:none;}
 .related_category_item a:hover{text-decoration:none;}
-.related_category_image{padding:20px;}
-.related_category_image img{width:100%;padding:20px;}
+.related_category_image{height:200px;padding:20px;}
+.related_category_image img{width:100%;padding:14px;margin: 0px auto;}
 .related_category_title p{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 17px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;text-align: center;color: #57a3f9;}
 
 .related_category_item_main{border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding: 20px;margin-top:40px;margin-bottom:50px;}
@@ -198,14 +198,14 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 .best_views_middle_content{background-image: linear-gradient(71deg, #342e54, #054a91);background-color: #054a91;height:350px;margin-top:30px;}
 .logo_image{margin-top: 60px;margin-bottom: 30px;text-align:center;}
 .logo_image_content{margin-bottom:40px;}
-.logo_image_content h4{font-family: "Rubik", sans-serif;font-size: 24px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;text-align: center;color: #ffffff;}
+.logo_image_content h4{font-family: RubikMedium;font-size: 24px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;text-align: center;color: #ffffff;}
 .middle_first_image{background:url('images/middle-image.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;height:500px;width: 100%;margin-bottom:20px;position: relative;top: 33px;}
 .middle_second_image{background:url('images/middle-image-2.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;height: 235px;width: 100%;margin-bottom:27px;position: relative;top: 33px;}
 .middle_third_image{background:url('images/middle-image-2.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;height: 235px;width: 100%;margin-bottom:20px;position: relative;top: 33px;}
 
 .first_image{margin-bottom:10px;position: relative;top: -50px;}
-.second_image{width: 464px;margin-bottom: 12px;position: relative;top: -50px;height:279px;}
-.third_image{width: 464px;margin-top:12px;position: relative;top: -48px;height: 279px;}
+.second_image{margin-bottom: 12px;position: relative;top: -50px;height:279px;}
+.third_image{margin-top:12px;position: relative;top: -48px;height: 279px;}
 
 /* .item_panel_thumbnail img{width:359px;height:160px;position:relative;display:block; } */
 .item_panel_thumbnail {
@@ -226,7 +226,7 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 .item_panel_thumbnail_caption a{
 	width: 176px;
     height: 30px;
-    font-family: "Rubik", sans-serif;
+    font-family: RubikMedium;
     font-size: 21px;
     font-weight: 500;
     font-style: normal;
@@ -238,7 +238,7 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 .item_panel_thumbnail_caption a:hover{text-decoration:none;color: #ffffff;}
 
 .display_all_product{padding:12px;background:#57a3f9;}
-.display_all_product a{margin:0px;text-align:center;display:block;text-decoration: none;cursor: pointer;font-family: "Rubik", sans-serif;font-size: 13px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #fff;}
+.display_all_product a{margin:0px;text-align:center;display:block;text-decoration: none;cursor: pointer;font-family: RubikMedium;font-size: 13px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: normal;color: #fff;}
 .display_all_product a:hover{text-decoration:none;}
 
 /* smart phones css */
@@ -283,13 +283,13 @@ font-size: 12px;font-weight: normal;font-style: normal;font-stretch: normal;line
 		color: #ffffff;
 		
 	  }
-	.item_panel_thumbnail_caption a{text-align:center; top:100px; position: absolute;left: 83px;font-family: "Rubik", sans-serif;font-size: 24px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.25;letter-spacing: normal;color: #ffffff;text-decoration:none;}
+	.item_panel_thumbnail_caption a{text-align:center; top:100px; position: absolute;left: 83px;font-family: RubikMedium;font-size: 24px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.25;letter-spacing: normal;color: #ffffff;text-decoration:none;}
 	.item_panel_thumbnail_caption a:hover{text-decoration:none;color: #ffffff;}
 	.first-middle-section{padding: 40px 20px;display:inline-block;}
 	.camera_title{line-height: 40px;font-size: 30px;}
 	.second-middle-section{padding:20px;}
 	.camera_title_new{line-height: 28px;font-size: 21px;}
-	
+	.related_category_image { width: 245px; padding:44px;margin: 0px auto;}
 	.item-panel h5{font-size: 15px;font-weight: bold;padding-top: 40px;padding-left: 35px;padding-right: 35px;}
 	.footer{margin-top:30px;}
 	.category_title {margin-top: 40px;}

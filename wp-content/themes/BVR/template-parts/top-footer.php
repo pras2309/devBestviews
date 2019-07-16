@@ -1,15 +1,19 @@
-<section>
+<!-- <section> -->
 	<div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-6">
 	<div class="stay_block">
 	<h5>Stay up-to-date</h5>
 	<p>Get notified about the latest Beach<br/> cruisers right in your inbox</p>
-	<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image"/>
+	<?php if(is_front_page()){ ?>
+	<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image" style="left:382px;top:-1px;"/>
+	<?php } else { ?>
+		<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image"/>
+		<?php  } ?>
 	<div class="form-group custome-form-group">
       <div class="input-group">
-         <input type="email" class="form-control custome-input" placeholder="Your email address">
-         <span class="input-group-btn">
-         <button class="btn stay_btn" type="submit" style="background-color: #57a3f9;color:#fff;  width: 112px;height: 40px;border-radius: 2px;">Subscribe now</button>
+		 <input type="email" class="form-control custome-input" placeholder="Your Email Address">  
+		 <span class="input-group-btn">
+         <button class="btn stay_btn" type="submit" style="background-color: #57a3f9;color:#fff;  width: 112px;height: 40px;border-radius: 2px;font-size:12px;padding-left:10px;">Subscribe now</button>
          </span>
           </div>
     </div>
@@ -35,15 +39,17 @@ The word camera comes from camera obscura, which means 'dark chamber' and is the
 "A tablet computer, commonly shortened to tablet, is a mobile device, typically with a mobile operating system and touchscreen display processing circuitry, and a rechargeable battery in a single thin, flat package. Tablets, being computers, do what other personal computers do, but lack some input/output (I/O) abilities that others have. Modern tablets largely resemble modern smartphones, the only differences being that tablets are relatively larger than smartphones, with screens 7 inches (18 cm) or larger, measured diagonally,and may not support access to a cellular network.
 The touchscreen display is operated by gestures executed by finger or digital pen (stylus), instead of the mouse, trackpad, and keyboard of larger computers. Portable computers can be classified according to the presence and appearance of physical keyboards. Two species of tablet, the slate and booklet, do not have physical keyboards and usually accept text and other input by use of a virtual keyboard shown on their touchscreen displays. To compensate for their lack of a physical keyboard, most tablets can connect to independent physical keyboards by wireless Bluetooth or USB; 2-in-1 PCs have keyboards, distinct from tablets.");
 
-?>
-			<div class="col-xs-12 col-sm-12 col-md-12 related_category_new_title">
-		<!--	<p>A cruiser bicycle, also known as a beach cruiser or (formerly) motobike, is a bicycle that usually combines balloon tires, an upright seating posture, a single-speed drivetrain, and straightforward steel construction with expressive styling. Cruisers are popular among casual bicyclists and vacationers because they are very stable and easy to ride, but their heavy weight and balloon tires tend to make them rather slow. They are designed for use primarily on paved roads, moderate speeds/distances, and are included in the non-racing/non-touring class and heavyweight or middleweight styles of the road bicycle type.</p> -->
+?> 		
+	<div class="col-md-1"></div>
+	<div class="col-xs-12 col-sm-12 col-md-10 related_category_new_title">
 		<p><?php 
 		$k =  array_rand($description_content);
 		echo $description_content[$k];
 		 ?></p>
 			</div>
+			<div class="col-md-1"></div>
 		</div>
+		
 	</section>
 	<?php
 	if(isset($_SESSION["recentlyViewed"]) && !empty($_SESSION["recentlyViewed"])){
@@ -66,7 +72,7 @@ The touchscreen display is operated by gestures executed by finger or digital pe
 							<?php echo $recentProduct->image_snippet; ?>
 							</div>
 							<div class="related_category_title">
-							<p><a href="<?php echo get_permalink($recentProduct->wp_post_id); ?>"><?php echo prepare_title($recentProduct->product_title); ?></a></p>
+							<p><a href="<?php echo get_permalink($recentProduct->wp_post_id); ?>"><?php echo prepare_title_recent_product($recentProduct->product_title); ?></a></p>
 							</div>							
 					</div>
 			</div>

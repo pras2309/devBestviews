@@ -15,7 +15,7 @@
 						<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 							<link href="
 								<?php bloginfo('template_url'); ?>/css/main.css" rel="stylesheet">
-								<link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/rubik" type="text/css"/>
+								<link href="https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap" rel="stylesheet">
 								<style>
 	.header{background-image:url('<?php bloginfo('template_url'); ?>/images/slide-1.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;height: 300px;width: 100%;}
 	@media screen and (min-width:320px) and (max-width:600px){
@@ -53,7 +53,7 @@
 																<span class="icon-bar"></span>
 															</button>
 															<a class="navbar-brand" href="
-																<?php echo esc_url( home_url( '/india' ) ); ?>">
+																<?php echo esc_url( home_url( '/in' ) ); ?>">
 																<img src="
 																	<?php bloginfo('template_url'); ?>/images/logo-new.png"/>
 																</a>

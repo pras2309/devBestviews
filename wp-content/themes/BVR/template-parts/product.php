@@ -35,10 +35,10 @@
 	</div>
 	<div class="soundbars">
 	<div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-2 rectangle">
-		<p class="category_name"><?php echo get_the_category($post->ID)[0]->name; ?></p>
+	<div class="col-xs-12 col-sm-12 col-md-4 rectangle">
+		<span class="category_name"><?php echo get_the_category($post->ID)[0]->name; ?></span>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-md-10 category_thumbnail">
+	<div class="col-xs-12 col-sm-12 col-md-8 category_thumbnail">
 	<span class="date"><?php echo get_the_date('F j, Y');?></span>
 	</div>
 	</div>
@@ -156,9 +156,19 @@
 					<?php get_template_part('template-parts/amazon-submit-product'); ?>
 			</div>
 		
-
+	
 		<!-- sidebar would be here -->
-		<?php get_sidebar(); ?>
+		<?php
+		$category = get_the_category(); 
+		$category_parent_id = $category[0]->category_parent;
+		//palce the category id of india.
+		if($category_parent_id == 2365){
+			
+			get_template_part('template-parts/india-sidebar');
+		}else{
+		get_sidebar(); 
+		}
+		?>
 	<!-- end of the sidebar -->
 	</div>
 	</div>

@@ -1,5 +1,9 @@
 	<p>Submit the product’s URL on Amazon and we’ll tell you everything about the product</p>
-	<img src="<?php bloginfo('template_url'); ?>/images/bg-product.png" class="stay_block_image"/>
+	<?php if(is_front_page()){ ?>
+	<img src="<?php bloginfo('template_url'); ?>/images/bg-product.png" class="stay_block_image" style="left:382px;top:-1px;"/>
+	<?php } else { ?>
+		<img src="<?php bloginfo('template_url'); ?>/images/bg-product.png" class="stay_block_image"/>
+		<?php  } ?>
 	<span id="responseMsg"></span>
 	<span id="errorMsg"></span>
 	<div class="form-group custome-form-group">
