@@ -66,7 +66,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 related_tag_sidebar">
-				<h4>Related Categories</h4>
+				<h4>Other Categories</h4>
 			</div>
 			<?php
 				$cat_args   = array(
@@ -84,14 +84,13 @@
 			$re_category_name = trim($re_category->name);
 			$getCatQry = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name = '".esc_sql($re_category_name)."'");
 			if(isset($getCatQry[0])) :
-			$getCatImageUrl = $getCatQry[0]->s3_category_img;
+			$getCatImageUrl = $getCatQry[0]->transparent_image_url;
 			?>
 				<div class="related_category_item">
 					<a href="<?php echo get_category_link($re_category->term_id); ?>">
 						<div class="related_category_image">
 						<?php if(isset($getCatImageUrl)) : ?>
-							<img src="
-								<?php echo $getCatImageUrl?>" alt="<?php echo $re_category_name ?>" title="<?php echo $re_category_name ?>" class="img img-responsive" heigh="183px" width="183px"/>
+							<img src="<?php echo $getCatImageUrl?>" alt="<?php echo $re_category_name ?>" title="<?php echo $re_category_name ?>" class="img img-responsive" heigh="183px" width="183px"/>
 			 			<?php else: ?>
 								<img src="<?php bloginfo('template_url'); ?>/images/no-image.jpg"/>
 						<?php endif; ?>

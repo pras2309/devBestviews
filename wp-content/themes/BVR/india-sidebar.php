@@ -9,11 +9,10 @@
     
     if ($tags) {
         $first_tag = $tags[0]->term_id;
-        $args=array(
-        'tag__in' => array($first_tag),
-        'post__not__in' => array($post->ID),
-        'posts_per_page'=>5,
-       // 'caller_get_posts'=>1
+	$args=array(
+		'category__in' => wp_get_post_categories( $post->ID ),
+        'posts_per_page'  => 5,
+        'post__not_in' => array( $post->ID )
         );
         $my_query = new WP_Query($args);
         
@@ -61,7 +60,7 @@
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 related_tag_sidebar">
-				<h4>Related Categories</h4>
+				<h4>Other Categories</h4>
 			</div>
 			<?php
 				$cat_args   = array(
@@ -79,7 +78,7 @@
 			$re_category_name = trim($re_category->name);
 			$getCatQry = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name = '".esc_sql($re_category_name)."'");
 			if(isset($getCatQry[0])) :
-			$getCatImageUrl = $getCatQry[0]->s3_category_img;
+			$getCatImageUrl = $getCatQry[0]->transparent_image_url;
 			?>
 				<div class="related_category_item">
 					<a href="<?php echo get_category_link($re_category->term_id); ?>">

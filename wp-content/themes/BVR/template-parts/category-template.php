@@ -21,7 +21,7 @@ $get_product_items  = $wpdb->get_results("SELECT * FROM dev_bestviews.products W
 $no_of_rows =  $wpdb->num_rows;
 //get image of this category
 $category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($product_category)."'");
-$category_image_url = $category_image_details[0]->s3_category_img;
+$category_image_url = $category_image_details[0]->transparent_image_url;
 function roundoff($n,$bound=0, $sym=""){
 	$l=min((floor(log10($n))),3);
 	if($bound>0){

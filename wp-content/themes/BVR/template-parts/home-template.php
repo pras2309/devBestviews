@@ -41,7 +41,7 @@ get_template_part('template-parts/bottom-header');
 			$count = $count + 1;
 			
 			//get 3 product from this subcategory
-			$category_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0  AND subcategory='".esc_sql($single_category->name)."' AND rank <=3 ORDER BY rank ASC");
+			$category_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id !=0  AND subcategory='".esc_sql($single_category->name)."' AND rank <= 3 ORDER BY rank ASC");
 			// print_r($category_products); exit;
 			//get image of related category:
 			$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($single_category->name)."'");
@@ -148,9 +148,7 @@ get_template_part('template-parts/bottom-header');
 	 <!-- end of row -->
 	 
 	</div> <!-- end of container -->
-	</section> <!-- end of section -->
-	
-	
+	</section> <!-- end of section -->	
 	<section class="other_products_main">
 	<div class="container">	
 	<?php get_template_part('template-parts/top-footer'); ?>

@@ -17,6 +17,8 @@
  *
  * @package WordPress
  */
+define('WPCACHEHOME','/home/ubuntu/webapps/devApps/wp-content/plugins/wp-super-cache/');
+define('WP_CACHE', true);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */

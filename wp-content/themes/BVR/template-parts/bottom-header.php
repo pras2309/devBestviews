@@ -1,6 +1,6 @@
 <?php global $wpdb; ?>
 <?php 
-function prepare_title($title){
+/* function prepare_title($title){
 	$ex_title = explode(" ", $title);
 	$character_counter = 0;
 	$space_counter = 0;
@@ -21,7 +21,7 @@ function prepare_title($title){
 		$product_title = $product_title." ...";
 	}
 	return $product_title;
-}
+} */
 ?>
 <div class="main-first">
 	<div class="container">

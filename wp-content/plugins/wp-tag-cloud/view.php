@@ -6,7 +6,7 @@ $post_id = $atts['post_id'];
 $getProductQry = $wpdb->get_results("SELECT id  FROM dev_bestviews.products WHERE wp_post_id =  $post_id");
 $product_id = $getProductQry[0]->id;
 $getTagsQry = $wpdb->get_results("SELECT id, word_freq  FROM bestviews.products WHERE id =  $product_id");
-if (isset($getTagsQry[0]:
+if (isset($getTagsQry[0])):
    $prod_feature_url = trim($getTagsQry[0]->word_freq);
    $product_id = $getTagsQry[0]->id;
    $features_collection_json = @file_get_contents($prod_feature_url);

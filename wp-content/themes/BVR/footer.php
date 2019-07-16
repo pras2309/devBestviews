@@ -262,9 +262,9 @@
 		<![endif]-->
 
 <!-- livezilla.net PLACE SOMEWHERE IN BODY -->
-<script type="text/javascript" 
+<!-- <script type="text/javascript" 
 	id="lzdefsc" src="//bestviewsreviews.com/livezilla/script.php?id=lzdefsc" defer>
-</script>
+</script> -->
 <!-- livezilla.net PLACE SOMEWHERE IN BODY -->
 <?php wp_footer(); ?>
 </body></html>

@@ -6,8 +6,8 @@ global $wpdb;
 $get_product = $wpdb->get_results('SELECT * FROM dev_bestviews.products 
 WHERE  wp_post_id = 0 
 AND (s3_output_url IS NOT NULL AND s3_output_url !="") 
-AND s3_input_url IS NOT NULL AND s3_input_url!="" AND subcategory IN ("Cameras","Photo Printers","Smart Tv","Air Purifier","Touch Laptops","Projectors","LED Lightning","Natural Hair","Software","Drones","Camping Hammocks","Floor Lamps","Camping Cots","Camping Pots, Pans & Griddles","Tool Sets","Tablets","Travel Systems","External Hard Drives","Hair Removal","Open Fire Cookware","Computer Memory","Women Hats","Wireless Charging stations","Travel Bags","Patio Furniture Sets","Umbrellas & Shade","Art Supplies","Room Air Conditioners","Internal Hard Drives","Women heels")
-AND image_snippet !="." AND region!="IND"'); 
+AND s3_input_url IS NOT NULL AND s3_input_url!="" AND subcategory IN ("Activity & Entertainment","Cameras","Photo Printers","Smart Tv","Touch Laptops","Projectors","LED Lightning","Natural Hair","Software","Drones","Camping Hammocks","Floor Lamps","Camping Cots","Camping Pots, Pans & Griddles","Tool Sets","Tablets","Travel Systems","External Hard Drives","Hair Removal","Open Fire Cookware","Computer Memory","Women Hats","Wireless Charging stations","Travel Bags","Patio Furniture Sets","Umbrellas & Shade","Art Supplies","Room Air Conditioners","Internal Hard Drives","Women heels")
+AND image_snippet !="." AND region!="IND" '); 
 
 
 

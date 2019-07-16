@@ -22,7 +22,7 @@
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
 	$product_id = $prodResult->id;
 	
@@ -162,7 +162,7 @@
 		$category = get_the_category(); 
 		$category_parent_id = $category[0]->category_parent;
 		//palce the category id of india.
-		if($category_parent_id == 2365){
+		if($category_parent_id == 24282){
 			
 			get_template_part('template-parts/india-sidebar');
 		}else{
@@ -173,5 +173,15 @@
 	</div>
 	</div>
 	</div>
+ <?php
+                $category = get_the_category();
+                $category_parent_id = $category[0]->category_parent;
+                //palce the category id of india.
+                if($category_parent_id == 24282){
 
- <?php get_footer(); ?>
+                        get_template_part('india-footer');
+                }else{
+                get_footer();
+                }
+                ?>
+

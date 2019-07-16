@@ -8,7 +8,7 @@
 ///////////////////////////////////////////////////////////////////////////////////
 require_once 'wp-config.php';
 global $wpdb;
-$get_categories = $wpdb->get_results("SELECT distinct(subcategory) as category FROM dev_bestviews.products");
+$get_categories = $wpdb->get_results('SELECT distinct(subcategory) as category FROM bestviews.products where subcategory IN ("Cameras","Photo Printers","Smart Tv","Air Purifier","Touch Laptops","Projectors","LED Lightning","Natural Hair","Software","Drones","Camping Hammocks","Floor Lamps","Camping Cots","Camping Pots, Pans & Griddles","Tool Sets","Tablets","Travel Systems","External Hard Drives","Hair Removal","Open Fire Cookware","Computer Memory","Women Hats","Wireless Charging stations","Travel Bags","Patio Furniture Sets","Umbrellas & Shade","Art Supplies","Room Air Conditioners","Internal Hard Drives","Women heels")');
     foreach($get_categories as $prod_category){
             $category_slug = strtolower(preg_replace('/[_& ]/', '-', $prod_category->category ));
             $category_slug = preg_replace('/--+/', '-', $prod_category->category);
@@ -41,7 +41,7 @@ $get_categories = $wpdb->get_results("SELECT distinct(subcategory) as category F
 
 	   curl_close($process);
 	   $result = json_decode($return);
-            echo $result;
+            print_r($result);
         } //checking the category exists into wp or not.
 
 

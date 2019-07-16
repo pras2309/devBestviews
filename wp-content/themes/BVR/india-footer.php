@@ -79,19 +79,6 @@
 <script src="<?php bloginfo('template_url'); ?>/js/GaugeMeter.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 <script>
-
-$(window).load(function(){
-	$.get("http://ip-api.com/json", function(response) {
-			var countryCode = response.countryCode;     // "United States"
-			if(countryCode == 'US'){
-				document.cookie = "region=US";
-			}
-
-			if(countryCode == 'IN'){
-				document.cookie = "region=IN";
-			}
-			}, "jsonp");
-		});
 			$(document).ready(function(){
 				$(".GaugeMeter").gaugeMeter();
 				

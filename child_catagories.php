@@ -9,7 +9,7 @@
 require_once 'wp-config.php';
 global $wpdb;
 //get all subcategory
-$get_categories = $wpdb->get_results("SELECT distinct(subcategory) as category FROM dev_bestviews.products");
+$get_categories = $wpdb->get_results('SELECT distinct(subcategory) as category FROM bestviews.products WHERE subcategory IN ("")');
 
     foreach($get_categories as $subcategory){
             $category_name = str_replace('&amp;', '&;', $subcategory->category);
@@ -28,13 +28,13 @@ $get_categories = $wpdb->get_results("SELECT distinct(subcategory) as category F
             $category_slug = strtolower(preg_replace('/[_&x]/', '-', $subcategory->subcategory ));
             $category_slug = preg_replace('/--+/', '-', $subcategory->subcategory); */
             // the standard end point for posts in an initialised Curl
-            $process = curl_init('http://bestviewsreviews.com/wp-json/wp/v2/categories');
+            $process = curl_init('http://dev.bestviewsreviews.com/wp-json/wp/v2/categories');
            
             // create an array of data to use, this is basic - see other examples for more complex inserts
             $data = array('description' => $category_name, 
                             'name' => $category_name, 
                             'slug' => $category_name,
-                            'parent' => 2365
+                            'parent' => 24282
                         );
             // print_r($data); exit;                        
             $data_string = json_encode($data);

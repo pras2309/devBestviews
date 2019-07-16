@@ -4,10 +4,10 @@ global $wpdb;
 //check wordpress category matched with the product table, and get the category ID from the wordpress table.
 
 $get_product = $wpdb->get_results('SELECT *  FROM dev_bestviews.products 
-WHERE  (s3_output_url IS NOT NULL AND s3_output_url !="") 
+WHERE  (s3_output_url IS NOT NULL AND s3_output_url !="") AND wp_post_id =0
 AND s3_input_url IS NOT NULL AND s3_input_url!="" AND region = "IND"
 AND subcategory IN ("PlayStation","Speakers","Sherwani","Cooler","Trimmer","Earphones","Monitor","Fitness Band","Laptops","Running Shoes","Televisions (TV, Appliances, Electronics)")
-ORDER BY subcategory ASC');
+ORDER BY subcategory ASC ');
 
 //read product information::::
   foreach($get_product  as $product){

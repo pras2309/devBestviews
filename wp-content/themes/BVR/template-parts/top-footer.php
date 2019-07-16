@@ -1,10 +1,11 @@
 <!-- <section> -->
 	<div class="row">
+<?php global $post;?>
 	<div class="col-xs-12 col-sm-12 col-md-6">
 	<div class="stay_block">
 	<h5>Stay up-to-date</h5>
 	<p>Get notified about the latest Beach<br/> cruisers right in your inbox</p>
-	<?php if(is_front_page()){ ?>
+	<?php if(is_front_page() || $post->ID == 45052){ ?>
 	<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image" style="left:382px;top:-1px;"/>
 	<?php } else { ?>
 		<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image"/>
@@ -52,10 +53,10 @@ The touchscreen display is operated by gestures executed by finger or digital pe
 		
 	</section>
 	<?php
-	if(isset($_SESSION["recentlyViewed"]) && !empty($_SESSION["recentlyViewed"])){
-	$criteria = (isset($_SESSION["recentlyViewed"])?implode(", ",$_SESSION["recentlyViewed"]):"-1");
+		if(isset($_SESSION["recentlyViewed"]) && !empty($_SESSION["recentlyViewed"])){
+			$criteria = (isset($_SESSION["recentlyViewed"])?implode(", ",$_SESSION["recentlyViewed"]):"-1"); 
 	//get current post and store them into session.
-	$getRecentViewedProduct = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id IN ($criteria)");
+	$getRecentViewedProduct = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id IN ($criteria)");
 	?>
 	<section class="related_category">
 	<div class="container">

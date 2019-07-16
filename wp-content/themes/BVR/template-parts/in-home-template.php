@@ -35,7 +35,7 @@ get_template_part('template-parts/bottom-header');
 			$child_id = $childCategory->cat_ID;
 			$count = $count + 1;
 			//get 3 product from this subcategory
-			$cate_products = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id !=0 AND subcategory='".esc_sql($childCategory->name)."' AND rank <= 3 ORDER BY rank ASC");
+			$cate_products = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id !=0 AND subcategory='".esc_sql($childCategory->name)."' AND rank <= 3 ORDER BY rank ASC");
 			//get image of related category:
 			$category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($childCategory->name)."'");
 			$firstProdImage = $category_image_details[0]->s3_category_img;
@@ -62,7 +62,7 @@ get_template_part('template-parts/bottom-header');
 									<?php if ($productInfo->image_snippet &&  $productInfo->image_snippet!='.') :  ?>
 										<?php echo $productInfo->image_snippet; ?>
 									<?php else : ?>
-									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" height="56px" width="56px"/>	
+									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" height="80px" width="80px"/>	
 									<?php endif; ?>
 								</div>
 								<div class="col-xs-9 col-sm-9 col-md-9">

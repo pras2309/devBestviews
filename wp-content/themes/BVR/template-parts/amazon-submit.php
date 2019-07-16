@@ -1,5 +1,6 @@
 	<p>Submit the product’s URL on Amazon and we’ll tell you everything about the product</p>
-	<?php if(is_front_page()){ ?>
+	<?php global $post;?>
+	<?php if(is_front_page() || $post->ID == 45052){ ?>
 	<img src="<?php bloginfo('template_url'); ?>/images/bg-product.png" class="stay_block_image" style="left:382px;top:-1px;"/>
 	<?php } else { ?>
 		<img src="<?php bloginfo('template_url'); ?>/images/bg-product.png" class="stay_block_image"/>

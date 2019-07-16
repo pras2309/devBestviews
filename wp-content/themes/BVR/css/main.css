@@ -57,9 +57,9 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: 400; font
 .product_middle_title { height:150px;}
 
 .camera_title{margin:10px;}
-.camera_title a{color: #fff;font-weight: 500;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: RubikMedium;cursor:pointer;text-decoration:none;}
-.camera_title a:hover{color: #fff;font-weight: 400;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: RubikMedium;cursor:pointer;text-decoration:none;}
-
+.camera_title a{color: #fff;font-weight: 500;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: Rubik;cursor:pointer;text-decoration:none;}
+/* .camera_title a:hover{color: #fff;font-weight: 400;line-height: 1.22;font-size: 36px;font-style: normal;font-stretch: normal;letter-spacing: -1px;font-family: Rubik;cursor:pointer;text-decoration:none;}
+*/
 .inner-thumnbail-new{color:#fff;font-size: 16px;font-weight: 500;font-family: 'Rubik', sans-serif;}
 .inner-thumnbail-new img{align-self: center; max-height: 32px;border-radius: 100%;display:inline-block; height:32px !important; width:32px !important; margin-left:11px;}
 .author_name{ width: 97px;
@@ -187,6 +187,7 @@ font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-he
 .related_category_item a:hover{text-decoration:none;}
 .related_category_image{height:200px;padding:20px;}
 .related_category_image img{width:100%;padding:14px;margin: 0px auto;}
+.related_category_title { margin-top:-98px;} 
 .related_category_title p{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 17px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;text-align: center;color: #57a3f9;}
 
 .related_category_item_main{border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding: 20px;margin-top:40px;margin-bottom:50px;}
@@ -211,7 +212,7 @@ font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-he
 .item_panel_thumbnail {
 	width: 344px;
 	height: 167px;
-	/* margin-left: 15px; */
+	margin-left: 15px;
 	/* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #000000); */
 	background-repeat: no-repeat;
   }
@@ -271,6 +272,7 @@ font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-he
 	.navbar { margin-bottom: 0px!important;}
 	.navbar-toggle {margin-top: 30px;}
 	.navbar-nav>li>a {padding-top: 10px!important; padding-bottom: 10px!important;}
+	.item_panel_thumbnail { margin-left:15px; }
 	.item_panel_thumbnail img{ width:343px;}
 	.item_panel_thumbnail_caption  {
 		font-family: Rubik;
@@ -303,6 +305,7 @@ font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-he
 	.middle_first_image{height:auto}
 	.middle_second_image{height:auto}
 	.middle_third_image{height:auto}
+	.related_category_image img {  margin-left:35px; } 
 	.related_category_new_title p{margin-top:0px;}
 	.footer_info{
 		width: 332px !important;
