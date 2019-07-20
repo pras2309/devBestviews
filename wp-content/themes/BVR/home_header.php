@@ -17,10 +17,9 @@
 								<?php bloginfo('template_url'); ?>/css/main.css" rel="stylesheet">
 								<link href="
 								<?php bloginfo('template_url'); ?>/css/style.css" rel="stylesheet">
-								
-						<link href="https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap" rel="stylesheet">
+						<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap" rel="stylesheet">
 								<style>
-	.header{background-image:url('<?php bloginfo('template_url'); ?>/images/slide-1.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;height: 300px;width: 100%;}
+	.header{background-image:url('<?php bloginfo('template_url'); ?>/images/slide-1.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;height: 360px;width: 100%;}
 	@media screen and (min-width:320px) and (max-width:600px){
 	.header{background-image:none!important;background-position: center;background-size: cover;background-repeat: no-repeat;height: auto!important;width: 100%;background:-color:#33325a}
 	.search-bar{margin-bottom:70px;}

@@ -56,7 +56,7 @@
 				<?php //bloginfo('template_url'); ?>/images/related-post-image-4.png" class="img-responsive mobile-view-image"></div><div class="col-md-8"><a href="#" style="text-decoration:none;cursor:pointer;"><h5 class="related_post_link_title">Nakamichi Shockwafe Pro 7.1ch DTSX600W Sound Bar</h5></a></div></div></li> -->
 			</ul>
 		</div>
-		<div class="row">
+		<div class="row other_category">
 			<div class="col-xs-12 col-sm-12 col-md-12 related_tag_sidebar">
 				<h4>Other Categories</h4>
 			</div>

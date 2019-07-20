@@ -8,7 +8,7 @@ get_template_part('template-parts/bottom-header');
 ?>
 	<section class="main">
 	<div class="container">
-			<div class="row">
+			<div class="row category_container">
 					<div class="col-md-12">
 						<div class="category_title">
 							<h4>Popular Categories</h4>
@@ -48,7 +48,7 @@ get_template_part('template-parts/bottom-header');
 			$firstProdImage = $category_image_details[0]->s3_category_img;
 		?>
 	
-	<div class="col-xs-12 col-sm-12 col-md-4">
+	<div class="col-xs-12 col-sm-12 col-md-4 product_rows">
 		<div class="item-panel">
 		<div class="row">
 			<?php
@@ -62,7 +62,7 @@ get_template_part('template-parts/bottom-header');
 			}
 			
 			?>
-			<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php echo $firstProdImage; ?>');">
+			<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php echo $firstProdImage; ?>');border-radius:4px;">
 							<div class="item_panel_thumbnail_caption"> 
 									<a href="<?php echo get_category_link($single_category->term_id); ?>"><?php echo $single_category->name; ?></a>
 							</div>
@@ -77,7 +77,10 @@ get_template_part('template-parts/bottom-header');
 					
 					foreach($category_products as $productInfo):	
 						$i++;
-						$title = $productInfo->product_title;
+					$title = $productInfo->product_title;
+					$product_id = $productInfo->id;
+					$image_snippet_details = $wpdb->get_results("SELECT image_snippet FROM bestviews.products WHERE id=$product_id");
+					$image_snippet = $image_snippet_details[0]->image_snippet;
 						$ex_title = explode(" ", $title);
 						$character_counter = 0;
 						$space_counter = 0;
@@ -112,10 +115,10 @@ get_template_part('template-parts/bottom-header');
 						// echo $product_title;
 					?>
 					<li class="product_row">
-						<div class="row">
+						<div class="row" style="height:56px;">
 								<div class="col-xs-3 col-sm-3 col-md-3 home_product_image">
 									<?php if ($productInfo->image_snippet && $productInfo->image_snippet != '.') :  ?>
-									<?php echo $productInfo->image_snippet; ?>
+									<?php echo $image_snippet; ?>
 									<?php else : ?>
 									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" height="85px" width="80px"/>	
 									<?php endif; ?>

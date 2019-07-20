@@ -87,7 +87,7 @@ endif;
 	<div class="col-xs-12 col-sm-12 col-md-3" >
 			<div class="row category_header_image">
 				<?php if(isset($category_image_url)):  ?>
-					<img src="<?php echo $category_image_url;?>" height="160px" width="200px">
+				<img src="<?php echo $category_image_url;?>" height="160px" width="200px" alt="<?php echo "review for ".$product_category; ?>">
 				<?php endif; ?>
 					<!-- <div class="col-xs-6 col-sm-6 col-md-6 winner_image">
 							<img src="<?php //bloginfo('template_url'); ?>/images/winner-new.png"/>
@@ -118,14 +118,17 @@ endif;
 	<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="product_score">
 				<!-- category description -->
-					<p></p>
-
+				<div class="category_description">
+					<!-- <p>A cruiser bicycle, also known as a beach cruiser or (formerly) motobike, is a bicycle that usually combines balloon tires, an upright seating posture, a single-speed drivetrain, and straightforward steel construction with expressive styling. Cruisers are popular among casual bicyclists and vacationers because they… read more</p> -->
+			</div>
 			<div class="row" style="margin:0px;">
 				<!-- product list start -->
 <?php foreach ($get_product_items as $product_item) {
+	$image_snippet_details = $wpdb->get_results("SELECT image_snippet FROM bestviews.products WHERE id = $product_item->id");
+	$image_snippet = $image_snippet_details[0]->image_snippet;
 				// $prod_summary_url = $product_item->summary_url;
 				// $summary_text = @file_get_contents($prod_summary_url);
-				?>
+?>
 				<div class="product_list_row">
 								<div class="col-xs-12 col-sm-12 col-md-1 rank_score">
 									<?php if($i == 1) { ?>
@@ -134,7 +137,7 @@ endif;
 																
 																<div class="remarkwinner">
 																			<div class="remarkwinner-content">
-																					<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $product_item->rank; ?></span></p>
+																					<p><span class="rank_number">#</span> <span style="height:28px;width:10px;font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: Rubik;"><?php echo $product_item->rank; ?></span></p>
 																			</div>
 																		<div class="remarkwinner-footer">
 																				<p>Winner</p>
@@ -146,7 +149,7 @@ endif;
 										<div class="remark_image_first">
 											<div class="remarkfirst">
 																<div class="remarkfirst-content">
-																<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $product_item->rank; ?></span></p>
+																<p><span class="rank_number">#</span> <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: Rubik;"><?php echo $product_item->rank; ?></span></p>
 																</div>
 																<div class="remarkfirst-footer">
 																<p>Best Value</p>
@@ -159,7 +162,7 @@ endif;
 										<div class="remark_image_second">
 													<div class="remarksecond">
 															<div class="remarksecond-content">
-															<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $product_item->rank; ?></span></p>
+															<p><span class="rank_number"># </span><span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: Rubik;"><?php echo $product_item->rank; ?></span></p>
 															</div>
 													
 													</div>
@@ -168,7 +171,7 @@ endif;
 									<?php } ?>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-2 product_image">
-								<?php echo $product_item->image_snippet; ?>
+								<?php echo $image_snippet; ?>
 								</div>
 								<div class="col-xs-10 col-sm-10 col-md-7 product_detail">
 												<h4><a href="<?php echo get_permalink($product_item->wp_post_id);?>" title = "<?php echo $product_item->product_title; ?>" ><?php echo $product_item->product_title; ?></a></h4>
@@ -184,7 +187,9 @@ endif;
 										
 								</div>
 				</div> <!-- end of product list -->
-				<hr/>
+				<?php if($i <= 9) : ?> 
+				<hr class="horizontal_line"/>
+				<?php endif; ?>
 				<?php $i++; ?>
 				<?php }?> 
 				
@@ -247,7 +252,7 @@ endif;
 								<?php } ?>
 								</div>
 								<div class="col-xs-8 col-sm-8 col-md-8" style="border-bottom: 2px solid #f8f8f8;margin-top:5px;">
-									<h5 class="other_products_detail_title"><a href="<?php the_permalink(); ?>" class="product_link"><?php  the_title(); ?></a></h5>
+									<h5 class="other_products_detail_title"><a href="<?php the_permalink(); ?>" class="product_link"><?php  echo prepare_title_recent_product($get_image->product_title); ?></a></h5>
 								</div>
 							</div>
 			</a>

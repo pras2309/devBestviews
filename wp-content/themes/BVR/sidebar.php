@@ -24,7 +24,7 @@
         
         if( $my_query->have_posts() ) {
         ?>
-		<h4 class="related_post_title">Related Post</h4>
+		<h4 class="related_post_title">Related Products</h4>
 		<ul class="related_post">
 			<?php
         while ($my_query->have_posts()) : $my_query->the_post(); 
@@ -36,7 +36,7 @@
         $product_title = $getImageDetails->product_title;
         ?>
 			<li>
-				<div class="row">
+				<div class="row sidebar_product">
 					<div class="col-xs-4 col-sm-4 col-md-4 related_post_image">
 							<?php echo $post_image_url; ?>
 						</div>
@@ -64,7 +64,7 @@
 				<?php //bloginfo('template_url'); ?>/images/related-post-image-4.png" class="img-responsive mobile-view-image"></div><div class="col-md-8"><a href="#" style="text-decoration:none;cursor:pointer;"><h5 class="related_post_link_title">Nakamichi Shockwafe Pro 7.1ch DTSX600W Sound Bar</h5></a></div></div></li> -->
 			</ul>
 		</div>
-		<div class="row">
+		<div class="row other_category">
 			<div class="col-xs-12 col-sm-12 col-md-12 related_tag_sidebar">
 				<h4>Other Categories</h4>
 			</div>
@@ -88,7 +88,7 @@
 			?>
 				<div class="related_category_item">
 					<a href="<?php echo get_category_link($re_category->term_id); ?>">
-						<div class="related_category_image">
+						<div class="related_category_image_sidebar">
 						<?php if(isset($getCatImageUrl)) : ?>
 							<img src="<?php echo $getCatImageUrl?>" alt="<?php echo $re_category_name ?>" title="<?php echo $re_category_name ?>" class="img img-responsive" heigh="183px" width="183px"/>
 			 			<?php else: ?>

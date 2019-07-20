@@ -8,7 +8,7 @@ get_template_part('template-parts/bottom-header');
 ?>
 	<section class="main">
 	<div class="container">
-			<div class="row">
+			<div class="row category_container">
 					<div class="col-md-12">
 						<div class="category_title">
 							<h4>Popular Categories</h4>
@@ -41,7 +41,7 @@ get_template_part('template-parts/bottom-header');
 			$firstProdImage = $category_image_details[0]->s3_category_img;
 		?>
 	
-	<div class="col-xs-12 col-sm-12 col-md-4">
+	<div class="col-xs-12 col-sm-12 col-md-4 product_rows">
 		<div class="item-panel">
 		<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 item_panel_thumbnail" style="background-image:url('<?php echo $firstProdImage; ?>');">					
@@ -53,16 +53,20 @@ get_template_part('template-parts/bottom-header');
 				<ul class="main_item_panel_detail">
 					<?php
 					$i = 0;
-					foreach($cate_products as $productInfo):	
+				foreach($cate_products as $productInfo):	
+					$product_id = $productInfo->id;
+                                        $image_snippet_details = $wpdb->get_results("SELECT image_snippet FROM bestviews.products WHERE id=$product_id");
+                                        $image_snippet = $image_snippet_details[0]->image_snippet;
+
 						$i++;
 					?>
 					<li>
-						<div class="row">
+						<div class="row" style="height:76px;">
 								<div class="col-xs-3 col-sm-3 col-md-3 home_product_image">
 									<?php if ($productInfo->image_snippet &&  $productInfo->image_snippet!='.') :  ?>
-										<?php echo $productInfo->image_snippet; ?>
+										<?php echo $image_snippet; ?>
 									<?php else : ?>
-									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" height="80px" width="80px"/>	
+									<img src="<?php bloginfo('template_url'); ?>/images/no-image.png" height="56px" width="56px"/>	
 									<?php endif; ?>
 								</div>
 								<div class="col-xs-9 col-sm-9 col-md-9">

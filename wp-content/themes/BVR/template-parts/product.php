@@ -51,7 +51,7 @@
 								<img src="<?php bloginfo('template_url'); ?>/images/winner-new.png"/>
 								<div class="winner">
 												<div class="winner-content">
-														<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $prodResult->rank; ?></span></p>
+														<p><span class="rank_number">#</span> <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: Rubik;height:28px;width:10px;"><?php echo $prodResult->rank; ?></span></p>
 												</div>
 												<div class="winner-footer">
 														<p>Winner</p>
@@ -60,9 +60,9 @@
 								</div>
 					<?php }  if($prodResult->rank == 2){ ?>
 							<div class="second_winner">
-												<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $prodResult->rank; ?></span></p>
+												<p><span class="rank_number">#</span> <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $prodResult->rank; ?></span></p>
 												</div>
-												<div class="remarkfirst-footer">
+												<div class="remarkfirst-footer-product">
 												<p>Best Value</p>
 										</div>
 					<?php 
@@ -70,7 +70,7 @@
 							?>
 						<div class="second_winner">
 															<div class="remarksecond-content">
-															<p># <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $prodResult->rank; ?></span></p>
+															<p><span class="rank_number">#</span> <span style="font-size: 24px;font-weight: 300;text-align: center;color: #292c32;font-family: RubikLight;"><?php echo $prodResult->rank; ?></span></p>
 															</div>
 													
 													</div>
@@ -174,14 +174,6 @@
 	</div>
 	</div>
  <?php
-                $category = get_the_category();
-                $category_parent_id = $category[0]->category_parent;
-                //palce the category id of india.
-                if($category_parent_id == 24282){
-
-                        get_template_part('india-footer');
-                }else{
-                get_footer();
-                }
-                ?>
+		get_footer();
+?>
 

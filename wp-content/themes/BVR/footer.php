@@ -1,5 +1,5 @@
 <footer class="footer">
-	<div class="container">
+	<div class="container footer_container">
 	<?php get_template_part('template-parts/footer-links'); ?>
 	</div>
 	<div class="container-fluid custome-fluid-container">
@@ -22,9 +22,9 @@
 				 <div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-5 subscription_div">
 							<div class="input-group">
-							<input type="email" class="subscribe_email form-control" placeholder="Enter your email">
-								<span class="input-group-btn">
-									<button class="btn" type="submit" style="width:112px;height:40px;border-radius:2px;background-color: #57a3f9;color:#fff;">Subscribe</button>
+							<input type="email" class="subscribe_email form-control" placeholder="Your email address">
+								<span class="input-group-btn" style="width:112px;height:40px;">
+									<button class="btn" type="submit" style="width:112px;height:40px;border-radius:2px;background-color: #57a3f9;color:#fff;font-size:14px;font-weight:500;font-family:Rubik;line-height:1.29;text-align:center;">Subscribe</button>
 								</span>
 							</div>
 						</div>

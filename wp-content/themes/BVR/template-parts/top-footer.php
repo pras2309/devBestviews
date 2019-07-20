@@ -4,7 +4,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-6">
 	<div class="stay_block">
 	<h5>Stay up-to-date</h5>
-	<p>Get notified about the latest Beach<br/> cruisers right in your inbox</p>
+	<p>Sign up for Best Views Reviews <br/>newsletter to receive weekly recommendations</p>
 	<?php if(is_front_page() || $post->ID == 45052){ ?>
 	<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image" style="left:382px;top:-1px;"/>
 	<?php } else { ?>
@@ -14,7 +14,7 @@
       <div class="input-group">
 		 <input type="email" class="form-control custome-input" placeholder="Your Email Address">  
 		 <span class="input-group-btn">
-         <button class="btn stay_btn" type="submit" style="background-color: #57a3f9;color:#fff;  width: 112px;height: 40px;border-radius: 2px;font-size:12px;padding-left:10px;">Subscribe now</button>
+         <button class="btn stay_btn" type="submit" style="background-color: #57a3f9;color:#fff;line-height:1.29;font-family:rubik;text-align:center; width: 112px;height: 40px;border-radius: 2px;font-weight:500;font-size:14px;padding-left:10px;">Subscribe</button>
          </span>
           </div>
     </div>

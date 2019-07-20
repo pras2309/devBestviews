@@ -1,5 +1,5 @@
 <footer class="footer">
-	<div class="container">
+	<div class="container footer_container">
 	<?php get_template_part('template-parts/india-footer-links'); ?>
 	</div>
 	<div class="container-fluid custome-fluid-container">

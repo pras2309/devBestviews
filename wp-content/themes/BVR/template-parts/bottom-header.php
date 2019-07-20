@@ -25,7 +25,7 @@
 ?>
 <div class="main-first">
 	<div class="container">
-	<div class="row">
+	<div class="row article_section">
 	<div class="col-md-6 left-content-section">
 	<?php $first_product = $wpdb->get_results("SELECT * FROM dev_bestviews.products  where wp_post_id != 0 ORDER BY rand() limit 1 "); 
 			$first_product = $first_product[0];
@@ -45,7 +45,7 @@
 					<div class="first-middle-section">
 						<div class="first-middle-section-content">
 							<div class="col-xs-12 col-sm-12 col-md-12 category_btn">
-								<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family: RubikMedium;background-color: #57a3f9;font-size: 13px;"><?php echo $first_product->subcategory; ?></button>
+								<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family:'Rubik' sans-serif;background-color: #57a3f9;font-size: 13px;"><?php echo $first_product->subcategory; ?></button>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-12 product_middle_title">
 								<h1 class="camera_title">
@@ -81,7 +81,7 @@
 	<div class="row">
 	<div class="second-middle-section">
 	<div class="col-xs-12 col-sm-12 col-md-12">
-	<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family: RubikMedium;background-color: #57a3f9;font-size: 13px;"><?php echo $second_product->subcategory; ?></button>
+	<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family:'Rubik' sans-serif;background-color: #57a3f9;font-size: 13px;"><?php echo $second_product->subcategory; ?></button>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 	<h1 class="camera_title_new">
@@ -115,7 +115,7 @@
 	<div class="row">
 	<div class="third-middle-section">
 	<div class="col-xs-12 col-sm-12 col-md-12">
-	<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family: RubikMedium;background-color: #57a3f9;font-size: 13px;"><?php echo $third_product->subcategory; ?></button>
+	<button type="button" class="btn" style="margin:0px 12px;font-weight: 500;color: #ffffff;font-family:'Rubik' sans-serif;background-color: #57a3f9;font-size: 13px;"><?php echo $third_product->subcategory; ?></button>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 	<h1 class="camera_title_new">
