@@ -217,99 +217,112 @@ if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=
     $reviewTrend = @file_get_contents($decode_json->charts->reviewtrend);
 }
 
-    $content =<<<CONTENT
-    <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-9">
-       <div class="left-section">
-          <div class="row first-row">
-             <div class="col-md-7">
-                <div class="row">
-                   <div class="col-md-3 small-slide" style="display:none;">
-                      <!-- <img src="images/slider-image-2.png"/>
-                      <img src="images/slider-image-1.png"/>
-                      <img src="images/slider-image-2.png"/>
-                      <img src="images/slider-image-2.png"/> -->
+$content =<<<CONTENT
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-9">
+   <div class="left-section">
+      <div class="row first-row">
+         <div class="col-md-7">
+            <div class="row">
+               <div class="col-md-3 small-slide" style="display:none;">
+                  <!-- <img src="images/slider-image-2.png"/>
+                  <img src="images/slider-image-1.png"/>
+                  <img src="images/slider-image-2.png"/>
+                  <img src="images/slider-image-2.png"/> -->
 CONTENT;
-            if($product_image_url){                
-                $content .=<<<CONTENT
-                    $product_image_url
-CONTENT;
-            }else {
-               $content .=<<<CONTENT
-                    $image_content
-CONTENT;
-                }
+        if($product_image_url){                
             $content .=<<<CONTENT
-                   </div>
-                   <div class="col-md-9 big_thumbnail">
-CONTENT;
-            if($image_content){
-                $content .=<<<CONTENT
-                    $image_content
-CONTENT;
-            }else{
-              $content .=<<<CONTENT
                 $product_image_url
 CONTENT;
-           }
-            $content .=<<<CONTENT
-                   </div>
-                </div>
-             </div>
-             <div class="col-md-5">
-                <div class="row">
-                   <div class="col-md-12">
-                      <h5 class="slider-title">Reviews Trend</h5>
-                      $reviewTrend
-                   </div>
-                   <div class="col-md-12"></div>
-                </div>
-                <div class="row">
-                   <div class="col-md-12">
-                      <h5 class="slider-title-2">Sentiment Analysis</h5>
-                      <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
-                   </div>
-                   <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
-                      <div class="up">
-                         <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"/>
-                      </div>
-                      <div class="count">
-                         <p>$percent_reviews_positive_sentiment_last_6_months</p>
-                      </div>
-                      <div class="remark">
-                         <p>Positive</p>
-                      </div>
-                   </div>
-                   <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
-                      <div class="up" style="padding-bottom:7px;">
-                         <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"/>
-                      </div>
-                      <div class="count">
-                         <p>$percent_neutral_sentiment_reviews_last6_months</p>
-                      </div>
-                      <div class="remark">
-                         <p>Neutral</p>
-                      </div>
-                   </div>
-                   <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
-                      <div class="up">
-                         <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"/>
-                      </div>
-                      <div class="count">
-                         <p>$percent_reviews_negative_sentiment_last_6_months</p>
-                      </div>
-                      <div class="remark">
-                         <p>Negative</p>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
+        }else {
+           $content .=<<<CONTENT
+                $image_content
 CONTENT;
-        if($product_description){
+            }
+        $content .=<<<CONTENT
+               </div>
+               <div class="col-md-9 big_thumbnail">
+CONTENT;
+        if($image_content){
+            $content .=<<<CONTENT
+                $image_content
+CONTENT;
+        }else{
+          $content .=<<<CONTENT
+            $product_image_url
+CONTENT;
+       }
+        $content .=<<<CONTENT
+               </div>
+            </div>
+         </div>
+         <div class="col-md-5">
+            <div class="row">
+               <div class="col-md-12">
+                  <h5 class="slider-title">Reviews Trend</h5>
+                  $reviewTrend
+               </div>
+               <div class="col-md-12 review_border"></div>
+            </div>
+            <div class="row sentiment_data">
+               <div class="col-md-12 sentiment_row">
+                  <h5 class="slider-title-2">Sentiment Analysis</h5>
+                  <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
+               </div>
+               <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                  <div class="up">
+                     <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"/>
+                  </div>
+                  <div class="count">
+                     <p>$percent_reviews_positive_sentiment_last_6_months</p>
+                  </div>
+                  <div class="remark">
+                     <p>Positive</p>
+                  </div>
+               </div>
+               <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
+                  <div class="up" style="padding-bottom:7px;">
+                     <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"/>
+                  </div>
+                  <div class="count">
+                     <p>$percent_neutral_sentiment_reviews_last6_months</p>
+                  </div>
+                  <div class="remark">
+                     <p>Neutral</p>
+                  </div>
+               </div>
+               <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                  <div class="up">
+                     <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"/>
+                  </div>
+                  <div class="count">
+                     <p>$percent_reviews_negative_sentiment_last_6_months</p>
+                  </div>
+                  <div class="remark">
+                     <p>Negative</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+CONTENT;
+    $content .=<<<CONTENT
+      <div class="row second-row">
+         <div class="col-md-5" style="text-align:center;margin-top:13px;">
+            <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
+         </div>
+         <div class="col-md-3" style="text-align:center;margin-top:13px;">
+         </div>
+         <div class="col-md-4" style="text-align:center;margin-top:13px;">
+            <a href="$buy_link" target="_blank" class="btn partner_button">Shop now</a>
+         </div>
+      </div>
+      <hr style="margin-top:0px !important;"/>
+CONTENT;
+      if($product_description){
         $content .=<<<CONTENT
           <div class="row fourth-row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 product_description">
                 <h4 class="related_post_title">Product Description</h4>
                     <div class="detail-text">
                         $product_description
@@ -317,128 +330,118 @@ CONTENT;
                 </div>
           </div>
 CONTENT;
-        }
-        $content .=<<<CONTENT
-          <div class="row second-row">
-             <div class="col-md-5" style="text-align:center;">
-                <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
-             </div>
-             <div class="col-md-3" style="text-align:center;">
-             </div>
-             <div class="col-md-4" style="text-align:center;">
-                <a href="$buy_link" target="_blank" class="btn partner_button">Shop now</a>
-             </div>
-          </div>
-          <div class="row third-row" style="display:none;">
-          </div>
-          <div class="row fourth-row">
-             <div class="col-md-12">
-                <table class="table table-responsive table-striped">
-                    <tbody>
-                    <tr>
-                        <th>Rank (out of $no_of_products)</th>
-                        <td>$product_rank</td>
-                    </tr>
-                    <tr>
-                        <th>Score (out of 10)</th>
-                        <td>$product_score</td>   
-                    </tr>
-                    <tr>
-                        <th>Total Reviews in this Category</th>
-                        <td>$total_reviews_category</td>    
-                    </tr>
-                    <tr>
-                        <th>Total Reviews</th>
-                        <td>$total_reviews_entire_life</td>   
-                    </tr>
-                    <tr>
-                        <th>Recent Reviews (Last 6 Months)</th>
-                        <td>$total_reviews_last_6_months</td>   
-                    </tr>
-                    <tr>
-                        <th>Recent Reviews with Positive Sentiment</th>
-                        <td>$reviews_positive_sentiment_last_6_months</td>
-                    </tr>
-                    <tr>
-                        <th>Recent Reviews with Negative Sentiment</th>
-                        <td>$reviews_negative_sentiment_last_6_months</td>
-                     </tr>
-                     <tr>
-                        <th>Positive Sentiment</th>
-                        <td>$percent_reviews_positive_sentiment_last_6_months</td>
-                     </tr>
-                     <tr>
-                        <th>Negative Sentiment</th>
-                        <td>$percent_reviews_negative_sentiment_last_6_months</td>
-                    </tr>
-                    <tr>
-                        <th>Neutral Sentiment</th>
-                        <td>$percent_neutral_sentiment_reviews_last6_months</td>
-                    </tr>
-                </tbody>
-                </table>
-             </div>
-          </div>
-          <div class="row fourth-row">
-             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="detail-text">
-                   <p>$summary_text</p>
-                </div>
-             </div>
-             <div class="col-xs-12 col-sm-12 col-md-12" style="display:none;">
-                <div class="detail-text">
+        }     
+$content .=<<<CONTENT
+      <div class="row third-row" style="display:none;">
+      </div>
+      <div class="row fourth-row">
+         <div class="col-md-12">
+            <table class="table table-responsive table-striped">
+                <tbody>
+                <tr>
+                    <th>Rank (out of $no_of_products)</th>
+                    <td>$product_rank</td>
+                </tr>
+                <tr>
+                    <th>Score (out of 10)</th>
+                    <td>$product_score</td>   
+                </tr>
+                <tr>
+                    <th>Total Reviews in this Category</th>
+                    <td>$total_reviews_category</td>    
+                </tr>
+                <tr>
+                    <th>Total Reviews</th>
+                    <td>$total_reviews_entire_life</td>   
+                </tr>
+                <tr>
+                    <th>Recent Reviews (Last 6 Months)</th>
+                    <td>$total_reviews_last_6_months</td>   
+                </tr>
+                <tr>
+                    <th>Recent Reviews with Positive Sentiment</th>
+                    <td>$reviews_positive_sentiment_last_6_months</td>
+                </tr>
+                <tr>
+                    <th>Recent Reviews with Negative Sentiment</th>
+                    <td>$reviews_negative_sentiment_last_6_months</td>
+                 </tr>
+                 <tr>
+                    <th>Positive Sentiment</th>
+                    <td>$percent_reviews_positive_sentiment_last_6_months</td>
+                 </tr>
+                 <tr>
+                    <th>Negative Sentiment</th>
+                    <td>$percent_reviews_negative_sentiment_last_6_months</td>
+                </tr>
+                <tr>
+                    <th>Neutral Sentiment</th>
+                    <td>$percent_neutral_sentiment_reviews_last6_months</td>
+                </tr>
+            </tbody>
+            </table>
+         </div>
+      </div>
+      <div class="row fourth-row">
+         <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="detail-text">
+               <p>$summary_text</p>
+            </div>
+         </div>
+         <div class="col-xs-12 col-sm-12 col-md-12" style="display:none;">
+            <div class="detail-text">
 CONTENT;
-    if($decode_json->top_positive_reviews){
-            $min = 0;
-            foreach($decode_json->top_positive_reviews as $positive_review){
-                $review_text = '';
-                $positive_review_date = '';
-                if($positive_review->positive_reviews != NULL && $positive_review->positive_reviews!= ''){
-                    $review_text = $positive_review->positive_reviews;
-                }
-                if($positive_review->review_date != NULL && $positive_review->review_date != ''){
-                    $pr_date = $positive_review->review_date;
-                    $positive_review_date = $pr_date;
-                } 
-            $min++;
-            if($min == 6) break;
-            $content .=<<<CONTENT
-               <blockquote>  
-                <p>$review_text</p>
-                </blockquote>
-CONTENT;
-        }
-    }
-    if($decode_json->top_negative_reviews){
-        $min1=0;
-        foreach($decode_json->top_negative_reviews as $bottom_review){
-            $n_review_text = '';
-            $negative_review_date = '';
-            if($bottom_review->negative_reviews!= NULL && $bottom_review->negative_reviews != ''){    
-                $n_review_text = $bottom_review->negative_reviews;
+if($decode_json->top_positive_reviews){
+        $min = 0;
+        foreach($decode_json->top_positive_reviews as $positive_review){
+            $review_text = '';
+            $positive_review_date = '';
+            if($positive_review->positive_reviews != NULL && $positive_review->positive_reviews!= ''){
+                $review_text = $positive_review->positive_reviews;
             }
-            if($bottom_review->review_date != NULL && $bottom_review->review_date != ''){
-                $nr_date = $bottom_review->review_date;
-                $negative_review_date = $nr_date;
-            }
-            $min1++;
-            if ($min1 == 6) break;
+            if($positive_review->review_date != NULL && $positive_review->review_date != ''){
+                $pr_date = $positive_review->review_date;
+                $positive_review_date = $pr_date;
+            } 
+        $min++;
+        if($min == 6) break;
         $content .=<<<CONTENT
-            <blockquote>  
-                <p>$n_review_text</p>
+           <blockquote>  
+            <p>$review_text</p>
             </blockquote>
 CONTENT;
-        }
     }
-        $content .=<<<CONTENT
-                </div>
-             </div>
-             <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="detail-text">
-                   <img src="$wordCloudImage" alt="$product_title" title="$product_title"/>
-                </div>
-             </div>
-          </div>
+}
+if($decode_json->top_negative_reviews){
+    $min1=0;
+    foreach($decode_json->top_negative_reviews as $bottom_review){
+        $n_review_text = '';
+        $negative_review_date = '';
+        if($bottom_review->negative_reviews!= NULL && $bottom_review->negative_reviews != ''){    
+            $n_review_text = $bottom_review->negative_reviews;
+        }
+        if($bottom_review->review_date != NULL && $bottom_review->review_date != ''){
+            $nr_date = $bottom_review->review_date;
+            $negative_review_date = $nr_date;
+        }
+        $min1++;
+        if ($min1 == 6) break;
+    $content .=<<<CONTENT
+        <blockquote>  
+            <p>$n_review_text</p>
+        </blockquote>
+CONTENT;
+    }
+}
+    $content .=<<<CONTENT
+            </div>
+         </div>
+         <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="detail-text">
+               <img src="$wordCloudImage" alt="$product_title" title="$product_title"/>
+            </div>
+         </div>
+      </div>
 CONTENT;
 
 //get the randomly user list 
