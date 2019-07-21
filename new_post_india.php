@@ -7,7 +7,7 @@ $get_product = $wpdb->get_results('SELECT *  FROM dev_bestviews.products
 WHERE  (s3_output_url IS NOT NULL AND s3_output_url !="") AND wp_post_id =0
 AND s3_input_url IS NOT NULL AND s3_input_url!="" AND region = "IND"
 AND subcategory IN ("PlayStation","Speakers","Sherwani","Cooler","Trimmer","Earphones","Monitor","Fitness Band","Laptops","Running Shoes","Televisions (TV, Appliances, Electronics)")
-ORDER BY subcategory ASC ');
+AND image_snippet !="." AND region = "IND"');
 
 //read product information::::
   foreach($get_product  as $product){
@@ -254,10 +254,10 @@ CONTENT;
                   <h5 class="slider-title">Reviews Trend</h5>
                   $reviewTrend
                </div>
-               <div class="col-md-12"></div>
+               <div class="col-md-12 review_border"></div>
             </div>
-            <div class="row">
-               <div class="col-md-12">
+            <div class="row sentiment_data">
+               <div class="col-md-12 sentiment_row">
                   <h5 class="slider-title-2">Sentiment Analysis</h5>
                   <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
                </div>
@@ -298,29 +298,32 @@ CONTENT;
          </div>
       </div>
 CONTENT;
-    if($product_description){
-    $content .=<<<CONTENT
-      <div class="row fourth-row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-            <h4 class="related_post_title">Product Description</h4>
-                <div class="detail-text">
-                    $product_description
-                </div>
-            </div>
-      </div>
-CONTENT;
-    }
     $content .=<<<CONTENT
       <div class="row second-row">
-         <div class="col-md-5" style="text-align:center;">
+         <div class="col-md-5" style="text-align:center;margin-top:13px;">
             <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
          </div>
-         <div class="col-md-3" style="text-align:center;">
+         <div class="col-md-3" style="text-align:center;margin-top:13px;">
          </div>
-         <div class="col-md-4" style="text-align:center;">
+         <div class="col-md-4" style="text-align:center;margin-top:13px;">
             <a href="$buy_link" target="_blank" class="btn partner_button">Shop now</a>
          </div>
       </div>
+      <hr style="margin-top:0px !important;"/>
+CONTENT;
+      if($product_description){
+        $content .=<<<CONTENT
+          <div class="row fourth-row">
+                <div class="col-xs-12 col-sm-12 col-md-12 product_description">
+                <h4 class="related_post_title">Product Description</h4>
+                    <div class="detail-text">
+                        $product_description
+                    </div>
+                </div>
+          </div>
+CONTENT;
+        }     
+$content .=<<<CONTENT
       <div class="row third-row" style="display:none;">
       </div>
       <div class="row fourth-row">
