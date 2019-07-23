@@ -29,7 +29,10 @@
 							</div>
 						</div>
 						<div class="col-md-2">
-						
+						<select class="form-control">
+							<option value="us"><i class="fas fa-flag-usa"></i>U.S.</option>
+							<option value="ind">INDIA</option>
+						</select>	
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-5 footer_social_icon">
 							<ul>
