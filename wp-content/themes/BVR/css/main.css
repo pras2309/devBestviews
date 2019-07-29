@@ -21,7 +21,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: 400; font
 }
 .product_rows{width:32% !important;}
 .left-content-section { width: 656px; height:auto;padding-right:0px !important;}
-.article_section { margin-top:-52px;}
+.article_section { margin-top:-52px; margin-left:12px;}
 .right-content-section { width: 464px; height: auto;}
 .footer{text-align:center;padding:30px 0px;color:#7e7e7e;font-size:13px;}
 .footer_container{margin-left:89px;}
@@ -253,7 +253,8 @@ font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-he
 	.category_container { margin-top:-221px;}
 	.left-content-section { width: 391px; height:613px; padding-right:15px !important;}
 	.product_rows{width:100% !important;}
-	.article_section { margin-top:6px; }
+	.article_section { margin-top:6px; margin-left:-17px;}
+	.custome-input::placeholder{ font-size:12px;}
 	.right-content-section {  width: 391px; height:536px; } 
 	.related_category_item_main{margin-bottom:10px;margin-top:10px;}
 	.best_views_middle_content{height:auto;}
