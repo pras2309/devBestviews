@@ -4,15 +4,6 @@ Template Name: SERP Template
 
 */
 ?>
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    #ajaxsearchlite1 {
-        width: 400px !important;
-    }
-</style>
 <?php
 global $wpdb;
 $s = get_search_query();
@@ -45,131 +36,52 @@ curl_setopt(
 $response = curl_exec($process);
 $resultSet = json_decode($response, true);
 $result = $resultSet["hits"]["hits"];
+$all_category = array();
+foreach ($result as $document) :
+    $dataSet = $document["_source"];
+    $subcategory_name = $dataSet['subcategory'];
+    array_push($all_category, $subcategory_name);
+endforeach;
+
+$unique_category_list = array_unique($all_category);
+// $page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
+$total = count( $unique_category_list ); //total items in array    
 
 ?>
 
 <div class="Mask">
-    <p class="We-have-found-30-res " align="center">We have found 30 results for "<?php echo  strtoupper($s); ?>"</p>
-    <div align="center">
+    <p class="We-have-found-30-res " align="center">We have found <?php echo $total;?> results for "<?php echo  strtoupper($s); ?>"</p>
+    <div class="row" align="center">
         <?php get_search_form($s) ?>
     </div>
 </div>
 
-<!-- <div class="card-columns">
-    <div class="card card-categorystyle">
-        <img class="card-img-top" src="<?php bloginfo('template_url'); ?>/css/images//picture09.bmp">
-        <div class="card-img-overlay">
-            <div class="row" style="height:37.5%"></div>
-            <span class=" gradient img-text " style="position:absolute;bottom:0px;">
-                Beach Cruisers
-            </span>
-        </div>
-        <div class="card-body">
-            <div class="container">
-                <div class="row" style="height:56px">
-                    <img src="p5656.bmp" class="mr-sm-4">
-                    <span class="card-text text-truncate product-text" style="max-width:200px">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione facere culpa at
-                        itaque saepe error sint in, qui atque cumque!
-                    </span>
-                </div>
-
-                <div class="row" style="height:56px">
-                    <img src="p5656.bmp" class="mr-sm-4">
-                    <span class="card-text text-truncate text-wrap" style="max-width:200px">
-                        Lorem ipsum dolor sit amet consectetur adipisicing.
-                    </span>
-
-                </div>
-
-                <div class="row" style="height:56px">
-                    <img src="p5656.bmp" class="mr-sm-4">
-                    <span class="card-text text-truncate" style="max-width:200px">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id ea qui beatae
-                        consequatur? A, vitae.
-                    </span>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div> -->
-
-
-<!-- <div align="center">
-    <div style="margin-top:24px;width:92%">
-        <div class="row" style="height: 320px">
-            <div class="card-columns" style="margin-bottom:16px">
-                <div class="card card-style">
-                    <div align="center">
-                        <img class="category_thumbnail" src="<?php bloginfo('template_url'); ?>/css/images//train.bmp" class="mx-auto d-block">
-                    </div>
-                    <div class="category_text">iPhone 6 Cases</div>
-                    <div class="d-flex justify-content-center" style="height:19px;margin-top:7px">
-                        <img class="star img img-responsive" height=19px width=20px src="<?php bloginfo('template_url'); ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-                <div class="card card-style">
-                    <div align="center">
-                        <img class="category_thumbnail img img-responsive" src="<?php bloginfo('template_url'); ?>/css/images//train.bmp" class="mx-auto d-block">
-                    </div>
-                    <div class="category_text">iPhone 6 Cases</div>
-                    <div class="d-flex justify-content-center" style="height:19px;margin-top:7px">
-                        <img class="star img img-responsive" height=19px width=20px src="<?php bloginfo('template_url'); ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-                <div class="card card-style">
-                    <div align="center">
-                        <img class="category_thumbnail img img-responsive" src="<?php bloginfo('template_url'); ?>/css/images//train.bmp" class="mx-auto d-block">
-                    </div>
-                    <div class="category_text">iPhone 6 Cases</div>
-                    <div class="d-flex justify-content-center" style="height:19px;margin-top:7px">
-                        <img class="star img img-responsive" height=19px width=20px src="<?php bloginfo('template_url'); ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-
-                <div class="card card-style">
-                    <div align="center">
-                        <img class="category_thumbnail img img-responsive" src="<?php bloginfo('template_url'); ?>/css/images//train.bmp" class="mx-auto d-block">
-                    </div>
-                    <div class="category_text">iPhone 6 Cases</div>
-                    <div class="d-flex justify-content-center" style="height:19px;margin-top:7px">
-                        <img class="star img img-responsive" height=19px width=20px src="<?php bloginfo('template_url'); ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</div> -->
 
 <div class="row" align="center">
     <div class="col-4" style="width:7%"></div>
     <div class="col-4" style="width:86%">
         <div style="display:inline-block">
             <?php
-            $all_category = array();
-            foreach ($result as $document) :
-                $dataSet = $document["_source"];
-                $subcategory_name = $dataSet['subcategory'];
-                array_push($all_category, $subcategory_name);
-            endforeach;
-
-            $unique_category_list = array_unique($all_category);
             // print_r($unique_category_list); exit;
-            foreach ($unique_category_list as $subcategory) :
+            $limit = 8;
+            $noOfPages = ceil($total /  $limit);
+            //get current page no.
+            if(isset($_GET['page'])){
+                $page = $_GET['page'];
+            }else{
+                $page = 1;
+            }
+            $start_page = $page * $limit - $limit;
+            $array_read = array_chunk($unique_category_list, $limit);
+            // print_r($array_read);exit;
+            foreach ($array_read[$page -1] as $subcategory) :
                 //get subcategory information
                 $subcategory_details = $wpdb->get_results(
                     $wpdb->prepare(
                         "
                             SELECT * FROM bestviews.product_category
-                            WHERE subcategory_name =%s GROUP BY  subcategory_name
-                            ORDER BY subcategory_name ASC ",
+                            WHERE subcategory_name =%s
+                            ORDER BY subcategory_name ASC LIMIT $limit",
                         $subcategory
                     )
                 );
@@ -179,14 +91,13 @@ $result = $resultSet["hits"]["hits"];
                     $category_id = get_cat_ID($subcategory_info->subcategory_name);
 
                     // Get the URL of this category
-                    $category_link = get_category_link($category_id);
-                    echo $category_id;
-                    ?>
+                    $category_link = get_category_link($category_id); 
+                    // echo $category_id;                   ?>
                     <a href="<?php echo $category_link; ?>">
                         <div class=" col-sm-12 col-xs-12 col-md-3 category_content">
                             <div align="center">
                                 <div class="category_thumbnail ">
-                                    <img class="img img-responsive" src="<?php echo $subcategory_info->s3_category_img; ?>" />
+                                    <img class="img img-responsive" src="<?php echo $subcategory_info->transparent_image_url; ?>" />
                                 </div>
                             </div>
                             <div class="category_text">
@@ -201,164 +112,31 @@ $result = $resultSet["hits"]["hits"];
                     </a>
                 <?php endforeach;
             endforeach; ?>
-            <!-- <a href="">
-                <div class="col-sm-12 col-xs-12 col-md-3 category_content">
-                    <div align="center">
-                        <div class="category_thumbnail ">
-                            <img class="img img-responsive" src="<?php //bloginfo('template_url'); 
-                                                                    ?>/css/images/iphonesquare1.png" />
-
-                        </div>
-                    </div>
-                    <div class="category_text">
-                        <div>iPhone 6 Cases</div>
-                    </div>
-                    <div class="review_box" align="center">
-                        <img style="margin-top:-5px;margin-right:8px" src="<?php //bloginfo('template_url'); 
-                                                                            ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-12 col-xs-12 col-md-3 category_content">
-                    <div align="center">
-                        <div class="category_thumbnail ">
-                            <img class="img img-responsive" src="<?php //bloginfo('template_url'); 
-                                                                    ?>/css/images/iphonesquare1.png" />
-
-                        </div>
-                    </div>
-                    <div class="category_text">
-                        <div>iPhone 6 Cases</div>
-                    </div>
-                    <div class="review_box" align="center">
-                        <img style="margin-top:-5px;margin-right:5px" src="<?php //bloginfo('template_url'); 
-                                                                            ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-12 col-xs-12 col-md-3 category_content">
-                    <div align="center">
-                        <div class="category_thumbnail ">
-                            <img class="img img-responsive" src="<?php //bloginfo('template_url'); 
-                                                                    ?>/css/images/iphonesquare1.png" />
-                        </div>
-                    </div>
-                    <div class="category_text">
-                        <div>iPhone 6 Cases</div>
-                    </div>
-                    <div class="review_box" align="center">
-                        <img style="margin-top:-5px;margin-right:5px" src="<?php //bloginfo('template_url'); 
-                                                                            ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-12 col-xs-12 col-md-3 category_content">
-                    <div align="center">
-                        <div class="category_thumbnail ">
-                            <img class="img img-responsive" src="<?php //bloginfo('template_url'); 
-                                                                    ?>/css/images/iphonesquare1.png" />
-                        </div>
-                    </div>
-                    <div class="category_text">
-                        <div>iPhone 6 Cases</div>
-                    </div>
-                    <div class="review_box" align="center">
-                        <img style="margin-top:-5px;margin-right:5px" src="<?php //bloginfo('template_url'); 
-                                                                            ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-12 col-xs-12 col-md-3 category_content">
-                    <div align="center">
-                        <div class="category_thumbnail ">
-                            <img class="img img-responsive" src="<?php //bloginfo('template_url'); 
-                                                                    ?>/css/images/iphonesquare1.png" />
-                        </div>
-                    </div>
-                    <div class="category_text">
-                        <div>iPhone 6 Cases</div>
-                    </div>
-                    <div class="review_box" align="center">
-                        <img style="margin-top:-5px;margin-right:5px" src="<?php //bloginfo('template_url'); 
-                                                                            ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-12 col-xs-12 col-md-3 category_content">
-                    <div align="center">
-                        <div class="category_thumbnail ">
-                            <img class="img img-responsive" src="<?php //bloginfo('template_url'); 
-                                                                    ?>/css/images/iphonesquare1.png" />
-                        </div>
-                    </div>
-                    <div class="category_text">
-                        <div>iPhone 6 Cases</div>
-                    </div>
-                    <div class="review_box" align="center">
-                        <img style="margin-top:-5px;margin-right:5px" src="<?php //bloginfo('template_url'); 
-                                                                            ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-            </a>
-            <a href="">
-                <div class="col-sm-12 col-xs-12 col-md-3 category_content">
-                    <div align="center">
-                        <div class="category_thumbnail ">
-                            <img class="img img-responsive" src="<?php //bloginfo('template_url'); 
-                                                                    ?>/css/images/iphonesquare1.png" />
-                        </div>
-                    </div>
-                    <div class="category_text">
-                        <div>iPhone 6 Cases</div>
-                    </div>
-                    <div class="review_box" align="center">
-                        <img style="margin-top:-5px;margin-right:5px" src="<?php //bloginfo('template_url'); 
-                                                                            ?>/css/images/star.png" />
-                        <span class="review_text">163 Reviews</span>
-                    </div>
-                </div>
-            </a> -->
+           
         </div>
         <div class="col-4" style="width:7%"></div>
     </div>
 
 
     <div class="row" align="center" style="margin-top:32px">
-        <img style="margin-right:16px" width=16px height=16px src="<?php bloginfo('template_url'); ?>/css/images/arrow-left.svg" />
-        <a href=# class="btn btnstyle" style="margin-right:8px">
-            <div class="btntext" align="center">1</div>
+    <?php if($noOfPages > 1 && $page != 1): ?>
+       <a href="?s=<?php echo $s;?>&page=<?php echo $page -1; ?>"> <img style="margin-right:16px" width=16px height=16px src="<?php bloginfo('template_url'); ?>/css/images/arrow-left.svg" />
         </a>
-        <a href=# class="btn btnstyleactive" style="margin-right:8px">
-            <div class="btntextactive" align="center">2</div>
+       <?php
+       endif; 
+       for($i = 1; $i<=$noOfPages; $i++):
+        if($i==$page):
+       ?>
+        <a href="?s=<?php echo $s; ?>&page=<?php echo $i; ?>" class="btn btnstyleactive" style="margin-right:8px">
+            <div class="btntextactive" align="center"><?php echo $i; ?></div>
         </a>
-        <a href=# class="btn btnstyle" style="margin-right:15px">
-            <div class="btntext" align="center">3</div>
+        <?php else: ?>
+        <a href="?s=<?php echo $s; ?>&page=<?php echo $i; ?>" class="btn btnstyle" style="margin-right:8px">
+            <div class="btntext" align="center"><?php echo $i; ?></div>
         </a>
-        <span class="btn-text dotdotdot" style="margin-right:13px">...</span>
-        <a href=# class="btn btnstyle " style="margin-right:8px">
-            <div class="btntext" align="center">7</div>
-        </a>
-        <a href=# class="btn btnstyle" style="margin-right:16px">
-            <div class="btntext " align="center">8</div>
-        </a>
-        <img width=16px height=16px src="<?php bloginfo('template_url'); ?>/css/images/arrow-right.svg" />
-
+        <?php endif; endfor; ?>
+        <?php if($noOfPages > $page ): ?>
+        <a href="?s=<?php echo $s;?>&page=<?php echo $page + 1; ?>"><img width=16px height=16px src="<?php bloginfo('template_url'); ?>/css/images/arrow-right.svg" />
+        </a> 
+        <?php endif; ?>
     </div>
-
-    <?php get_template_part("template-parts/top-footer");
-    ?>
-    <?php get_footer(); ?>

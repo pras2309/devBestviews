@@ -8,10 +8,13 @@
  */
 ?>
 
-<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<label>
-		<span class="screen-reader-text"><?php echo _x( 'Search for:', 'label', 'bvr' ); ?></span>
-		<input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Search &hellip;', 'placeholder', 'bvr' ); ?>" value="<?php echo get_search_query(); ?>" name="s" />
-	</label>
-	<button type="submit" class="search-submit"><span class="screen-reader-text"><?php echo _x( 'Search', 'submit button', 'bvr' ); ?></span></button>
-</form>
+<div class="searchbox" style="min-width:280px;">
+	   <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+        <i class="glyphicon glyphicon-search search-icon"></i>
+		   <input type="search" class="search-input d-inline" name="s" 
+		   placeholder="Search for a Product"
+		   value="<?php echo get_search_query(); ?>" name="s"  
+		   >
+		</form>
+</div>
+   

@@ -5,7 +5,7 @@
                     <div class="form-group has-feedback has-search">
                         <!-- <span class="glyphicon glyphicon-search form-control-feedback" style="color:#56a4f9;"></span>
                         <input type="text" class="form-control input-searchbox" placeholder="Search for a product"> -->
-                        <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?>
+                        <?php get_search_form(); ?>
                     </div>
         
                 </div>
