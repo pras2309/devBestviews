@@ -1,10 +1,11 @@
 <?php 
 require_once 'wp-config.php';
 global $wpdb;
-$get_product = $wpdb->get_results('SELECT * FROM bestviews.products 
+$get_product = $wpdb->get_results('SELECT * FROM dev_bestviews.products 
             WHERE post_update_flag = 0 AND wp_post_id !=0
             AND (s3_output_url IS NOT NULL AND s3_output_url !="") 
             AND s3_input_url IS NOT NULL AND s3_input_url!="" AND subcategory IN ("Cameras","Photo Printers","Smart Tv","Activity & Entertainment","Touch Laptops","Projectors","LED Lightning","Natural Hair","Software","Drones","Camping Hammocks","Floor Lamps","Camping Cots","Camping Pots, Pans & Griddles","Tool Sets","Tablets","Travel Systems","External Hard Drives","Hair Removal","Open Fire Cookware","Computer Memory","Women Hats","Wireless Charging stations","Travel Bags","Patio Furniture Sets","Umbrellas & Shade","Art Supplies","Room Air Conditioners","Internal Hard Drives","Women heels")');
+
 
 
 //read product information::::
@@ -34,9 +35,12 @@ $get_product = $wpdb->get_results('SELECT * FROM bestviews.products
             if($product->youtube_url != '' && $product->youtube_url != NULL){
                 $youtube_url = $product->youtube_url;
             }
+            //get image snippet and summary url from the main product table from bestviews
+            $dataResult = $wpdb->get_results("SELECT buy_url, image_snippet, summary_url FROM bestviews.products WHERE id = $product_id ");
+            $dataResult  = $dataResult[0];
             $image_content = '';
-            if($product->image_snippet != '' && $product->image_snippet != NULL &&  $product->image_snippet != '.'){
-                $image_content =  $product->image_snippet;
+            if($dataResult->image_snippet != '' && $dataResult->image_snippet != NULL &&  $dataResult->image_snippet != '.'){
+                $image_content =  $dataResult->image_snippet;
             }else{
                 $image_content = "<img src='http://www.bestviewsreviews.com/wp-content/themes/BVR/images/jw_no-image_3.jpg/' class='img img-responsive'>";
             }
@@ -51,8 +55,8 @@ $get_product = $wpdb->get_results('SELECT * FROM bestviews.products
     
     
             $buy_link = '';
-            if($product->buy_url != '' && $product->buy_url != NULL){
-                $buy_link = $product->buy_url;
+            if($dataResult->buy_url != '' && $dataResult->buy_url != NULL){
+                $buy_link = $dataResult->buy_url;
             }
             //get product feature:
             $product_feature = '';
@@ -61,6 +65,7 @@ $get_product = $wpdb->get_results('SELECT * FROM bestviews.products
                 $prod_feature = trim($product->word_freq);
                 $features_collection_json = @file_get_contents($prod_feature);
                 $features_collection = json_decode($features_collection_json, true);
+                unset($features_collection['total_number_of_reviews']);
                 foreach($features_collection as $k=>$v){
                     array_push($prod_tags_list, $k);
                 }
@@ -68,21 +73,12 @@ $get_product = $wpdb->get_results('SELECT * FROM bestviews.products
             }
             
           
-            //read the summary text
+            //read the product description
             $prod_summary_url = '';
-            if($product->updated_summary != '' && $product->updated_summary !=NULL){
-                $prod_summary_url = $product->updated_summary;
-                $summary_text = @file_get_contents($prod_summary_url);
-                $summary_text = str_replace('"','', $summary_text);
-    
+            if($dataResult->summary_url != '' && $dataResult->summary_url !=NULL){
+                $prod_summary_url = $dataResult->summary_url;
+                $summary_text = @file_get_contents($prod_summary_url);    
             }
-            //get the product description
-            $prod_description_url = '';
-            if($product->S3_description_url != '' && $product->S3_description_url !=NULL){
-                $prod_description_url = $product->S3_description_url;
-                $product_description = @file_get_contents($prod_description_url);
-            }
-            
             
         //get category or subcategory id of the product:
             $get_category_details = $wpdb->get_results("SELECT t.term_id AS category_id
@@ -316,24 +312,21 @@ CONTENT;
               </div>
               <hr style="margin-top:0px !important;"/>
 CONTENT;
-              if($product_description){
+              if($summary_text){
                 $content .=<<<CONTENT
                   <div class="row fourth-row">
                         <div class="col-xs-12 col-sm-12 col-md-12 product_description">
-                        <h4 class="related_post_title">Product Description</h4>
                             <div class="detail-text">
-                                $product_description
+                                $summary_text
                             </div>
                         </div>
                   </div>
 CONTENT;
                 }     
         $content .=<<<CONTENT
-              <div class="row third-row" style="display:none;">
-              </div>
-              <div class="row fourth-row">
+              <div class="row fourth-row product_stats">
                  <div class="col-md-12">
-                    <table class="table table-responsive table-striped">
+                    <table class="table table-responsive table-striped ">
                         <tbody>
                         <tr>
                             <th>Rank (out of $no_of_products)</th>
@@ -379,7 +372,7 @@ CONTENT;
                     </table>
                  </div>
               </div>
-              <div class="row fourth-row">
+              <div class="row fourth-row" style="display:none;">
                  <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="detail-text">
                        <p>$summary_text</p>
@@ -435,7 +428,6 @@ CONTENT;
                  </div>
                  <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="detail-text">
-                       <img src="$wordCloudImage" alt="$product_title" title="$product_title"/>
                     </div>
                  </div>
               </div>
@@ -482,7 +474,7 @@ $return = curl_exec($process);
 curl_close($process);
 //update the post_update_flag for product.
 
-$results = $wpdb->query($wpdb->prepare("UPDATE bestviews.products SET post_update_flag=1 WHERE id=%d", $product_id));
+$results = $wpdb->query($wpdb->prepare("UPDATE dev_bestviews.products SET post_update_flag=1 WHERE id=%d", $product_id));
 
 
 //insert category
