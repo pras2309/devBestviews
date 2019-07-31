@@ -1,346 +1,446 @@
 <?php 
 require_once 'wp-config.php';
 global $wpdb;
-$get_product = $wpdb->get_results("SELECT * FROM bestviews.products 
-                    WHERE  subcategory_processed = 1 
-                    AND (s3_output_url IS NOT NULL AND s3_output_url !='') 
-                    AND s3_input_url IS NOT NULL  AND wp_post_id !=0
-                    AND s3_input_url != 'www.abc.com'
-                    AND post_update_flag !=1 ");
+$get_product = $wpdb->get_results('SELECT * FROM bestviews.products 
+            WHERE post_update_flag = 0 AND wp_post_id !=0
+            AND (s3_output_url IS NOT NULL AND s3_output_url !="") 
+            AND s3_input_url IS NOT NULL AND s3_input_url!="" AND subcategory IN ("Cameras","Photo Printers","Smart Tv","Activity & Entertainment","Touch Laptops","Projectors","LED Lightning","Natural Hair","Software","Drones","Camping Hammocks","Floor Lamps","Camping Cots","Camping Pots, Pans & Griddles","Tool Sets","Tablets","Travel Systems","External Hard Drives","Hair Removal","Open Fire Cookware","Computer Memory","Women Hats","Wireless Charging stations","Travel Bags","Patio Furniture Sets","Umbrellas & Shade","Art Supplies","Room Air Conditioners","Internal Hard Drives","Women heels")');
+
 
 //read product information::::
-  foreach($get_product  as $product){
-	  //   echo $product->model;
-      $content = '';
-      $wp_post_id = $product->wp_post_id;
-    if($product->category != '' && $product->category != NULL){
-        $product_category = str_replace('&amp;','&',$product->category);
-        $product_category = str_replace("s'","'s",$product->category);
-        }
-        if($product->subcategory != '' && $product->subcategory!=NULL){
-        $product_subcategory = str_replace('&amp;','&',$product->subcategory);
-        $product_subcategory = str_replace("s'","'s",$product->subcategory);
-        }
-        $product_title='';
-        if($product->product_title!='' && $product->product_title!= NULL){
-        $product_title = str_replace("?", ' ', $product->product_title);
-        }
-        $product_description = '';
-        if($product->description!='' && $product->description!= NULL){
-        $product_description = $product->description;
-        }
-        if($product->s3_image_url != '' && $product->s3_image_url!= NULL){
-        $prduct_image_url = $product->s3_image_url;
-        }
-        if($product->id){
-        $product_id = $product->id;
-        }
-        if($product->s3_output_url != '' && $product->s3_output_url !=NULL){
-        $json_file_url = $product->s3_output_url;
-        }
-        $youtube_url = '';
-        if($product->youtube_url != '' && $product->youtube_url != NULL){
-            $youtube_url = $product->youtube_url;
-        }
-        $image_content = '';
-        if($product->image_snippet != '' && $product->image_snippet != NULL){
-            $image_content =  $product->image_snippet;
-        }
-        $buy_link = '';
-        if($product->buy_url != '' && $product->buy_url != NULL){
-            $buy_link = $product->buy_url;
-        }
-        //get product feature:
-        $product_feature = '';
-        $prod_tags_list = array();
-        if($product->product_feature != ''  && $product->product_feature !=NULL){
-            $product_feature = $product->product_feature;
-            $feature_list = explode(',', $product_feature);
-            foreach($feature_list as $feature ){
-                $feature = str_replace('{', '', $feature);
-                $feature = str_replace('}', '', $feature);
-                $feature = str_replace("'", '', $feature);
-                array_push($prod_tags_list, $feature);
+    foreach($get_product  as $product){
+        $wp_post_id = $product->wp_post_id;
+        $content = '';
+          //   echo $product->model;
+            $product_title='';
+            if($product->product_title!='' && $product->product_title!= NULL){
+            $product_title = str_replace("?", ' ', $product->product_title);
             }
-        }
-
-         //read the summary text
-         $prod_summary_url = '';
-         $summary_text = '';
-         if($product->summary_url != '' && $product->summary_url !=NULL){
-             $prod_summary_url = $product->summary_url;
-             
-             $summary_text = @file_get_contents($prod_summary_url);
- 
-         }
-         
-         
+            if($product->category != '' && $product->category != NULL){
+            $product_category = str_replace('&amp;','&',$product->category);        
+            }
+            if($product->subcategory != '' && $product->subcategory!=NULL){
+            $product_subcategory = str_replace('&amp;','&',$product->subcategory);
+            }
+    
+            if($product->id){
+            $product_id = $product->id;
+            }
+            $json_file_url = '';
+            if($product->s3_output_url != '' && $product->s3_output_url !=NULL){
+            $json_file_url = $product->s3_output_url;
+            }
+            $youtube_url = '';
+            if($product->youtube_url != '' && $product->youtube_url != NULL){
+                $youtube_url = $product->youtube_url;
+            }
+            $image_content = '';
+            if($product->image_snippet != '' && $product->image_snippet != NULL &&  $product->image_snippet != '.'){
+                $image_content =  $product->image_snippet;
+            }else{
+                $image_content = "<img src='http://www.bestviewsreviews.com/wp-content/themes/BVR/images/jw_no-image_3.jpg/' class='img img-responsive'>";
+            }
+    
+            //get product price
+            $product_msrp = '';
+            if($product->msrp != ''
+                && $product->msrp != NULL){
+                $product_msrp = $product->msrp;
+            }
+    
+    
+    
+            $buy_link = '';
+            if($product->buy_url != '' && $product->buy_url != NULL){
+                $buy_link = $product->buy_url;
+            }
+            //get product feature:
+            $product_feature = '';
+            $prod_tags_list = array();
+            if($product->word_freq != ''  && $product->word_freq !=NULL){
+                $prod_feature = trim($product->word_freq);
+                $features_collection_json = @file_get_contents($prod_feature);
+                $features_collection = json_decode($features_collection_json, true);
+                foreach($features_collection as $k=>$v){
+                    array_push($prod_tags_list, $k);
+                }
+                
+            }
+            
+          
+            //read the summary text
+            $prod_summary_url = '';
+            if($product->updated_summary != '' && $product->updated_summary !=NULL){
+                $prod_summary_url = $product->updated_summary;
+                $summary_text = @file_get_contents($prod_summary_url);
+                $summary_text = str_replace('"','', $summary_text);
+    
+            }
+            //get the product description
+            $prod_description_url = '';
+            if($product->S3_description_url != '' && $product->S3_description_url !=NULL){
+                $prod_description_url = $product->S3_description_url;
+                $product_description = @file_get_contents($prod_description_url);
+            }
+            
+            
+        //get category or subcategory id of the product:
+            $get_category_details = $wpdb->get_results("SELECT t.term_id AS category_id
+                            FROM   wp_terms t
+                            LEFT JOIN wp_term_taxonomy tt
+                            ON t.term_id = tt.term_id
+                            WHERE  t.`name` = '".esc_sql(trim($product_subcategory))."' AND tt.taxonomy = 'category'");
+            $category_id = $get_category_details[0]->category_id;
         
-	//get category or subcategory id of the product:
-        $get_category_details = $wpdb->get_results("SELECT t.term_id AS category_id
-                        FROM   wp_terms t
-                        LEFT JOIN wp_term_taxonomy tt
-                        ON t.term_id = tt.term_id
-                        WHERE  t.`name` = '".esc_sql(trim($product_subcategory))."' AND tt.taxonomy = 'category'");
-        $category_id = $get_category_details[0]->category_id;
-	//echo $category_id; exit;
-//get product information from the product json file.
-$json_data = @file_get_contents($json_file_url);
-$decode_json = json_decode($json_data, false);
-// print_r($decode_json); exit;
-//get product rank
-$product_rank = '';
-if($decode_json->bestviewsreviews_product_analysis->rank != ''
-    && $decode_json->bestviewsreviews_product_analysis->rank != NULL
-    && $decode_json->bestviewsreviews_product_analysis->rank != 'nan'){
-    $product_rank = $decode_json->bestviewsreviews_product_analysis->rank;
-}
-//get score of the product
-$product_score = '';
-if($decode_json->bestviewsreviews_product_analysis->score_out_of_10 != ''
-    && $decode_json->bestviewsreviews_product_analysis->score_out_of_10 != NULL
-    && $decode_json->bestviewsreviews_product_analysis->score_out_of_10 != 'nan'){
-    $product_score = $decode_json->bestviewsreviews_product_analysis->score_out_of_10;
-}else{
-	$product_score = '0';
-}
-//get no of products
-$no_of_products = '';
-if($decode_json->bestviewsreviews_product_analysis->num_products != '' 
-        && $decode_json->bestviewsreviews_product_analysis->num_products != NULL
-        && $decode_json->bestviewsreviews_product_analysis->num_products != 'nan'){
-    $no_of_products = $decode_json->bestviewsreviews_product_analysis->num_products;
-}else{
-	$no_of_products = '0';
-}
-//get total reviews for this category.
-$total_reviews_category = '';
-if($decode_json->bestviewsreviews_product_analysis->total_reviews_category != ''
-    &&  $decode_json->bestviewsreviews_product_analysis->total_reviews_category != NULL
-    && $decode_json->bestviewsreviews_product_analysis->total_reviews_category != 'nan'){
-    $total_reviews_category = $decode_json->bestviewsreviews_product_analysis->total_reviews_category;
-}
-else{
-	$total_reviews_category = '0';
-}
-//get historical no of reviews
-$total_reviews_entire_life = '';
-if($decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life != ''
-        && $decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life  != NULL
-        && $decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life != 'nan'){
-    $total_reviews_entire_life = $decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life;
-}else{
-	$total_reviews_entire_life = '0';
-}
-//get total reviews (last 6 months)
-$total_reviews_last_6_months = '';
-if($decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months != ''
-    && $decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months != NULL
-    &&  $decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months != 'nan'){
-    $total_reviews_last_6_months = $decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months;
-}else{
-	$total_reviews_last_6_months = '0';
-}
-//get positive sentiment(last 6 months)
-
-$reviews_positive_sentiment_last_6_months = '';
-if($decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months != '' && 
-    $decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months!= NULL &&
-    $decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months != 'nan'){
-	$reviews_positive_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months;
-}else{
-	$reviews_positive_sentiment_last_6_months = '0';
-}
-
-$reviews_negative_sentiment_last_6_months = '';
-if($decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months  != ''
-    && $decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months!= NULL
-    && $decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months!= 'nan'){
-	$reviews_negative_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months;
-}else{
-	$reviews_negative_sentiment_last_6_months = '0';
-}
-$percent_reviews_positive_sentiment_last_6_months = ''; 
-if($decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months  != ''
-    && $decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months!= NULL 
-    && $decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months!='nan %'){
-	$percent_reviews_positive_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months;
-}else{
-	$percent_reviews_positive_sentiment_last_6_months = '0';
-}
-$percent_reviews_negative_sentiment_last_6_months = '';
-if($decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months  != ''
-    && $decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months!= NULL 
-    && $decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months!= 'nan %'){
-	$percent_reviews_negative_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months;
-}else{
-	$percent_reviews_negative_sentiment_last_6_months = '0';
-}
-$percent_neutral_sentiment_reviews_last6_months='';
-if($decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months!= ''  &&
-     $decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months!= NULL 
-     && $decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months!= 'nan %'){
-	$percent_neutral_sentiment_reviews_last6_months = $decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months;
-}else{
-	$percent_neutral_sentiment_reviews_last6_months = '0';
-}
-//wordcloud images
-
-$wordCloudImage = $decode_json->charts->word_cloud;
-$product_image_url = $product->s3_image_url;
-//check reviewTrend URL
-if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=NULL){
-    $reviewTrend = @file_get_contents($decode_json->charts->reviewtrend);
-    $reviewTrend = str_replace('<html>', '', $reviewTrend);
-    $reviewTrend = str_replace('<head>', '', $reviewTrend);
-    $reviewTrend = str_replace('</head>', '', $reviewTrend);
-    $reviewTrend = str_replace('<body>', '', $reviewTrend);
-    $reviewTrend = str_replace('</body></html>', '', $reviewTrend);
-}
-
-if($summary_text) {
-    $content =<<<CONTENT
-            <p> $summary_text</p>
+    //get product information from the product json file.
+    $json_data = @file_get_contents($json_file_url);
+    $decode_json =  json_decode($json_data, false);
+    
+    //get product rank
+    $product_rank = '';
+    if($decode_json->bestviewsreviews_product_analysis->rank != ''
+        && $decode_json->bestviewsreviews_product_analysis->rank != NULL
+        && $decode_json->bestviewsreviews_product_analysis->rank != 'nan'){
+        $product_rank = $decode_json->bestviewsreviews_product_analysis->rank;
+    }
+    
+    
+    
+    //get score of the product
+    $product_score = '';
+    if($decode_json->bestviewsreviews_product_analysis->score_out_of_10 != ''
+        && $decode_json->bestviewsreviews_product_analysis->score_out_of_10 != NULL
+        && $decode_json->bestviewsreviews_product_analysis->score_out_of_10 != 'nan'){
+        $product_score = $decode_json->bestviewsreviews_product_analysis->score_out_of_10;
+    }else{
+        $product_score = '0';
+    }
+    //get no of products
+    $no_of_products = '';
+    if($decode_json->bestviewsreviews_product_analysis->num_products != '' 
+            && $decode_json->bestviewsreviews_product_analysis->num_products != NULL
+            && $decode_json->bestviewsreviews_product_analysis->num_products != 'nan'){
+        $no_of_products = $decode_json->bestviewsreviews_product_analysis->num_products;
+    }else{
+        $no_of_products = '0';
+    }
+    //get total reviews for this category.
+    $total_reviews_category = '';
+    if($decode_json->bestviewsreviews_product_analysis->total_reviews_category != ''
+        &&  $decode_json->bestviewsreviews_product_analysis->total_reviews_category != NULL
+        && $decode_json->bestviewsreviews_product_analysis->total_reviews_category != 'nan'){
+        $total_reviews_category = $decode_json->bestviewsreviews_product_analysis->total_reviews_category;
+    }
+    else{
+        $total_reviews_category = '0';
+    }
+    //get historical no of reviews
+    $total_reviews_entire_life = '';
+    if($decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life != ''
+            && $decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life  != NULL
+            && $decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life != 'nan'){
+        $total_reviews_entire_life = $decode_json->bestviewsreviews_product_analysis->total_reviews_entire_life;
+    }else{
+        $total_reviews_entire_life = '0';
+    }
+    //get total reviews (last 6 months)
+    $total_reviews_last_6_months = '';
+    if($decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months != ''
+        && $decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months != NULL
+        &&  $decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months != 'nan'){
+        $total_reviews_last_6_months = $decode_json->bestviewsreviews_product_analysis->total_reviews_last_6_months;
+    }else{
+        $total_reviews_last_6_months = '0';
+    }
+    //get positive sentiment(last 6 months)
+    
+    $reviews_positive_sentiment_last_6_months = '';
+    if($decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months != '' && 
+        $decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months!= NULL &&
+        $decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months != 'nan'){
+        $reviews_positive_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->reviews_positive_sentiment_last_6_months;
+    }else{
+        $reviews_positive_sentiment_last_6_months = '0';
+    }
+    
+    $reviews_negative_sentiment_last_6_months = '';
+    if($decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months  != ''
+        && $decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months!= NULL
+        && $decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months!= 'nan'){
+        $reviews_negative_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->reviews_negative_sentiment_last_6_months;
+    }else{
+        $reviews_negative_sentiment_last_6_months = '0';
+    }
+    $percent_reviews_positive_sentiment_last_6_months = ''; 
+    if($decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months  != ''
+        && $decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months!= NULL 
+        && $decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months!='nan %'){
+        $percent_reviews_positive_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->percent_reviews_positive_sentiment_last_6_months;
+    }else{
+        $percent_reviews_positive_sentiment_last_6_months = '0';
+    }
+    $percent_reviews_negative_sentiment_last_6_months = '';
+    if($decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months  != ''
+        && $decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months!= NULL 
+        && $decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months!= 'nan %'){
+        $percent_reviews_negative_sentiment_last_6_months = $decode_json->bestviewsreviews_product_analysis->percent_reviews_negative_sentiment_last_6_months;
+    }else{
+        $percent_reviews_negative_sentiment_last_6_months = '0';
+    }
+    $percent_neutral_sentiment_reviews_last6_months='';
+    if($decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months!= ''  &&
+         $decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months!= NULL 
+         && $decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months!= 'nan %'){
+        $percent_neutral_sentiment_reviews_last6_months = $decode_json->bestviewsreviews_product_analysis->percent_neutral_sentiment_reviews_last6_months;
+        
+    
+    }else{
+        $percent_neutral_sentiment_reviews_last6_months = '0';
+    }
+    
+    //wordcloud images
+    
+    $wordCloudImage = $decode_json->charts->word_cloud;
+    $product_image_url = '';
+    if($product->image_snippet != '' && $product->image_snippet != NULL &&  $product->image_snippet != '.'){
+        $product_image_url =  $product->image_snippet;
+    }else{
+        $product_image_url = "<img src='http://www.bestviewsreviews.com/wp-content/themes/BVR/images/jw_no-image_3.jpg/' class='img img-responsive'>";
+    }
+    
+    
+    //check reviewTrend URL
+    if($decode_json->charts->reviewtrend !='' && $decode_json->charts->reviewtrend!=NULL){
+        $reviewTrend = @file_get_contents($decode_json->charts->reviewtrend);
+    }
+    
+        $content =<<<CONTENT
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9">
+           <div class="left-section">
+              <div class="row first-row">
+                 <div class="col-md-7">
+                    <div class="row">
+                       <div class="col-md-3 small-slide" style="display:none;">
+                          <!-- <img src="images/slider-image-2.png"/>
+                          <img src="images/slider-image-1.png"/>
+                          <img src="images/slider-image-2.png"/>
+                          <img src="images/slider-image-2.png"/> -->
 CONTENT;
-}
-    if($image_content){
+                if($product_image_url){                
+                    $content .=<<<CONTENT
+                        $product_image_url
+CONTENT;
+                }else {
+                   $content .=<<<CONTENT
+                        $image_content
+CONTENT;
+                    }
+                $content .=<<<CONTENT
+                       </div>
+                       <div class="col-md-9 big_thumbnail">
+CONTENT;
+                if($image_content){
+                    $content .=<<<CONTENT
+                        $image_content
+CONTENT;
+                }else{
+                  $content .=<<<CONTENT
+                    $product_image_url
+CONTENT;
+               }
+                $content .=<<<CONTENT
+                       </div>
+                    </div>
+                 </div>
+                 <div class="col-md-5">
+                    <div class="row">
+                       <div class="col-md-12">
+                          <h5 class="slider-title">Reviews Trend</h5>
+                          $reviewTrend
+                       </div>
+                       <div class="col-md-12 review_border"></div>
+                    </div>
+                    <div class="row sentiment_data">
+                       <div class="col-md-12 sentiment_row">
+                          <h5 class="slider-title-2">Sentiment Analysis</h5>
+                          <p class="slider-right-section-2">From $total_reviews_entire_life total reviews</p>
+                       </div>
+                       <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                          <div class="up">
+                             <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/up.png"/>
+                          </div>
+                          <div class="count">
+                             <p>$percent_reviews_positive_sentiment_last_6_months</p>
+                          </div>
+                          <div class="remark">
+                             <p>Positive</p>
+                          </div>
+                       </div>
+                       <div class="col-xs-4 col-sm-4 col-md-4 stats-review-middle">
+                          <div class="up" style="padding-bottom:7px;">
+                             <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/face.png"/>
+                          </div>
+                          <div class="count">
+                             <p>$percent_neutral_sentiment_reviews_last6_months</p>
+                          </div>
+                          <div class="remark">
+                             <p>Neutral</p>
+                          </div>
+                       </div>
+                       <div class="col-xs-4 col-sm-4 col-md-4 stats-review">
+                          <div class="up">
+                             <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/down.png"/>
+                          </div>
+                          <div class="count">
+                             <p>$percent_reviews_negative_sentiment_last_6_months</p>
+                          </div>
+                          <div class="remark">
+                             <p>Negative</p>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+CONTENT;
+            $content .=<<<CONTENT
+              <div class="row second-row">
+                 <div class="col-md-5" style="text-align:center;margin-top:13px;">
+                    <img src="http://www.bestviewsreviews.com/wp-content/themes/BVR/images/amazon.png" style="width:40%;">
+                 </div>
+                 <div class="col-md-3" style="text-align:center;margin-top:13px;">
+                 </div>
+                 <div class="col-md-4" style="text-align:center;margin-top:13px;">
+                    <a href="$buy_link" target="_blank" class="btn partner_button">Shop now</a>
+                 </div>
+              </div>
+              <hr style="margin-top:0px !important;"/>
+CONTENT;
+              if($product_description){
+                $content .=<<<CONTENT
+                  <div class="row fourth-row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 product_description">
+                        <h4 class="related_post_title">Product Description</h4>
+                            <div class="detail-text">
+                                $product_description
+                            </div>
+                        </div>
+                  </div>
+CONTENT;
+                }     
         $content .=<<<CONTENT
-            $image_content
-           <a href="$buy_link" target="_blank">Buy Now!</a>
+              <div class="row third-row" style="display:none;">
+              </div>
+              <div class="row fourth-row">
+                 <div class="col-md-12">
+                    <table class="table table-responsive table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Rank (out of $no_of_products)</th>
+                            <td>$product_rank</td>
+                        </tr>
+                        <tr>
+                            <th>Score (out of 10)</th>
+                            <td>$product_score</td>   
+                        </tr>
+                        <tr>
+                            <th>Total Reviews in this Category</th>
+                            <td>$total_reviews_category</td>    
+                        </tr>
+                        <tr>
+                            <th>Total Reviews</th>
+                            <td>$total_reviews_entire_life</td>   
+                        </tr>
+                        <tr>
+                            <th>Recent Reviews (Last 6 Months)</th>
+                            <td>$total_reviews_last_6_months</td>   
+                        </tr>
+                        <tr>
+                            <th>Recent Reviews with Positive Sentiment</th>
+                            <td>$reviews_positive_sentiment_last_6_months</td>
+                        </tr>
+                        <tr>
+                            <th>Recent Reviews with Negative Sentiment</th>
+                            <td>$reviews_negative_sentiment_last_6_months</td>
+                         </tr>
+                         <tr>
+                            <th>Positive Sentiment</th>
+                            <td>$percent_reviews_positive_sentiment_last_6_months</td>
+                         </tr>
+                         <tr>
+                            <th>Negative Sentiment</th>
+                            <td>$percent_reviews_negative_sentiment_last_6_months</td>
+                        </tr>
+                        <tr>
+                            <th>Neutral Sentiment</th>
+                            <td>$percent_neutral_sentiment_reviews_last6_months</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                 </div>
+              </div>
+              <div class="row fourth-row">
+                 <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="detail-text">
+                       <p>$summary_text</p>
+                    </div>
+                 </div>
+                 <div class="col-xs-12 col-sm-12 col-md-12" style="display:none;">
+                    <div class="detail-text">
 CONTENT;
-}
-    $content .=<<<CONTENT
-            <h3>BVR Product Analysis:</h3>
-            <table class="product_table1" width="1057">
-                <tbody>
-                    <tr>
-                        <th>Rank (out of $no_of_products)</th>
-                        <td>$product_rank</td>
-                    </tr>
-                    <tr>
-                        <th>Score (out of 10)</th>
-                        <td>$product_score</td>   
-                    </tr>
-                    <tr>
-                        <th>Total Reviews in this Category</th>
-                        <td>$total_reviews_category</td>    
-                    </tr>
-                    <tr>
-                        <th>Total Reviews</th>
-                        <td>$total_reviews_entire_life</td>   
-                    </tr>
-                    <tr>
-                        <th>Recent Reviews (Last 6 Months)</th>
-                        <td>$total_reviews_last_6_months</td>   
-                    </tr>
-                    <tr>
-                        <th>Recent Reviews with Positive Sentiment</th>
-                        <td>$reviews_positive_sentiment_last_6_months</td>
-                    </tr>
-
-                    <tr>
-                        <th>Recent Reviews with Negative Sentiment</th>
-                        <td>$reviews_negative_sentiment_last_6_months</td>
-                   </tr>
-
-                   <tr>
-                        <th>Positive Sentiment</th>
-                        <td>$percent_reviews_positive_sentiment_last_6_months</td>
-                   </tr>
-
-                   <tr>
-                        <th>Negative Sentiment</th>
-                        <td>$percent_reviews_negative_sentiment_last_6_months</td>
-                    </tr>
-
-                    <tr>
-                        <th>Neutral Sentiment</th>
-                        <td>$percent_neutral_sentiment_reviews_last6_months</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p>
-CONTENT;
-if($wordCloudImage!= ''){
-$content .=<<<CONTENT
-        <img src="$wordCloudImage"  alt="$product_title" title="$product_title" class="img img-responsive" height="543" width="100%" alt="image not found"/>
-CONTENT;
-}
-      if($reviewTrend){  
-$content .=<<<CONTENT
-        <br/> 
-        $reviewTrend
-        </p>
-CONTENT;
-}
-    if($youtube_url){
-    $content .=<<<CONTENT
-        <p>
-        <figure class="wp-block-embed-youtube wp-block-embed is-type-video is-provider-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio">
-            <div class="wp-block-embed__wrapper">
-            $youtube_url
-            </div>
-        </figure>
-        </p>
-CONTENT;
-}
-
-if($decode_json->top_positive_reviews){
-        //get all positive review of the product
-        $min=0;
-        $content .=<<<CONTENT
-        <br/>
-        <h4>Top Positive Reviews:</h4>
-CONTENT;
-	foreach($decode_json->top_positive_reviews as $positive_review){
-		$review_text = '';
-		$positive_review_date = '';
-		if($positive_review->positive_reviews != NULL && $positive_review->positive_reviews!= ''){
-			$review_text = $positive_review->positive_reviews;
-		}
-		if($positive_review->review_date != NULL && $positive_review->review_date != ''){
-			$pr_date = strtotime($positive_review->review_date);
-			$positive_review_date = date('M d, Y', $pr_date);
-		}
+        if($decode_json->top_positive_reviews){
+                $min = 0;
+                foreach($decode_json->top_positive_reviews as $positive_review){
+                    $review_text = '';
+                    $positive_review_date = '';
+                    if($positive_review->positive_reviews != NULL && $positive_review->positive_reviews!= ''){
+                        $review_text = $positive_review->positive_reviews;
+                    }
+                    if($positive_review->review_date != NULL && $positive_review->review_date != ''){
+                        $pr_date = $positive_review->review_date;
+                        $positive_review_date = $pr_date;
+                    } 
                 $min++;
                 if($min == 6) break;
-$content .=<<<CONTENT
-            <blockquote>
-            <strong>On: $positive_review_date</strong>
-            <p style="font-style: italic;">$review_text</p>
-            </blockquote>
+                $content .=<<<CONTENT
+                   <blockquote>  
+                    <p>$review_text</p>
+                    </blockquote>
+CONTENT;
+            }
+        }
+        if($decode_json->top_negative_reviews){
+            $min1=0;
+            foreach($decode_json->top_negative_reviews as $bottom_review){
+                $n_review_text = '';
+                $negative_review_date = '';
+                if($bottom_review->negative_reviews!= NULL && $bottom_review->negative_reviews != ''){    
+                    $n_review_text = $bottom_review->negative_reviews;
+                }
+                if($bottom_review->review_date != NULL && $bottom_review->review_date != ''){
+                    $nr_date = $bottom_review->review_date;
+                    $negative_review_date = $nr_date;
+                }
+                $min1++;
+                if ($min1 == 6) break;
+            $content .=<<<CONTENT
+                <blockquote>  
+                    <p>$n_review_text</p>
+                </blockquote>
+CONTENT;
+            }
+        }
+            $content .=<<<CONTENT
+                    </div>
+                 </div>
+                 <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="detail-text">
+                       <img src="$wordCloudImage" alt="$product_title" title="$product_title"/>
+                    </div>
+                 </div>
+              </div>
 CONTENT;
 
-    }  //end of foreach for top reviews
-} //end of if at positive review.
-    //get all Negative review of the product
-$content .=<<<CONTENT
-<h4>Negative Reviews:</h4>
-CONTENT;
-if($decode_json->top_negative_reviews){
-    $min1=0;
-    foreach($decode_json->top_negative_reviews as $bottom_review){
-	    $n_review_text = '';
-	    $negative_review_date = '';
-		if($bottom_review->negative_reviews!= NULL && $bottom_review->negative_reviews != ''){    
-			$n_review_text = $bottom_review->negative_reviews;
-		}
-		if($bottom_review->review_date != NULL && $bottom_review->review_date != ''){
-		    $nr_date = strtotime($bottom_review->review_date);
-		    $negative_review_date = date('M d, Y', $nr_date);
-		}
-    $min1++;
-    if ($min1 == 6) break;
-    $content .=<<<CONTENT
-        <blockquote>
-        <strong>On: $negative_review_date</strong>
-           <p style="font-style: italic;">$n_review_text</p>
-           </blockquote>
-    
-CONTENT;
-
-} //end of foreach for bottom reviews
-} //end of if at negative review
 
 // echo $content; exit;
 //get the randomly user list 
@@ -360,7 +460,7 @@ $data_string = json_encode($data);
 
 // the standard end point for posts in an initialised Curl
 
-$process = curl_init("http://bestviewsreviews.com/wp-json/wp/v2/posts/$wp_post_id");
+$process = curl_init("http://dev.bestviewsreviews.com/wp-json/wp/v2/posts/$wp_post_id");
 
 // create the options starting with basic authentication
 curl_setopt($process, CURLOPT_USERPWD, 'admin'.":".'Best@xy123');

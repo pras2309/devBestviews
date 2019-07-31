@@ -8,6 +8,8 @@ Template Name: SERP Template
 .other_products img {width:70%;}
 .stay_block_image{ left:263px;}
 </style>
+
+<!-- section for other products of the category -->
 <?php
 global $wpdb;
 $s = get_search_query();
@@ -50,8 +52,20 @@ endforeach;
 $unique_category_list = array_unique($all_category);
 // $page = ! empty( $_GET['page'] ) ? (int) $_GET['page'] : 1;
 $total = count( $unique_category_list ); //total items in array    
-
+if($total == 0):
 ?>
+
+<div class="Mask">
+    <p class="We-have-found-30-res " align="center">Sorry. We couldn’t find any product for "<?php echo  strtoupper($s); ?>"</p>
+    <div class="row" align="center">
+        <?php get_search_form($s) ?>
+    </div>
+</div>
+
+<div class="row" align="center">
+   <img src="<?php bloginfo('template_url'); ?>/css/images/empty-search.svg" class=" empty-search">
+</div>
+<?php else: ?>
 
 <div class="Mask">
     <p class="We-have-found-30-res " align="center">We have found <?php echo $total;?> results for "<?php echo  strtoupper($s); ?>"</p>
@@ -59,7 +73,6 @@ $total = count( $unique_category_list ); //total items in array
         <?php get_search_form($s) ?>
     </div>
 </div>
-
 
 <div class="row" align="center">
     <div class="col-4" style="width:7%"></div>
@@ -74,6 +87,9 @@ $total = count( $unique_category_list ); //total items in array
                 $page = $_GET['page'];
             }else{
                 $page = 1;
+            }
+            if(@$_GET['page'] >= $noOfPages){
+                $page = $noOfPages;
             }
             $start_page = $page * $limit - $limit;
             $array_read = array_chunk($unique_category_list, $limit);
@@ -144,3 +160,4 @@ $total = count( $unique_category_list ); //total items in array
         </a> 
         <?php endif; ?>
     </div>
+<?php endif; ?>

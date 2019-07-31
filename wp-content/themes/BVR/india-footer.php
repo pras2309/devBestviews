@@ -30,10 +30,9 @@
 						</div>
 						<div class="col-md-2">
 						<select class="selectpicker" data-width="fit">
-							<option  data-content='<span class="flag-icon flag-icon-in"></span> India'>India</option>
-							<option data-content='<span class="flag-icon flag-icon-us"></span> U.S.'>USA</option>
+						<option data-content='<span class="flag-icon flag-icon-us"></span> USA'>USA</option>
+						<option  data-content='<span class="flag-icon flag-icon-in"></span> India'>India</option>
 						</select>
-							
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-5 footer_social_icon">
 							<ul>
@@ -123,8 +122,6 @@
 					var region_cookie = $.cookie('region');
 					$('.selectpicker option[value=="'+region_cookie+'"]').attr('selected','selected');
 				} 
-			
-		});
 			
 				
 			});

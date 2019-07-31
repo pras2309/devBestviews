@@ -3,7 +3,7 @@ global $wpdb;
 $post_id = $atts['post_id'];
 
 // $post_id = 9010;
-$getProductQry = $wpdb->get_results("SELECT id  FROM dev_bestviews.products WHERE wp_post_id =  $post_id");
+$getProductQry = $wpdb->get_results("SELECT id  FROM bestviews.products WHERE wp_post_id =  $post_id");
 $product_id = $getProductQry[0]->id;
 $getTagsQry = $wpdb->get_results("SELECT id, word_freq  FROM bestviews.products WHERE id =  $product_id");
 if (isset($getTagsQry[0])):

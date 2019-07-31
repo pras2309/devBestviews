@@ -3,7 +3,7 @@ require_once 'wp-config.php';
 global $wpdb;
 //check wordpress category matched with the product table, and get the category ID from the wordpress table.
 
-$get_product = $wpdb->get_results('SELECT * FROM dev_bestviews.products 
+$get_product = $wpdb->get_results('SELECT * FROM bestviews.products 
 WHERE  wp_post_id = 0 
 AND (s3_output_url IS NOT NULL AND s3_output_url !="") 
 AND s3_input_url IS NOT NULL AND s3_input_url!="" AND subcategory IN ("Activity & Entertainment","Cameras","Photo Printers","Smart Tv","Touch Laptops","Projectors","LED Lightning","Natural Hair","Software","Drones","Camping Hammocks","Floor Lamps","Camping Cots","Camping Pots, Pans & Griddles","Tool Sets","Tablets","Travel Systems","External Hard Drives","Hair Removal","Open Fire Cookware","Computer Memory","Women Hats","Wireless Charging stations","Travel Bags","Patio Furniture Sets","Umbrellas & Shade","Art Supplies","Room Air Conditioners","Internal Hard Drives","Women heels")
@@ -484,7 +484,7 @@ $publish_post_metadata  =  json_decode($return, true);
 
 $post_id =  $publish_post_metadata['id'];
 if($post_id){
-$update_product_table = $wpdb->query($wpdb->prepare("UPDATE dev_bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
+$update_product_table = $wpdb->query($wpdb->prepare("UPDATE bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
 }else{
 	echo "No Product to publish";
 }

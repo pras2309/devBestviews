@@ -17,5 +17,6 @@ get_header();
 ?>
 <section class="other_products">
             <div class="container" style="text-align:left;">
+
 <?php get_template_part('template-parts/top-footer'); ?>
 <?php get_footer(); ?>

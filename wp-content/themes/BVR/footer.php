@@ -106,6 +106,7 @@
 				$('.selectpicker').selectpicker();
 			});
 
+
 			$(document).on('change', '.selectpicker', function(e){
 			
 				var region = $(this).val();
@@ -124,8 +125,10 @@
 			
 		});
 			
+		});
+		
+			
 				
-			});
 
 
 				$("#amazon_product_url").keyup(function(){
@@ -187,8 +190,6 @@
 					}
 			});
 
-			
-				$('.selectpicker').selectpicker();
 
 			
 

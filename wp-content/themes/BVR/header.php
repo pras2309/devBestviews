@@ -6,16 +6,35 @@
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 					<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+					<?php  // If there is a post
+					if ( is_single() ):
+						$title = single_post_title( '', false );
+					?>
+						<title>
+						Summary of reviews for :  
+							<?php echo $title; ?>
+						</title>
+					<?php elseif (is_search()): 
+					$search = $_GET['s'];
+					$title = sprintf( __( 'Search Results for %1$s' ), strip_tags( $search ) );	
+					?>
 					<title>
-						<?php bloginfo('title'); ?> :: 
-						<?php the_title(); ?>
-					</title>
+						Best Views Reviews ::
+								<?php echo $title; ?>
+							</title>
+					<?php else: ?>
+							<title>
+								Summary of reviews for : 
+								<?php single_cat_title(); ?>
+							</title>
+					<?php endif; ?>
 					<!-- Bootstrap -->
-					<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" rel="stylesheet">
+					<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
 						<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 							<link href="
 								<?php bloginfo('template_url'); ?>/css/style.css" rel="stylesheet">
-					<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap" rel="stylesheet">
+								<!-- <link rel="stylesheet" media="screen" href="http://fontlibrary.org/face/rubik" type="text/css"/> -->
+								<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700&display=swap" rel="stylesheet">
 								<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 								<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 								<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -25,6 +44,11 @@
 								<![endif]-->
 							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css"/>
 								<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"/>	
+								<?php 
+									global $post;
+									 if(isset($post->ID)):
+										 echo do_shortcode("[get-product-info post_id = $post->ID]"); 
+									endif; ?>
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/jquery.desoslide.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/animate.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/magic.min.css" rel="stylesheet">
@@ -42,7 +66,6 @@
 									display:none;
 								}
 								</style>
-								<?php global $post; echo do_shortcode("[get-product-info post_id = $post->ID]"); ?>
 
 								<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 								<?php wp_head(); ?>
@@ -81,3 +104,4 @@
 																</nav>
 															</div>
 														</div>
+

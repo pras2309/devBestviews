@@ -12,7 +12,7 @@
 	   <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
         <i class="glyphicon glyphicon-search search-icon"></i>
 		   <input type="search" class="search-input d-inline" name="s" 
-		   placeholder="Search for a Product"
+		   placeholder="Search for a product"
 		   value="<?php echo get_search_query(); ?>" name="s"  
 		   >
 		</form>

@@ -17,21 +17,21 @@
  *
  * @package WordPress
  */
-define('WPCACHEHOME','/home/ubuntu/webapps/devApps/wp-content/plugins/wp-super-cache/');
-define('WP_CACHE', true);
+// define('WPCACHEHOME','/home/ubuntu/webapps/devApps/wp-content/plugins/wp-super-cache/');
+// define('WP_CACHE', true);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'devApps');
+define('DB_NAME', 'wp_bestviews');
 
 /** MySQL database username */
-define('DB_USER', 'bestviews');
+define('DB_USER', 'localuser');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'bestxy123');
+define('DB_PASSWORD', 'R@5gull@');
 
 /** MySQL hostname */
-define('DB_HOST', 'bestviews.cspacyaan8uj.us-west-2.rds.amazonaws.com');
+define('DB_HOST', '127.0.0.1');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8mb4');

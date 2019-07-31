@@ -3,7 +3,7 @@ require_once 'wp-config.php';
 global $wpdb;
 //check wordpress category matched with the product table, and get the category ID from the wordpress table.
 
-$get_product = $wpdb->get_results('SELECT *  FROM dev_bestviews.products 
+$get_product = $wpdb->get_results('SELECT *  FROM bestviews.products 
 WHERE  (s3_output_url IS NOT NULL AND s3_output_url !="") AND wp_post_id =0
 AND s3_input_url IS NOT NULL AND s3_input_url!="" AND region = "IND"
 AND subcategory IN ("PlayStation","Speakers","Sherwani","Cooler","Trimmer","Earphones","Monitor","Fitness Band","Laptops","Running Shoes","Televisions (TV, Appliances, Electronics)")
@@ -95,7 +95,7 @@ $get_category_details = $wpdb->get_results("SELECT t.term_id AS category_id
                 FROM   wp_terms t
                 LEFT JOIN wp_term_taxonomy tt
                 ON t.term_id = tt.term_id
-                WHERE  t.`name` = '".esc_sql(trim($product_subcategory))."' AND tt.taxonomy = 'category' AND tt.parent = 24282");
+                WHERE  t.`name` = '".esc_sql(trim($product_subcategory))."' AND tt.taxonomy = 'category' AND tt.parent = 41011");
 $category_id = $get_category_details[0]->category_id;
 
 //get product information from the product json file.
@@ -451,7 +451,7 @@ $data = array(  'title' => $product_title,
 $data_string = json_encode($data);
 
 //the standard end point for posts in an initialised Curl
-$process = curl_init('http://dev.bestviewsreviews.com/wp-json/wp/v2/posts');
+$process = curl_init('http://bestviewsreviews.com/wp-json/wp/v2/posts');
 // create the options starting with basic authentication
 curl_setopt($process, CURLOPT_USERPWD, 'admin'.":".'Best@xy123');
 curl_setopt($process, CURLOPT_TIMEOUT, 30);
@@ -476,7 +476,7 @@ $publish_post_metadata  =  json_decode($return, true);
 
 $post_id =  $publish_post_metadata['id'];
 if($post_id){
-$update_product_table = $wpdb->query($wpdb->prepare("UPDATE dev_bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
+$update_product_table = $wpdb->query($wpdb->prepare("UPDATE bestviews.products SET wp_post_id=$post_id WHERE id=%s", $product_id));
 }else{
 	echo "No Product to publish \n";
 }
