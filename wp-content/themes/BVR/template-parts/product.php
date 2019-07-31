@@ -35,10 +35,11 @@
 	</div>
 	<div class="soundbars">
 	<div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-4 rectangle">
-		<span class="category_name"><?php echo get_the_category($post->ID)[0]->name; ?></span>
+	<div class="col-sm-12 col-md-4">
+		<!-- <span class="category_name"><?php //echo get_the_category($post->ID)[0]->name; ?></span> -->
+		<button type="button" class="btn" style="font-weight: 500;color: #ffffff;font-family:Rubik;background-color: #57a3f9;font-size: 13px;"><?php echo get_the_category($post->ID)[0]->name;?> </button>
 	</div>
-	<div class="col-xs-12 col-sm-12 col-md-8 category_thumbnail">
+	<div class="col-sm-12 col-md-8 category_thumbnail">
 	<span class="date"><?php echo get_the_date('F j, Y');?></span>
 	</div>
 	</div>

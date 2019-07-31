@@ -5,7 +5,7 @@
 	<div class="stay_block">
 	<h5>Stay up-to-date</h5>
 	<p>Sign up for Best Views Reviews <br/>newsletter to receive weekly recommendations</p>
-	<?php if(is_front_page() || $post->ID == 45052){ ?>
+	<?php if(is_front_page() || $post->ID == 24282){ ?>
 	<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image" style="left:382px;top:-1px;"/>
 	<?php } else { ?>
 		<img src="<?php bloginfo('template_url'); ?>/images/bg-inbox.png" class="stay_block_image"/>

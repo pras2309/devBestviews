@@ -86,7 +86,7 @@ get_template_part('template-parts/bottom-header');
 						$space_counter = 0;
 						$product_title = '';
 						foreach($ex_title as $k=>$v){
-							if($character_counter + $space_counter + strlen($v) <= 64){
+							if($character_counter + $space_counter + strlen($v) <= 59){
 								$product_title .= $v." ";
 								$a = strlen($v);
 								$character_counter += $a;

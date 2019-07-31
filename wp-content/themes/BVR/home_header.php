@@ -28,6 +28,7 @@
 								</style>
 								<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css"/>
 								<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"/>
+		<?php global $post; echo do_shortcode("[get-product-info post_id = $post->ID]"); ?>
 
 								<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 								<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

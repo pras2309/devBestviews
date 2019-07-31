@@ -287,8 +287,8 @@ function prepare_title($title){
 	$space_counter = 0;
 	$product_title = '';
 	foreach($ex_title as $k=>$v){
-		if($character_counter + $space_counter + strlen($v) <= 64){
-			$product_title .= $v." ";
+		if($character_counter + $space_counter + strlen($v) <=64){
+			$product_title .= trim($v)." ";
 			$a = strlen($v);
 			$character_counter += $a;
 			$space_counter +=1;
@@ -299,7 +299,7 @@ function prepare_title($title){
 	// echo $title;
 	$tmp = $title." ";
 	if (strcmp($product_title, $tmp) !== 0){
-		$product_title = $product_title." ...";
+		$product_title = trim($product_title)." ...";
 	}
 	return $product_title;
 }
@@ -329,3 +329,63 @@ function prepare_title_recent_product($title){
 	return $product_title;
 }
 add_action('init', 'prepare_title');
+
+
+function getProdInfo($atts){
+	global $wpdb;
+	$post_id = $atts['post_id'];
+	$resultSet = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
+	if(isset($resultSet[0]) && !empty($resultSet[0])){
+		$resultSet = $resultSet[0];
+		$output_json  = file_get_contents($resultSet->s3_output_url);
+		$output_json_data = json_decode($output_json, true);
+		//get review data
+		$review_info = $output_json_data['top_positive_reviews'];
+		if($resultSet->region=='US'){
+			$currency = "USD";
+		}
+		if($resultSet->region == 'IND'){
+			$currency = 'INR';
+		}
+	$schema = '<script type="application/ld+json">
+	{
+	 "@context": "http://schema.org",
+	 "@type": "Product",
+	 "aggregateRating": {
+	   "@type": "AggregateRating",
+	   "ratingValue": "'.$resultSet->score_out_of_10.'",
+	   "reviewCount": "'.$resultSet->no_of_reviews.'"
+	 },
+	 "description": "'.$resultSet->description.'",
+	 "name": "'.$resultSet->product_title.'",
+	 "image": "'.$resultSet->s3_image_url.'",
+	 "offers": {
+	   "@type": "Offer",
+	   "availability": "http://schema.org/InStock",
+	   "price": "'.$resultSet->msrp.'",
+	   "priceCurrency": "'.$currency.'"
+	 },
+	 "review": [
+	   {
+		 "@type": "Review",
+		 "author": "",
+		 "datePublished": "'.$review_info[0]['review_date'].'",
+		 "description": "'.$review_info[0]['positive_reviews'].'",
+		 "name": "",
+		 "reviewRating": {
+		   "@type": "Rating",
+		   "bestRating": "10",
+		   "ratingValue": "'.$resultSet->score_out_of_10.'",
+		   "worstRating": "1"
+		 }
+	   }
+	   }
+	 ]
+	}
+	</script>';
+	return $schema;
+	}
+
+
+}
+add_shortcode( 'get-product-info', 'getProdInfo' );

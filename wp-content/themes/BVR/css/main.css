@@ -89,7 +89,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight: 400; font
 
 .category_title{margin-top: 50px;}
 .category_title h4{font-family: "Rubik", sans-serif;font-size: 36px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.22;letter-spacing: normal;color: #292c32;}
-.item-panel{width:344px; background:#fff;margin:43px 0px;border-radius: 4px;box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.05);background-color: #ffffff;}
+.item-panel{width:344px; background:#fff;margin:26px 27px;border-radius: 4px;box-shadow: 0 16px 16px 0 rgba(0, 0, 0, 0.05);background-color: #ffffff;}
 .footer{margin-top:50px;}
 
 .search-bar{margin-left: auto;
@@ -253,7 +253,7 @@ font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-he
 	.category_container { margin-top:-221px;}
 	.left-content-section { width: 391px; height:613px; padding-right:15px !important;}
 	.product_rows{width:100% !important;}
-	.article_section { margin-top:6px; margin-left:-17px;}
+	.article_section { margin-top:6px; margin-left:0px;}
 	.custome-input::placeholder{ font-size:12px;}
 	.right-content-section {  width: 391px; height:536px; } 
 	.related_category_item_main{margin-bottom:10px;margin-top:10px;}
@@ -298,13 +298,16 @@ font-size: 12px;font-weight: 400;font-style: normal;font-stretch: normal;line-he
 	.item_panel_thumbnail_caption a{text-align:center; top:100px; position: absolute;left: 83px;font-family: "Rubik", sans-serif;font-size: 24px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.25;letter-spacing: normal;color: #ffffff;text-decoration:none;}
 	.item_panel_thumbnail_caption a:hover{text-decoration:none;color: #ffffff;}
 	.first-middle-section{padding: 40px 20px;display:inline-block;}
+	.other_products_main{margin-left:19px;}
+	.footer-list{margin-top:0px;margin-left:19px;}
 	.camera_title{line-height: 40px;font-size: 30px;}
 	.second-middle-section{padding:20px;}
 	.camera_title_new{line-height: 28px;font-size: 21px;}
 	.related_category_image { width: 245px; padding:44px;margin: 0px auto;}
+	.item-panel{margin:26px 19px;}
 	.item-panel h5{font-size: 15px;font-weight: bold;padding-top: 40px;padding-left: 35px;padding-right: 35px;}
 	.footer{margin-top:30px;}
-	.category_title {margin-top: 40px;}
+	.category_title {margin-top: 20px;margin-left:22px;}
 	.footer_link{margin:5px 0px;}
 	.footer_social_icon{margin-top:10px;}
 	.left-content-section {width:350px;}

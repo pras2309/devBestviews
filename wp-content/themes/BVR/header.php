@@ -23,7 +23,8 @@
 								<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 								<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 								<![endif]-->
-								
+							<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css"/>
+								<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/0.8.2/css/flag-icon.min.css"/>	
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/jquery.desoslide.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/animate.min.css" rel="stylesheet">
 								<link href="<?php bloginfo('template_url'); ?>/css/thumbnail/magic.min.css" rel="stylesheet">
@@ -41,6 +42,7 @@
 									display:none;
 								}
 								</style>
+								<?php global $post; echo do_shortcode("[get-product-info post_id = $post->ID]"); ?>
 
 								<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 								<?php wp_head(); ?>

@@ -20,7 +20,7 @@
 					</div>
 				 </div>
 				 <div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-5 subscription_div">
+					<div class="col-sm-12 col-md-5 subscription_div">
 							<div class="input-group">
 							<input type="email" class="subscribe_email form-control" placeholder="Your email address">
 								<span class="input-group-btn" style="width:112px;height:40px;">
@@ -28,13 +28,13 @@
 								</span>
 							</div>
 						</div>
-						<div class="col-md-2">
-						<select class="form-control">
-							<option value="us"><i class="fas fa-flag-usa"></i>U.S.</option>
-							<option value="ind">INDIA</option>
-						</select>	
+						<div class="col-sm-12 col-md-2">
+							<select class="selectpicker" data-width="fit">
+								<option data-content='<span class="flag-icon flag-icon-us"></span> USA'>USA</option>
+								<option  data-content='<span class="flag-icon flag-icon-in"></span> India'>India</option>
+							</select>
 						</div>
-						<div class="col-xs-12 col-sm-12 col-md-5 footer_social_icon">
+						<div class="col-sm-12 col-md-5 footer_social_icon">
 							<ul>
 								<li>
 									<a href="https://www.facebook.com/BestViewsReviews/">
@@ -81,21 +81,9 @@
 <script src="<?php bloginfo('template_url'); ?>/js/jquery.awesomeCloud-0.2.js"></script>
 <script src="<?php bloginfo('template_url'); ?>/js/GaugeMeter.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <script>
 
-	$(window).load(function(){
-		$.get("http://ip-api.com/json", function(response) {
-			var countryCode = response.countryCode;     // "United States"
-			if(countryCode == 'US'){
-				document.cookie = "region=US";
-			}
-
-			if(countryCode == 'IN'){
-				document.cookie = "region=IN";
-
-			}
-			}, "jsonp");
-		});
 			$(document).ready(function(){
 				$(".GaugeMeter").gaugeMeter();
 				
@@ -114,7 +102,27 @@
 					"shape" : "square"
 				});
 				
+			$(function(){
+				$('.selectpicker').selectpicker();
+			});
 
+			$(document).on('change', '.selectpicker', function(e){
+			
+				var region = $(this).val();
+				if(region=='India'){
+					$.cookie('region', 'India');
+					window.location = '//dev.bestviewsreviews.com/in/';
+					var region_cookie = $.cookie('region');
+					$('.selectpicker option[value=="'+region_cookie+'"]').attr('selected','selected');
+				} 
+				if(region = 'USA'){
+					$.cookie('region', 'USA');
+					window.location = '//dev.bestviewsreviews.com/'
+					var region_cookie = $.cookie('region');
+					$('.selectpicker option[value="'+region_cookie+'"]').attr('selected','selected');
+				}
+			
+		});
 			
 				
 			});

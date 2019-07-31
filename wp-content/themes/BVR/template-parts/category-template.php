@@ -22,6 +22,9 @@ $no_of_rows =  $wpdb->num_rows;
 //get image of this category
 $category_image_details = $wpdb->get_results("SELECT * FROM bestviews.product_category WHERE subcategory_name='".esc_sql($product_category)."'");
 $category_image_url = $category_image_details[0]->transparent_image_url;
+$category_summary_url  = $category_image_details[0]->s3_description_url;
+$category_description = @file_get_contents($category_summary_url);
+
 function roundoff($n,$bound=0, $sym=""){
 	$l=min((floor(log10($n))),3);
 	if($bound>0){
@@ -115,11 +118,14 @@ endif;
 	<?php if($get_product_items) { 
 		$i  = 1; ?>	
 	<div class="row">
+	<style>#more {display: none;} .read_more{font-family:rubik;font-size:18px;font-weight:500;letter-spacing:0.8px;color:#000;cursor:pointer;}</style>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="product_score">
 				<!-- category description -->
 				<div class="category_description">
-					<!-- <p>A cruiser bicycle, also known as a beach cruiser or (formerly) motobike, is a bicycle that usually combines balloon tires, an upright seating posture, a single-speed drivetrain, and straightforward steel construction with expressive styling. Cruisers are popular among casual bicyclists and vacationers because they… read more</p> -->
+			
+				<?php echo $category_description;?></div>		
+				<a onclick = "myFunction()" id = "myBtn" class = "read_more">... read more</a>
 			</div>
 			<div class="row" style="margin:0px;">
 				<!-- product list start -->
@@ -208,7 +214,7 @@ endif;
 					<div class="container">
 						<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12">
-									<h4>Other Products</h4>
+									<h4>All Products</h4>
 									</div>
 						</div>
 				<?php
@@ -272,6 +278,23 @@ endif;
 		?>
 		
 		<!-- </div> -->
+				<script>
+				function myFunction() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("myBtn");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "... read more";
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "read less";
+    moreText.style.display = "inline";
+  }
+				}
+				</script>
 	</div>
 	
 	<?php get_template_part('template-parts/top-footer'); ?>

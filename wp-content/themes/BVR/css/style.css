@@ -12,7 +12,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
     padding-bottom: 10px!important;
 }
 .main-svg{ background:none !important;}
-.header-new{box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding-bottom:12px;}
+.header-new{box-shadow: inset 0rem 1rem 1.5rem -0.75rem grey;background-color: #ffffff;padding-bottom:12px;}
 .category-header-new{background-image: url('http://bestviewsreviews.com/wp-content/themes/BVR/images/list-banner.jpg');background-position: center;background-size: cover;background-repeat: no-repeat;width: 100%;}
 .breadcrumb{
 	font-family: 'Rubik', sans-serif;
@@ -26,7 +26,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
 	padding: 15px !important;
      margin-bottom: 0px !important;
     list-style: none !important;
-    background-color: #fff !important;
+    background-color: #fff0 !important;
 	border-radius: 4px !important;
 	border-bottom:1px solid #f5f5f5;
 }
@@ -74,7 +74,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
   margin-left:-2px;
 }
 .big_thumbnail{padding-top:42px;padding-left:76px;}
-.big_thumbnail > a > img{width:100%; height:100% !important;}
+.big_thumbnail > a > img{width:300px; height:300px;}
 .plotly-graph-div{
     position: absolute;
     top: 42px;
@@ -155,7 +155,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
 .footer_social_icon ul li a:hover{text-decoration:none;color: #57a3f9;}
 .social_icons{text-align:center;margin: 10px 0px;}
 .subscription_div p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;padding:10px 0px;}
-
+.filter-option{font-family:rubik;font-weight:500;letter-spacing:0.5px;}
 .small-slide img{width:100%;padding-left:20px;padding-bottom:10px;}
 .previous-section > a > img{padding: 20px; width:145px;height:100%;}
 .next-section > a >  img{padding: 20px; width:145px; height:100%;}
@@ -202,7 +202,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
 .related_category_title p{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 17px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;text-align: center;color: #57a3f9;}
 .product_score{background: #fff;margin: 20px 50px;border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);}
 .product_score p{font-family: 'Rubik', sans-serif;font-size: 18px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding: 0px 100px;padding-top: 50px;padding-bottom: 20px;}
-.category_description { height:104px; margin-bottom:98px; display:none;}
+.category_description { height:auto; margin-bottom:98px;}
 .product_list_row{padding:20px;display:inline-block;}
 .product_image {width: 140px; margin-top:35px;}
 .product_image > a > img{width:100%;height:100%;}
@@ -272,7 +272,7 @@ width: 336px;
 	object-fit: contain;
 	position: absolute;
 	top: 0px;
-    left: 763px;
+    left: 667px;
   }
 .category_thumbnail{ width:150px;margin-top:18px;} 
   .stay_block_image_two{
@@ -418,7 +418,15 @@ font-size: 12px;font-weight : 400;font-style: normal;font-stretch: normal;line-h
 	.remarkfirst-footer{}
 	.remarkfirst-footer p{margin: 0px;background: #63ccac;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: "Rubik", sans-serif;text-transform: uppercase;color:#fff;}
 	.footer_container{margin-left:0px !important;}
-	
+	.left-section{width:100%;}
+	.right-section { width:100%;}
+	.slider-title{ margin-left:0px;}
+	.slider-right-section{margin-left:0px;}
+	.plotly-graph-div{top:10px;left:201px;}
+	.review_border{width:214px;margin-left:44px; margin-top:18px;}
+	.sentiment_data{margin-top:19px;margin-left:16px;width:100%;}
+	.review_block_new{ width:100%;}
+	.custome-input-product:placeholder{font-size:12px;}
 	.remark_image_second {height: 96px;margin-top: 34px;margin-left: -32px;}
 	.remark_image_second img{}
 	.remarksecond{width: 80px;height: 96px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff; margin: 10px 84px;text-align:center}
@@ -450,7 +458,7 @@ font-size: 12px;font-weight : 400;font-style: normal;font-stretch: normal;line-h
 	.custome-input {
 		width: 146px !important
 	}
-	.custome-input-product { width:146px !important;}
+	.custome-input-product { width:184px !important;}
 	.stay_btn{
 		width:115px;
 	}
@@ -819,3 +827,190 @@ font-size: 12px;font-weight : 400;font-style: normal;font-stretch: normal;line-h
   .footer_info{
 	width:649px;  
   }
+
+
+  .Mask {
+	height: 216px;
+	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02);
+	background-color: #ffffff;
+	margin-bottom: 16px;
+ }
+ .We-have-found-30-res {
+	font-family: Rubik;
+	font-size: 24px;
+	font-weight: 500;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.83;
+	letter-spacing: normal;
+	color: #292c32;
+	margin: auto;
+	padding-top: 44px;
+ }
+ .category_content {
+	width: 272px;
+	height: 320px;
+	border-radius: 4px;
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);
+	background-color: #ffffff;
+	margin: 8px 8px;
+ }
+ .category_content a {
+	text-decoration: none;
+ }
+ .category_thumbnail {
+	height: 160px;
+	width: 160px;
+	margin-top: 48px;
+	margin-bottom: 16px;
+ }
+ .category_text {
+	font-family: Rubik;
+	font-size: 18px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.44;
+	letter-spacing: normal;
+	text-align: center;
+	color: #5e5e5e;
+	margin-top: 16px;
+ }
+ .star {
+	margin-right: 8px;
+	margin-top: -2px;
+ }
+ .review_text {
+	opacity: 0.4;
+	font-family: Rubik;
+	font-size: 14px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: #292c32;
+	margin: auto 0px;
+ }
+ .review_box {
+	margin-top: 7px;
+ }
+ .btnstyle {
+	width: 24px;
+	height: 32px;
+	border-radius: 2px;
+	background-color: #ffffff;
+	border: none;
+ }
+ .dotdotdot {
+	font-family: OpenSans;
+	font-size: 14px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #a2a5b8;
+ }
+ .btnstyleactive {
+	width: 24px;
+	height: 32px;
+	border-radius: 2px;
+	background-color: #57a3f9;
+	border: none;
+ }
+ .btnstyleactive:hover {
+	border: none;
+	background-color: #57a3f9;
+ }
+ .btntext {
+	font-family: OpenSans;
+	font-size: 12px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #a2a5b8;
+	margin: 2px -5px;
+ }
+ .btntext:hover {
+	background-color: transparent;
+	border: none;
+	color: #ffffff;
+ }
+ .btnstyle:hover .btntext {
+	color: #ffffff;
+ }
+ .btnstyle:hover {
+	background-color: #57a3f9;
+	border: none;
+ }
+ .btntextactive {
+	font-family: OpenSans;
+	font-size: 12px;
+	font-weight: 600;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	text-align: center;
+	color: #ffffff;
+	margin: 2px -2px;
+ }
+
+ .searchbox {
+	width: 43.75%;
+	border-radius: 28px;
+	display: inline-block;
+	height: 56px;
+	background-color: #f7f7f7;
+	border: none;
+	margin-top: 24px;
+}
+.search-input::placeholder {
+	font-family: Rubik;
+	font-size: 16px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	color: #5b5b5b;
+
+}
+.search-input{
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	/* position: relative;
+	top: 18px;
+	left: -1%; */
+	width: 75%;
+	background-color: #f7f7f7;
+	border: none;
+}
+.search-icon {
+	width: 20px;
+	height: 20px;
+	/* position: relative;
+	left: 5.0%;
+	top: 19px; */
+	padding-top: 19px;
+	padding-bottom: 35px;
+	color: #57a3f9;
+	margin-right: 4.2%;
+}
+.category_elements{
+	 font-family: 'Rubik', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.44;
+    letter-spacing: normal;
+    color: #5e5e5e;
+    margin-left:132px
+    }

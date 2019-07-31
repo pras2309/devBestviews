@@ -4,6 +4,10 @@ Template Name: SERP Template
 
 */
 ?>
+<style>
+.other_products img {width:70%;}
+.stay_block_image{ left:263px;}
+</style>
 <?php
 global $wpdb;
 $s = get_search_query();
@@ -73,7 +77,7 @@ $total = count( $unique_category_list ); //total items in array
             }
             $start_page = $page * $limit - $limit;
             $array_read = array_chunk($unique_category_list, $limit);
-            // print_r($array_read);exit;
+           //  print_r($array_read);exit;
             foreach ($array_read[$page -1] as $subcategory) :
                 //get subcategory information
                 $subcategory_details = $wpdb->get_results(
