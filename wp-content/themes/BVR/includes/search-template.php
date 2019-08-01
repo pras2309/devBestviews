@@ -6,6 +6,7 @@ Template Name: SERP Template
 ?>
 <style>
 .other_products img {width:70%;}
+.other_products { background-color:#f8f8f8;}
 .stay_block_image{ left:263px;}
 </style>
 
@@ -116,7 +117,7 @@ if($total == 0):
                     <a href="<?php echo $category_link; ?>">
                         <div class=" col-sm-12 col-xs-12 col-md-3 category_content">
                             <div align="center">
-                                <div class="category_thumbnail ">
+                                <div class="category_thumbnail_search">
                                     <img class="img img-responsive" src="<?php echo $subcategory_info->transparent_image_url; ?>" />
                                 </div>
                             </div>

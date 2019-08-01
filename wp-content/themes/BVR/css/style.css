@@ -61,6 +61,24 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
     margin-left: 23px;margin-top:40px;
 }
 .second_winner > p { margin-top:21px;  }
+.remarkfirst-footer-product{
+	    height: 80px;
+    width: 72px;
+    margin-top: -9px;
+    margin-left: 23px;
+}
+.remarkfirst-footer-product p{
+	    margin: 0px;
+    background: #63ccac;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 5px 0px;
+    border-radius: 0px 0px 4px 4px;
+    font-family: rubik;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.2px;
+    }
 .rank_number{
   height: 44px;
   opacity: 0.3;
@@ -105,9 +123,10 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
 
 .score_image{text-align:center;margin-top:20px;}
 .score_image img{width:90%;}
+.other_category{margin-left:-59px;margin-top:71px;}
 .main{margin:35px 0px;}
-.left-section{background:#fff;}
-.right-section{background:#fff;background-image: url(images/star-image.png);background-repeat: no-repeat;background-size: 95px;background-position: right 0px top 0px;}
+.left-section{background:#fff;width:720px;}
+.right-section{width:320px;background:#fff;background-image: url(images/star-image.png);background-repeat: no-repeat;background-size: 95px;background-position: right -3px top 0px;margin-left:-42px;}
 .related_post li{list-style:none;padding:10px 30px;border-bottom:1px solid #f5f5f5;}
 .related_post li:last-child{list-style:none;padding:10px 30px;border-bottom:0px solid #f5f5f5;}
 .related_post_title{text-align:center;margin:0px;font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 15px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: 1.5;letter-spacing: -0.1px;color: #292c32;padding-top: 40px;padding-bottom: 30px;}
@@ -156,8 +175,8 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
 .subscription_div p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #292c32;padding:10px 0px;}
 .filter-option{font-family:rubik;font-weight:500;letter-spacing:0.5px;}
 .small-slide img{width:100%;padding-left:20px;padding-bottom:10px;}
-.previous-section img{padding: 20px; width:145px;}
-.next-section img{padding: 20px; width:145px; }
+.previous-section > a > img{height:100%;padding: 20px; width:145px;}
+.next-section > a > img{height:100%;padding: 20px; width:145px; }
 /*.winner{border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;}*/
 .winner{width: 80px;height: 99px;border-radius: 4px;box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.02), inset 0 -3px 0 0 #57a3f9;border: solid 1px #ebebeb;background-color: #ffffff;margin-left:40px;}
 /*.winner-content p{padding-top: 20px;padding-bottom: 15px;margin: 0px;margin: 0px;color: #bbbfc0;font-size: 25px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 2.2;letter-spacing: normal;font-family: 'Rubik', sans-serif;}*/
@@ -188,7 +207,7 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
 .main-text p{padding: 0px 100px;text-align:left;}
 .related_category{background-color: #57a3f9;height: 120px;}
 .related_category h4{text-align:center;font-family: RubikBold;font-size: 17px;font-weight: bold;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;color: #fff;}
-.related_category_item{border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding: 20px;margin-top:30px;}
+.related_category_item{border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding: 20px;margin-top:30px;width:320px;}
 .related_category_item a{text-decoration:none;}
 .related_category_item a:hover{text-decoration:none;}
 .related_category_image{height:200px;padding:20px;}
@@ -197,9 +216,11 @@ body{background:#f8f8f8;font-family: "Rubik", sans-serif; font-weight : 400; fon
 .product_score{background: #fff;margin: 20px 50px;border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);}
 .product_score p{font-family: 'Rubik', sans-serif;font-size: 18px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding: 0px 100px;padding-top: 50px;padding-bottom: 20px;}
 .category_description { height:auto; margin-bottom:98px;}
+.related_category_image_sidebar{height:200px;padding:20px;}
+.related_category_image_sidebar img {width: 100%;height: 170px; padding: 14px; margin: 0px auto;}
 .product_list_row{padding:20px;display:inline-block;}
 .product_image {width: 140px;}
-.product_image img{width:100%;}
+.product_image > a > img{width:100%;height:100%;}
 .rank_score{ width:76px; margin-top:-19px;}
 .product_detail{ width:595px;}
 .product_detail_score { width: 150px;}
@@ -238,8 +259,8 @@ width: 336px;
 .sub_button:hover{color: #ffffff;}
 .custome-form-group{padding-bottom:40px;}
 
-.review_block_new{border-radius:0px 0px 12px 12px;width:848px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);padding: 20px 40px;
- }
+.review_block_new{height:240px;width:721px;border-radius:0px 0px 12px 12px;box-shadow: 0 8px 8px 0 rgba(41, 44, 50, 0.2);background-image: linear-gradient(299deg, #473b7b, #3584a7 51%, #30d2be);padding: 20px 40px; }
+.amazon_product_url{width:536px !important;}
 .review_block_new h5{font-family: "Rubik", sans-serif;font-size: 18px;font-weight: 500;font-style: normal;font-stretch: normal;line-height: 1.67;letter-spacing: normal;color: #ffffff;}
 .review_block_new p{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 1.43;letter-spacing: normal;color: #ffffff;padding-bottom:10px;}
 .custome-email{font-family: 'Rubik', sans-serif;font-size: 14px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 1.29;letter-spacing: normal;color: #ffffff;}
@@ -248,7 +269,7 @@ width: 336px;
 .sub_button:hover{color: #ffffff;}
 .custome-form-group{padding-bottom:20px;}
 .custome-input{opacity:0.5; width: 283px !important;height: 40px;border-radius: 3px;background: #000000;border: none;}
-.custome-input-product{opacity:0.5; width: 650px !important;height: 40px;border-radius: 3px;background: #000000;border: none;}
+.custome-input-product{opacity:0.5; width: 520px !important;height: 40px;border-radius: 3px;background: #000000;border: none;}
 
 .stay_block_image{
 	width: 99px;
@@ -266,7 +287,7 @@ width: 336px;
 	object-fit: contain;
 	position: absolute;
 	top: 0px;
-    left: 667px;
+    left: 636px;
   }
 .category_thumbnail{ width:150px;margin-top:18px;} 
   .stay_block_image_two{
@@ -315,13 +336,14 @@ font-size: 12px;font-weight : 400;font-style: normal;font-stretch: normal;line-h
 font-size: 12px;font-weight : 400;font-style: normal;font-stretch: normal;line-height: 1.44;letter-spacing: normal;color: #5e5e5e;padding-top: 10px;padding-left:0px;padding-right:0px;padding-bottom:0px;}
 .remarksecond-footer{ margin-top:14px;}
 .remarksecond-footer p{margin: 0px;font-size: 12px;font-weight: 500;padding: 5px 0px;border-radius: 0px 0px 4px 4px;font-family: "Rubik", sans-serif;text-transform: uppercase;color:#fff;}
-.custome-fluid-container{background-image: url(images/big_star_logo.png);background-repeat: no-repeat;background-size: 305px;background-position: left 0px top 0px;height:300px;}
+.custome-fluid-container{background-image:url(images/bg-footer.png);background-repeat: no-repeat;background-size: 155px;background-position: left 0px top 0px;height:300px;}
 .related_category_item_main{border-radius: 4px;box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.02);background-color: #ffffff;padding: 20px;margin-top:40px;margin-bottom:50px;}
 .related_category_item_main a{text-decoration:none;}
 .related_category_item_main a:hover{text-decoration:none;}
 .related_category_image_main{padding:20px;}
 .related_category_image_main img{width:100%;padding:20px;}
 .related_category_title_main p{font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;font-size: 17px;font-weight: 600;font-style: normal;font-stretch: normal;line-height: normal;letter-spacing: -0.1px;text-align: center;color: #57a3f9;}
+.footer_container{margin-left:89px;}
 
 
 /* smart phones css */
@@ -836,11 +858,11 @@ font-size: 12px;font-weight : 400;font-style: normal;font-stretch: normal;line-h
  .category_content a {
 	text-decoration: none;
  }
- .category_thumbnail {
+ .category_thumbnail_search {
 	height: 160px;
 	width: 160px;
 	margin-top: 48px;
-	margin-bottom: 16px;
+	margin-bottom:16px;
  }
  .category_text {
 	font-family: Rubik;

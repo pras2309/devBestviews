@@ -1,11 +1,18 @@
 <?php get_header(); ?>
-<?php 
-if(isset($_GET['debug']) == True){
-	echo "<style>
-	.table{  display:none; }
-	</style>";
-}
-?>
+<?php
+if(isset($_GET['debug']) && $_GET['debug'] == "True"): ?>
+<style>
+	.product_stats{ display:block !important; }
+</style>
+<?php else: ?>
+<style>
+	.product_stats{
+		display:none;
+		border:none;
+	}
+</style>
+<?php endif; ?>
+
 	</div>
 	</div>
 
@@ -29,7 +36,7 @@ if(isset($_GET['debug']) == True){
 	<?php
 	//now get the product information from the product table.
 	$post_id = $post->ID;
-	$prodResult = $wpdb->get_results("SELECT * FROM bestviews.products WHERE wp_post_id = $post_id");
+	$prodResult = $wpdb->get_results("SELECT * FROM dev_bestviews.products WHERE wp_post_id = $post_id");
 	$prodResult = $prodResult[0];
 	$product_id = $prodResult->id;
 	
